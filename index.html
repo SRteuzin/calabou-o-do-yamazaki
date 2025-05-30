@@ -1,52 +1,74 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calabouço do Yamazaki</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-image: url('https://i.imgur.com/tG6x7vw.jpeg');
+      background: url('luka-fundo.png') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      height: 100vh;
       color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-shadow: 2px 2px 4px #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    h1 {
-      font-size: 2.5em;
-      color: #ff69b4;
-      margin-bottom: 10px;
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 2rem;
+      min-height: 100vh;
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
+    h1, h2, p {
+      margin: 0.5rem 0;
     }
-    .btn {
-      background-color: transparent;
-      border: 2px solid #00bfff;
-      color: #00bfff;
-      padding: 10px 20px;
+    a {
+      color: #ff79c6;
       text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
     }
-    .btn:hover {
-      background-color: #00bfff;
-      color: white;
+    a:hover {
+      text-decoration: underline;
+    }
+    .links {
+      margin-top: 2rem;
+    }
+    .section {
+      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-  <h1>Calabouço do Yamazaki</h1>
-  <p>Matheus pros íntimos</p>
-  <a href="https://discord.gg/mjK8zDbcdY" class="btn">Entre no meu Discord</a>
+  <div class="overlay">
+    <h1>Calabouço do Yamazaki</h1>
+    <div class="section">
+      <h2>Quem sou eu?</h2>
+      <p>Meu nome é <strong>Mateus Yamazaki</strong>, tenho 19 anos. Sou um cara reservado, criativo, espontâneo, com senso de humor peculiar, e com uma paixão imensa por cultura japonesa e gastronomia.</p>
+    </div><div class="section">
+  <h2>Paixões e Interesses</h2>
+  <ul>
+    <li>Amo gastronomia e sonho em abrir meu próprio restaurante no futuro.</li>
+    <li>Sou apaixonado por carros e ciclismo, principalmente downhill.</li>
+    <li>Tenho uma relação especial com a música: sou fã de Vocaloid, especialmente Hatsune Miku e Megurine Luka, mas meu gosto vai de rock ao pop, menos sertanejo (que eu odeio).</li>
+    <li>Gosto de tirar fotos, de coisas simples e do cotidiano ao extraordinário.</li>
+    <li>Faço cosplay! Já fui a <strong>Raiden Shogun (versão masculina)</strong>, <strong>Hatsune Miku</strong> e <strong>Megurine Luka</strong>. Cosplay de gostosa, confesso.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Anime que já assisti</h2>
+  <p>Sou fã de <strong>Evangelion</strong>, principalmente da Rei Ayanami com cabelo longo. Já assisti <strong>Ijiranaide, Nagatoro-san</strong>, <strong>Law of Ueki</strong>, e continuo mergulhado nesse mundo otaku maravilhoso.</p>
+</div>
+
+<div class="section">
+  <h2>Me encontre</h2>
+  <div class="links">
+    <p><a href="https://discord.gg/mjK8zDbcdY" target="_blank">🔗 Meu Servidor no Discord</a></p>
+    <p><a href="https://www.instagram.com/teuzinyamazaki" target="_blank">📷 Instagram</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>Obrigado por visitar meu cantinho virtual. Sinta-se à vontade no meu calabouço. 🖤</p>
+</footer>
+
+  </div>
 </body>
 </html>
