@@ -1,2 +1,2 @@
-# calabou-o-do-yamazaki
+# calabouço-do-yamazaki
 Meu calabouço faça silêncio 
