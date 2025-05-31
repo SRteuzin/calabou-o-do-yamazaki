@@ -1,292 +1,122 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html><html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calabouço do Yamazaki</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,400&display=swap" rel="stylesheet">
   <style>
-    /* Reset e base */
-    * {
-      box-sizing: border-box;
-    }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://i.imgur.com/64wToDN.jpeg') no-repeat center center fixed;
+      font-family: 'Roboto Mono', monospace;
+      background-image: url('https://i.imgur.com/64wToDN.jpeg');
       background-size: cover;
-      color: #e0e0ff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      line-height: 1.5;
+      background-attachment: fixed;
+      color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.8;
+      backdrop-filter: blur(6px);
     }
-    header {
-      text-align: center;
-      padding: 2.5rem 1rem 2rem;
-      background-color: rgba(30, 27, 46, 0.85);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0 0 0.4rem 0;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #ffccff;
-      text-shadow: 0 0 8px #b85fb8;
-    }
-    header p {
-      font-size: 1.3rem;
-      color: #c0c0ff;
+    h1, h2, h3 {
       font-style: italic;
-      user-select: none;
+      color: #ffb6c1;
     }
-
-    main {
-      flex-grow: 1;
-      max-width: 960px;
-      margin: 2rem auto 3rem;
-      background-color: rgba(30, 27, 46, 0.85);
-      border-radius: 18px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 0 20px rgba(183, 95, 184, 0.7);
+    .bloco {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
     }
-    section {
-      margin-bottom: 3rem;
+    img {
+      width: 200px;
+      border-radius: 15px;
+      margin: 10px;
     }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff99ff;
-      text-shadow: 0 0 6px #d45fd4;
-      border-bottom: 2px solid #b85fb8;
-      padding-bottom: 6px;
-    }
-    section p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: #dddfff;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-    ul li {
-      padding-left: 1.2rem;
-      margin-bottom: 0.8rem;
-      position: relative;
-      color: #d0d0ff;
-      font-size: 1.05rem;
-      cursor: default;
-    }
-    ul li::before {
-      content: "»";
-      position: absolute;
-      left: 0;
-      color: #ff99ff;
-      font-weight: bold;
-    }
-    /* Vocaloid images */
-    .vocaloid-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .vocaloid-card {
-      background: rgba(60, 40, 90, 0.85);
-      border-radius: 12px;
-      width: 140px;
-      padding: 1rem 1rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 0 15px #a66faa88;
-      transition: transform 0.3s ease;
-      user-select: none;
-    }
-    .vocaloid-card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 25px #d85fd8cc;
-    }
-    .vocaloid-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #d26fd2;
-      margin-bottom: 0.6rem;
-      background: #4d2f6b;
-    }
-    .vocaloid-card p {
-      color: #ffccff;
-      font-weight: 600;
-      margin: 0;
-      font-size: 1.1rem;
-      user-select: none;
-    }
-    /* Music lists */
-    .music-list {
-      margin-top: 0.7rem;
-    }
-    .music-list li {
-      margin-bottom: 0.6rem;
-      font-size: 1rem;
-      color: #cccaff;
-    }
-    .music-list li a {
-      color: #ff99ff;
-      text-decoration: none;
+    .relogio {
+      font-size: 1.2em;
+      color: #90ee90;
       font-style: italic;
-      font-weight: 600;
-      transition: color 0.25s ease;
-    }
-    .music-list li a:hover,
-    .music-list li a:focus {
-      color: #ffaaff;
-      text-decoration: underline;
-    }
-    /* Discord button */
-    .discord-button {
-      display: inline-block;
-      background-color: #5865F2;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      box-shadow: 0 4px 10px #5865F2bb;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    .discord-button:hover,
-    .discord-button:focus {
-      background-color: #4752c4;
-      box-shadow: 0 6px 14px #4752c4dd;
-    }
-    .discord-button i {
-      margin-right: 8px;
-      font-size: 1.3rem;
-      vertical-align: middle;
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: rgba(30, 27, 46, 0.85);
-      color: #d5b6d5;
-      user-select: none;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
-    }
-    .social a {
-      color: #ff88dd;
-      margin: 0 1.2rem;
-      font-size: 2rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .social a:hover,
-    .social a:focus {
-      color: #ff66ff;
-    }
-    /* Responsividade */
-    @media (max-width: 720px) {
-      main {
-        margin: 1.5rem 1rem 2rem;
-        padding: 1.6rem 1.6rem;
-      }
-      .vocaloid-list {
-        gap: 1.2rem;
-      }
-      .vocaloid-card {
-        width: 110px;
-        padding: 0.8rem 0.8rem 1.2rem;
-      }
-      .vocaloid-card img {
-        width: 90px;
-        height: 90px;
-      }
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Calabouço do Yamazaki</h1>
-    <p>Explorando a cultura japonesa com paixão e autenticidade</p>
-  </header>
-  <main>
-    <section>
-      <h2>Quem sou eu</h2>
-      <p>Sou Matheus Yamazaki, tenho 19 anos, trabalho em restaurante e sou apaixonado pela cultura japonesa. Faço cosplay da Hatsune Miku e da Megurine Luka. O próximo cosplay que quero fazer é da Kasane Teto.</p>
-      <p>Sonho em abrir meu próprio restaurante, que una o Brasil e o Japão em um espaço acolhedor com karaokê, sakura real no salão, shows ao vivo e um ambiente onde fãs possam se reunir e se sentir em casa.</p>
-      <p>Sou introspectivo, criativo, espontâneo, e valorizo o respeito e a liberdade. Quero ser lembrado como uma pessoa intensa.</p>
-    </section>
-
-    <section>
-      <h2>O que eu gosto</h2>
-      <ul>
-        <li><strong>City Pop Japonês</strong> — Amo artistas como Maki Matsubara e Junko Ohashi.</li>
-        <li><strong>Anime</strong> — Evangelion é meu favorito, especialmente a Rei Ayanami com cabelo longo.</li>
-        <li><strong>Vocaloid</strong> — Hatsune Miku, Kasane Teto, Akita Neru, Megurine Luka e KAFU são minhas preferidas.</li>
-        <li><strong>Estética</strong> — Gosto de tons escuros, roxos e visuais nostálgicos dos anos 90.</li>
-        <li><strong>Música com significado</strong> — Letras que tocam e emocionam.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Vocaloids</h2>
-      <div class="vocaloid-list">
-        <div class="vocaloid-card">
-          <img src="https://i.scdn.co/image/ab6761610000e5ebc9d6db1ca58e6155e88cfc16" alt="Hatsune Miku" />
-          <p>Hatsune Miku</p>
-        </div>
-        <div class="vocaloid-card">
-          <img src="https://i.scdn.co/image/ab6761610000e5eb4a136d62f7a967066a1428d8" alt="Megurine Luka" />
-          <p>Megurine Luka</p>
-        </div>
-        <div class="vocaloid-card">
-          <img src="https://i.imgur.com/fnnNhJF.jpeg" alt="Akita Neru" />
-          <p>Akita Neru</p>
-        </div>
-        <div class="vocaloid-card">
-          <img src="https://i.imgur.com/EfFZJzY.png" alt="Kasane Teto" />
-          <p>Kasane Teto</p>
-        </div>
-        <div class="vocaloid-card">
-          <img src="https://vocaloid.fandom.com/wiki/KAFU?file=Kafu_Vocaloid.png" alt="KAFU" style="width: 110px; height: auto; border-radius: 12px;"/>
-          <p>KAFU</p>
-        </div>
-      </div>
-      <p>Meu amor por Vocaloid é profundo. As músicas, as vozes digitais, os visuais, tudo isso cria um universo especial. Sou muito ligado à Miku, Teto, Neru, Luka e até nomes menos conhecidos como KAFU.</p>
-      <a href="https://discord.gg/mjK8zDbcdY" target="_blank" class="discord-button" aria-label="Entrar no Discord">
-        <i class="fab fa-discord"></i> Entrar no Discord
-      </a>
-    </section>
-
-    <section>
-      <h2>Músicas Preferidas</h2>
-
-      <h3>Hatsune Miku</h3>
-      <ul class="music-list">
-        <li><a href="https://open.spotify.com/track/3vb3xbLZ1DyVKvT5PjQO5j" target="_blank" rel="noopener noreferrer">Tell Your World</a></li>
-        <li><a href="https://open.spotify.com/track/7LPFazmsD0FGI2LPz7rrLn" target="_blank" rel="noopener noreferrer">World is Mine</a></li>
-        <li><a href="https://open.spotify.com/track/4MyvNRFX0Gv1BTssn9FFlJ" target="_blank" rel="noopener noreferrer">Rolling Girl</a></li>
-        <li><a href="https://open.spotify.com/track/1EBikynlWMEPEhTfvdLwGn" target="_blank" rel="noopener noreferrer">The Disappearance of Hatsune Miku</a></li>
-        <li><a href="https://open.spotify.com/track/1DwVpJpZec6CTzQfrQSm7H" target="_blank" rel="noopener noreferrer">Melt</a></li>
-        <li><a href="https://open.spotify.com/track/3PzEHDfAKDjJfQzSM2D9Mf" target="_blank" rel="noopener noreferrer">Senbonzakura</a></li>
-        <li><a href="https://open.spotify.com/track/0r6GJH7pj2nAr1GjEhZO0m" target="_blank" rel="noopener noreferrer">Love is War</a></li>
-        <li><a href="https://open.spotify.com/track/5aYO4QkZyApEVzUNa6S2tZ" target="_blank" rel="noopener noreferrer">Weekender Girl</a></li>
-        <li><a href="https://open.spotify.com/track/6PpjAlzguT7V4q0PoP4jpK" target="_blank" rel="noopener noreferrer">Tell Your World (English Version)</a></li>
-        <li><a href="https://open.spotify.com/track/0TxoE3odcQkGTNzJUVkU8V" target="_blank" rel="noopener noreferrer">Matryoshka</a></li>
-      </ul>
-
+<body>  <div class="relogio">
+    <strong>Horário no Brasil:</strong> <span id="relogio"></span>
+  </div>  <div class="bloco">
+    <h1>Quem sou eu?</h1>
+    <p>Meu nome é <strong>Yamazaki</strong>, mas só os íntimos me chamam de Mateus. Tenho <span id="idade">19</span> anos (meu aniversário é dia 21 de dezembro, então essa idade se atualiza automaticamente 👀), moro no <strong>Brasil, estado do Paraná</strong>, e sou apaixonado por Vocaloid, city pop, anime (especialmente Evangelion) e tudo que envolve criatividade!</p>
+    <p>Faço cosplay das minhas personagens favoritas: <strong>Hatsune Miku</strong> e <strong>Megurine Luka</strong>, e meu próximo cosplay será da gloriosa <strong>Kasane Teto</strong>!</p>
+  </div>  <div class="bloco">
+    <h2>O que eu gosto</h2>
+    <p>Amo city pop japonês, especialmente Maki Matsubara. Sou fã da cultura japonesa, de carros (principalmente os JDM clássicos), e de músicas com significado profundo. Gosto de criar, ouvir, vestir e viver o que me inspira.</p>
+  </div>  <div class="bloco">
+    <h2>O que é Vocaloid?</h2>
+    <p><em>Então... imagina um karaokê doido onde os próprios personagens cantam melhor que você.</em> Isso é Vocaloid! É como se o futuro tivesse virado popstar. São vozes sintetizadas com personalidade, visual, carisma e hits que não saem da cabeça. Se você nunca ouviu "Senbonzakura" da Miku ou "Luka Luka Night Fever"... mano, tá perdendo uma parte essencial da existência. 💿✨</p>
+  </div>  <div class="bloco">
+    <h2>Personagens que eu amo</h2>
+    <div>
       <h3>Megurine Luka</h3>
-      <ul class="music-list">
-        <li><a href="https://open.spotify.com/track/2vOJjKjDfF18D78BIRwqbh" target="_blank" rel="noopener noreferrer">Just Be Friends</a></li>
-        <li><a href="https://open.spotify.com/track/3J3KaJpKdWLJhTLCciqj94" target="_blank" rel="noopener noreferrer">Double Lariat</a></li>
-        <li><a href="https://open.spotify.com/track/4QQ6cBQGi9RfO2Pv3hz5JQ" target="_blank" rel="noopener noreferrer">Luka Luka Night Fever</a></li>
-        <li><a href="https://open.spotify.com/track/6QOeJqkLkg3jEcV1ylp18B" target="_blank" rel="noopener noreferrer
+      <img src="https://i.imgur.com/L2gtDNk.jpeg" alt="Luka">
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=8Z6P1J-MD0k" target="_blank">Luka Luka Night Fever</a></li>
+        <li><a href="https://www.youtube.com/watch?v=dWjC4AoLX5U" target="_blank">Just Be Friends</a></li>
+      </ul><h3>KAFU</h3>
+  <img src="https://i.imgur.com/tFgH0m4.jpeg" alt="KAFU">
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=Y3pT-XJjfks" target="_blank">Shinunoga E-Wa (cover)</a></li>
+    <li><a href="https://www.youtube.com/watch?v=DK7U_x_OO5c" target="_blank">Bokura wa Mada Underground</a></li>
+  </ul>
+
+  <h3>Akita Neru</h3>
+  <img src="https://i.imgur.com/2dOym1S.jpeg" alt="Neru">
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=on8Pz6rzA4Y" target="_blank">Lost My Music</a></li>
+    <li><a href="https://www.youtube.com/watch?v=VXzTjR5mU3g" target="_blank">Happy Synthesizer</a></li>
+  </ul>
+
+  <h3>Kasane Teto</h3>
+  <img src="https://i.imgur.com/cPtfsP1.jpeg" alt="Teto">
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=jDL7zTdd9W0" target="_blank">Kasane Territory</a></li>
+    <li><a href="https://www.youtube.com/watch?v=0K7kWy3gqIs" target="_blank">Triple Baka</a></li>
+  </ul>
+
+  <h3>Hatsune Miku</h3>
+  <img src="https://i.imgur.com/9JFEyGU.jpeg" alt="Miku">
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=TxKjZCDb9yA" target="_blank">Senbonzakura</a></li>
+    <li><a href="https://www.youtube.com/watch?v=pq3D9sCzqHk" target="_blank">Tell Your World</a></li>
+    <li><a href="https://www.youtube.com/watch?v=jhl5afLEKdo" target="_blank">World is Mine</a></li>
+  </ul>
+</div>
+
+  </div>  <div class="bloco">
+    <h2>Músicas que eu curto muito</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=JpEwF6G2C3g" target="_blank">Plastic Love - Maki Matsubara</a></li>
+      <li><a href="https://www.youtube.com/watch?v=pq3D9sCzqHk" target="_blank">Tell Your World - Hatsune Miku</a></li>
+      <li><a href="https://www.youtube.com/watch?v=8Z6P1J-MD0k" target="_blank">Luka Luka Night Fever - Luka</a></li>
+      <li><a href="https://www.youtube.com/watch?v=VXzTjR5mU3g" target="_blank">Happy Synthesizer - Miku & Neru</a></li>
+      <li><a href="https://www.youtube.com/watch?v=jDL7zTdd9W0" target="_blank">Kasane Territory - Teto</a></li>
+      <li><a href="https://www.youtube.com/watch?v=DK7U_x_OO5c" target="_blank">Bokura wa Mada Underground - KAFU</a></li>
+    </ul>
+  </div><script>
+function atualizarRelogio() {
+  const agora = new Date().toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  document.getElementById("relogio").textContent = agora;
+}
+setInterval(atualizarRelogio, 1000);
+
+function calcularIdade() {
+  const hoje = new Date();
+  const nascimento = new Date(2005, 11, 21);
+  let idade = hoje.getFullYear() - nascimento.getFullYear();
+  const niverJaPassou = hoje.getMonth() > 11 || (hoje.getMonth() === 11 && hoje.getDate() >= 21);
+  if (!niverJaPassou) idade--;
+  return idade;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const idadeTexto = document.getElementById("idade");
+  idadeTexto.textContent = calcularIdade();
+  atualizarRelogio();
+});
+</script></body>
+</html>
