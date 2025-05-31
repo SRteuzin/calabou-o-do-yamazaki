@@ -1,403 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yamazaki - Perfil</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-  /* Fonte pixelada */
-  body {
-    margin: 0;
-    background: url('https://i.imgur.com/8h6yWbj.jpeg') no-repeat center center fixed;
-    background-size: cover;
-    color: #eee;
-    font-family: 'Press Start 2P', cursive, monospace;
-    overflow-x: hidden;
-  }
-  /* Overlay escuro para melhor leitura */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: -1;
-  }
-  .container {
-    max-width: 780px;
-    margin: 2rem auto 6rem auto;
-    padding: 1rem 2rem;
-    background: rgba(10,10,10,0.7);
-    border-radius: 10px;
-    box-shadow: 0 0 15px #4caf50;
-  }
-  h1, h2 {
-    text-align: center;
-    color: #00ffea;
-    margin-bottom: 0.5rem;
-  }
-  h2 {
-    color: #ff66cc;
-  }
-  p, li {
-    font-size: 0.85rem;
-    line-height: 1.3;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  li {
-    margin-bottom: 0.7rem;
-  }
-  /* Bolinhas coloridas antes dos nomes */
-  .tag {
-    font-weight: bold;
-    position: relative;
-    padding-left: 22px;
-    cursor: default;
-  }
-  .tag::before {
-    content: "●";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    font-size: 1.3rem;
-  }
-  .miku::before { color: #1eb0f4; }      /* azul */
-  .teto::before { color: #e03e2f; }      /* vermelho */
-  .neru::before { color: #f7d347; }      /* amarelo */
-  .luka::before { color: #d56ed6; }      /* rosa/púrpura */
-  .kafu::before { color: #4e8b76; }      /* verde azulado */
-
-  /* Links */
-  a {
-    color: #00ffea;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  a:hover {
-    color: #ff66cc;
-    text-decoration: underline;
-  }
-
-  /* Form recados */
-  .recados {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid #00ffea;
-    border-radius: 8px;
-    margin-top: 2rem;
-    padding: 1rem;
-  }
-  .recados h2 {
-    color: #00ffea;
-  }
-  textarea {
-    width: 100%;
-    background: #111;
-    border: 1px solid #00ffea;
-    border-radius: 6px;
-    color: #eee;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.75rem;
-    padding: 10px;
-    resize: vertical;
-  }
-  button {
-    margin-top: 0.8rem;
-    background: #00ffea;
-    border: none;
-    color: #111;
-    font-weight: bold;
-    font-family: 'Press Start 2P', monospace;
-    padding: 10px 18px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-  }
-  button:hover {
-    background: #ff66cc;
-    color: #111;
-  }
-
-  footer {
-    text-align: center;
-    font-size: 0.7rem;
-    color: #777;
-    margin-top: 3rem;
-  }
-
-  /* Confetti container */
-  #confetti-canvas {
-    position: fixed;
-    top:0; left:0; width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* Mikudayo container */
-  #mikudayo {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-    height: 150px;
-    z-index: 10000;
-    opacity: 0;
-    animation: fadeInOut 7s forwards;
-  }
-
-  @keyframes fadeInOut {
-    0% {opacity: 0; transform: translateY(50px);}
-    10% {opacity: 1; transform: translateY(0);}
-    80% {opacity: 1; transform: translateY(0);}
-    100% {opacity: 0; transform: translateY(50px);}
-  }
-
-  /* Texto do mikudayo */
-  #mikudayo-text {
-    position: fixed;
-    bottom: 180px;
-    right: 20px;
-    font-family: 'Press Start 2P', monospace;
-    color: #00ffea;
-    font-size: 0.8rem;
-    text-shadow:
-      0 0 5px #00ffea,
-      0 0 10px #00ffea;
-    opacity: 0;
-    animation: textFadeInOut 7s forwards;
-  }
-
-  @keyframes textFadeInOut {
-    0% {opacity: 0;}
-    10% {opacity: 1;}
-    80% {opacity: 1;}
-    100% {opacity: 0;}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yamazaki</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="content">
+    <!-- Músicas Preferidas -->
+    <section>
+      <h2>🎵 Músicas Preferidas por Artista</h2>
 
-<canvas id="confetti-canvas"></canvas>
+      <h3>📼 Junko Ohashi</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Telephone+Number" target="_blank">Telephone Number</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+I+Love+You+So" target="_blank">I Love You So</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Lost+Love" target="_blank">Lost Love</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Rainy+Night+Lady" target="_blank">Rainy Night Lady</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Dancin%27" target="_blank">Dancin'</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Paper+Moon" target="_blank">Paper Moon</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Junko+Ohashi+Tasogare" target="_blank">Tasogare</a></li>
+      </ul>
 
-<div id="mikudayo">
-  <img src="https://64.media.tumblr.com/952e7efbfed2ce9fdb4a85a7589aab9d/tumblr_p9z0b4wWn21v6sw2co1_500.gif" alt="Mikudayo" width="150" height="150" />
-</div>
-<div id="mikudayo-text">Yamazaki chegou! 🎧✨</div>
+      <h3>💙 Hatsune Miku</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+Tell+Your+World" target="_blank">Tell Your World</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+Rolling+Girl" target="_blank">Rolling Girl</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+World+is+Mine" target="_blank">World is Mine</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+Melt" target="_blank">Melt</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+Senbonzakura" target="_blank">Senbonzakura</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+Romeo+and+Cinderella" target="_blank">Romeo and Cinderella</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Hatsune+Miku+The+Disappearance+of+Hatsune+Miku" target="_blank">The Disappearance of Hatsune Miku</a></li>
+      </ul>
 
-<div class="container">
-  <h1>Yamazaki</h1>
-  <p>Meu nome é Yamazaki, mas Mateus para os íntimos. 🎧</p>
-  <p>Amo Vocaloid, cultura japonesa e música nostálgica.</p>
+      <h3>❤️ Kasane Teto</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Kasane+Territory" target="_blank">Kasane Territory</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Triple+Baka" target="_blank">Triple Baka</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Fake+Diva" target="_blank">Fake Diva</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Yokubari+Time" target="_blank">Yokubari Time</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+First+and+Last+Date" target="_blank">First and Last Date</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Utattemita+no+Uta" target="_blank">Utattemita no Uta</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Kasane+Teto+Oops+Teto+desu" target="_blank">Oops!! Teto desu</a></li>
+      </ul>
 
-  <h2>🎶 Vocaloids Favoritos</h2>
-  <ul>
-    <li><span class="tag miku">Ratsunomiku</span> - Música: "Ah"</li>
-    <li><span class="tag teto">Kasane Teto</span> - Música: "Kasane Territory"</li>
-    <li><span class="tag neru">Akita Neru</span> - Música: "Paradichlorobenzene"</li>
-    <li><span class="tag luka">Megurine Luka</span> - Música: "Just Be Friends"</li>
-    <li><span class="tag kafu">KAFU</span> - Música: "Kawareru Mono"</li>
-  </ul>
+      <h3>💛 Akita Neru</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Paradichlorobenzene" target="_blank">Paradichlorobenzene</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Retto+Hero" target="_blank">Retto Hero</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Lost+Story" target="_blank">Lost Story</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Love+Logic" target="_blank">Love Logic</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Yellow" target="_blank">Yellow</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+Lonely" target="_blank">Lonely</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Akita+Neru+My+Freedom" target="_blank">My Freedom</a></li>
+      </ul>
 
-  <h2>📺 Animes Preferidos</h2>
-  <ul>
-    <li>Evangelion (série principal e o último filme)</li>
-    <li>Dr. Stone</li>
-    <li>Tonikawa</li>
-    <li>Chainsaw Man</li>
-    <li>A Silent Voice (filme que mais me tocou)</li>
-  </ul>
+      <h3>💜 Megurine Luka</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+Just+Be+Friends" target="_blank">Just Be Friends</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+Luka+Luka+Night+Fever" target="_blank">Luka Luka★Night Fever</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+Dancer+in+the+Dark" target="_blank">Dancer in the Dark</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+Lie" target="_blank">Lie</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+Double+Lariat" target="_blank">Double Lariat</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+To+Be+Me" target="_blank">To Be Me</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=Megurine+Luka+RIP%3DRELEASE" target="_blank">RIP=RELEASE</a></li>
+      </ul>
 
-  <h2>🎂 Aniversário</h2>
-  <p>21 de dezembro 🎉</p>
+      <h3>🩷 KAFU</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Kawareru+Mono" target="_blank">Kawareru Mono</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Inochi+no+Namae" target="_blank">Inochi no Namae</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Mellow" target="_blank">Mellow</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Nanimo+Nai" target="_blank">Nanimo Nai</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Night+Walk" target="_blank">Night Walk</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Ichibanboshi" target="_blank">Ichibanboshi</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=KAFU+Yoru+ni+Kakeru+cover" target="_blank">Yoru ni Kakeru (cover)</a></li>
+      </ul>
+    </section>
 
-  <h2>🌐 Links</h2>
-  <ul>
-    <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==">Instagram</a></li>
-    <li><a href="https://www.youtube.com/@YAMAZAKImiku">YouTube</a></li>
-    <li><a href="https://discord.gg/SArvvrer49">Servidor Discord favorito</a></li>
-  </ul>
+    <!-- Sobre Yamazaki -->
+    <section>
+      <h2 style="color: cyan;">Yamazaki</h2>
+      <p>Meu nome é Yamazaki, mas Mateus para os íntimos. 🕶️<br>
+      Amo Vocaloid, cultura japonesa e música nostálgica.</p>
 
-  <div class="recados">
-    <h2>💬 O que você achou?</h2>
-    <p>Algo que sentiu? Deixe sua marca... ou um segredo.</p>
-    <form id="recado-form">
-      <textarea rows="4" placeholder="Deixe um recado..."></textarea>
-      <br />
-      <button type="submit">Enviar</button>
-    </form>
-    <p id="recado-msg" style="color:#00ffea; margin-top: 1rem; font-family: 'Press Start 2P', monospace;"></p>
+      <h3 style="color: deeppink;">🎶 Vocaloids Favoritos</h3>
+      <ul>
+        <li>Hatsune Miku – Música: "Ah"</li>
+        <li>Kasane Teto – Música: "Kasane Territory"</li>
+        <li>Akita Neru – Música: "Paradichlorobenzene"</li>
+        <li>Megurine Luka – Música: "Just Be Friends"</li>
+        <li>KAFU – Música: "Kawareru Mono"</li>
+      </ul>
+
+      <h3 style="color: cyan;">📺 Animes Preferidos</h3>
+      <ul>
+        <li>Dr. Stone</li>
+        <li>Tonikawa</li>
+        <li>Chainsaw Man</li>
+        <li>A Silent Voice (filme que mais me tocou)</li>
+      </ul>
+
+      <h3 style="color: hotpink;">🎂 Aniversário</h3>
+      <p>21 de dezembro 🎉</p>
+
+      <h3 style="color: violet;">🌐 Links</h3>
+      <ul>
+        <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a></li>
+        <li><a href="#">Servidor Discord favorito</a></li>
+      </ul>
+    </section>
+
+    <!-- Recados -->
+    <section>
+      <h2 style="color: cyan;">💬 O que você achou?</h2>
+      <p>Algo que sentiu? Deixe sua marca... ou um segredo.</p>
+      <form id="form-recado">
+        <textarea id="mensagem" placeholder="Deixe um recado..."></textarea><br>
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="recados"></div>
+    </section>
   </div>
-</div>
 
-<footer>
-  <p>Desde quando tudo começou 🌙</p>
-</footer>
+  <script>
+    // Armazena e carrega recados do localStorage
+    const form = document.getElementById('form-recado');
+    const textarea = document.getElementById('mensagem');
+    const recadosDiv = document.getElementById('recados');
 
-<script>
-// Confetti animation by https://codepen.io/anon/pen/ZOqNqP
-const confettiCanvas = document.getElementById('confetti-canvas');
-const ctx = confettiCanvas.getContext('2d');
-let W = window.innerWidth;
-let H = window.innerHeight;
-confettiCanvas.width = W;
-confettiCanvas.height = H;
-
-const colors = ['#1eb0f4', '#e03e2f', '#f7d347', '#d56ed6', '#4e8b76'];
-
-function randomRange(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-function ConfettiParticle() {
-  this.x = Math.random() * W;
-  this.y = Math.random() * H - H;
-  this.r = randomRange(5, 12);
-  this.d = Math.random() * 20 + 10;
-  this.color = colors[Math.floor(Math.random() * colors.length)];
-  this.tilt = Math.floor(Math.random() * 10) - 10;
-  this.tiltAngleIncremental = (Math.random() * 0.07) + 0.05;
-  this.tiltAngle = 0;
-
-  this.draw = function() {
-    ctx.beginPath();
-    ctx.lineWidth = this.r / 2;
-    ctx.strokeStyle = this.color;
-    ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y);
-    ctx.lineTo(this.x + this.tilt, this.y + this.tilt + (this.r / 4));
-    ctx.stroke();
-  }
-}
-
-let confettiParticles = [];
-for(let i = 0; i < 150; i++) {
-  confettiParticles.push(new ConfettiParticle());
-}
-
-function drawConfetti() {
-  ctx.clearRect(0, 0, W, H);
-  for(let i = 0; i < confettiParticles.length; i++) {
-    confettiParticles[i].draw();
-  }
-  updateConfetti();
-}
-
-function updateConfetti() {
-  for(let i = 0; i < confettiParticles.length; i++) {
-    let p = confettiParticles[i];
-    p.tiltAngle += p.tiltAngleIncremental;
-    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-    p.x += Math.sin(p.d);
-    p.tilt = Math.sin(p.tiltAngle) * 15;
-
-    if(p.y > H) {
-      confettiParticles[i] = new ConfettiParticle();
-      confettiParticles[i].x = Math.random() * W;
-      confettiParticles[i].y = -10;
+    function carregarRecados() {
+      const recados = JSON.parse(localStorage.getItem('recados')) || [];
+      recadosDiv.innerHTML = recados.map(msg => `<p>📩 ${msg}</p>`).join('');
     }
-  }
-}
 
-setInterval(drawConfetti, 20);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const texto = textarea.value.trim();
+      if (texto) {
+        const recados = JSON.parse(localStorage.getItem('recados')) || [];
+        recados.push(texto);
+        localStorage.setItem('recados', JSON.stringify(recados));
+        textarea.value = '';
+        carregarRecados();
+      }
+    });
 
-// Recados form
-const form = document.getElementById('recado-form');
-const recadoMsg = document.getElementById('recado-msg');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const textarea = form.querySelector('textarea');
-  const text = textarea.value.trim();
-  if(text.length === 0) {
-    recadoMsg.textContent = "Por favor, escreva algo antes de enviar!";
-    return;
-  }
-  // Aqui você pode adicionar código para armazenar o recado, por exemplo localStorage
-  let recados = JSON.parse(localStorage.getItem('recadosYamazaki') || "[]");
-  recados.push(text);
-  localStorage.setItem('recadosYamazaki', JSON.stringify(recados));
-  textarea.value = "";
-  recadoMsg.textContent = "Recado recebido, obrigado por deixar sua marca! 🔥";
-  setTimeout(() => { recadoMsg.textContent = ""; }, 4000);
-});
-</script>
-
+    carregarRecados();
+  </script>
 </body>
-</html>
-<section>
-  <h2 style="color: #ff66cc; font-size: 24px;">🎶 Músicas Preferidas por Artista</h2>
-
-  <!-- Junko Ohashi -->
-  <h3 style="color: #ffd700;">🌆 Junko Ohashi</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=R2zXxgDqB7o" target="_blank" style="color:#00ffff;">Telephone Number</a></li>
-    <li><a href="https://www.youtube.com/watch?v=xzbi_5lCpzQ" target="_blank" style="color:#00ffff;">I Love You So</a></li>
-    <li><a href="https://www.youtube.com/watch?v=1mwzN1W5LkE" target="_blank" style="color:#00ffff;">Lost Love</a></li>
-    <li><a href="https://www.youtube.com/watch?v=lSt5Rz9b1Ag" target="_blank" style="color:#00ffff;">Rainy Night Lady</a></li>
-    <li><a href="https://www.youtube.com/watch?v=VGwO8Qh3UuA" target="_blank" style="color:#00ffff;">Dancin'</a></li>
-    <li><a href="https://www.youtube.com/watch?v=6EzAxN-GT94" target="_blank" style="color:#00ffff;">Paper Moon</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Yh0CBTg1lw8" target="_blank" style="color:#00ffff;">Tasogare</a></li>
-  </ul>
-
-  <!-- Hatsune Miku -->
-  <h3 style="color: #00bfff;">💙 Hatsune Miku</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=PqJNc9KVIZE" target="_blank" style="color:#00ffff;">Tell Your World</a></li>
-    <li><a href="https://www.youtube.com/watch?v=GdZn7k5rZLQ" target="_blank" style="color:#00ffff;">World is Mine</a></li>
-    <li><a href="https://www.youtube.com/watch?v=YnSF1ogDaqk" target="_blank" style="color:#00ffff;">Senbonzakura</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Q5GdGJNycuU" target="_blank" style="color:#00ffff;">ODDS&ENDS</a></li>
-    <li><a href="https://www.youtube.com/watch?v=EuDk3x-L8o8" target="_blank" style="color:#00ffff;">Melt</a></li>
-    <li><a href="https://www.youtube.com/watch?v=K_hOdujXwV0" target="_blank" style="color:#00ffff;">Ghost Rule</a></li>
-    <li><a href="https://www.youtube.com/watch?v=akJ2w0Z8IjA" target="_blank" style="color:#00ffff;">Decorator</a></li>
-  </ul>
-
-  <!-- Kasane Teto -->
-  <h3 style="color: #ff4d6d;">❤️ Kasane Teto</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=2x9RC7x5QWg" target="_blank" style="color:#00ffff;">Cendrillon (feat. Kaito)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=iwGzqwEyz9k" target="_blank" style="color:#00ffff;">Kasane Territory</a></li>
-    <li><a href="https://www.youtube.com/watch?v=7gH1CDxA6rs" target="_blank" style="color:#00ffff;">Triple Baka (feat. Miku & Neru)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=KzTJJ3tUTj0" target="_blank" style="color:#00ffff;">The Intense Singing of Hatsune Teto</a></li>
-    <li><a href="https://www.youtube.com/watch?v=mLuB8mDRnCs" target="_blank" style="color:#00ffff;">Uso no Utahime</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Z5JDCs5GcQg" target="_blank" style="color:#00ffff;">Happy Synthesizer (cover)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Ln6UpP_Wn8k" target="_blank" style="color:#00ffff;">WAVE</a></li>
-  </ul>
-
-  <!-- Akita Neru -->
-  <h3 style="color: #ffd700;">💛 Akita Neru</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=ZyVXGv3o2HY" target="_blank" style="color:#00ffff;">Paradise Cage</a></li>
-    <li><a href="https://www.youtube.com/watch?v=ehXj5TUmZGE" target="_blank" style="color:#00ffff;">No Thank You!!</a></li>
-    <li><a href="https://www.youtube.com/watch?v=BBHF1xQliXc" target="_blank" style="color:#00ffff;">Retrospective</a></li>
-    <li><a href="https://www.youtube.com/watch?v=U-yGzLNpz9U" target="_blank" style="color:#00ffff;">Yowamushi Montblanc</a></li>
-    <li><a href="https://www.youtube.com/watch?v=X51vAYtXBJY" target="_blank" style="color:#00ffff;">Remote Control (feat. Rin & Len)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=pHl7nPZDP3o" target="_blank" style="color:#00ffff;">Meltdown (cover)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=XtxZrHoGT74" target="_blank" style="color:#00ffff;">Rolling Girl (cover)</a></li>
-  </ul>
-
-  <!-- Megurine Luka -->
-  <h3 style="color: #ff69b4;">💗 Megurine Luka</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=huZMi1N3GZQ" target="_blank" style="color:#00ffff;">Dancer in the Dark</a></li>
-    <li><a href="https://www.youtube.com/watch?v=UqSkhrU5ePE" target="_blank" style="color:#00ffff;">Just Be Friends</a></li>
-    <li><a href="https://www.youtube.com/watch?v=VOE4ulCNfzk" target="_blank" style="color:#00ffff;">No Logic</a></li>
-    <li><a href="https://www.youtube.com/watch?v=1fO7ZqfBEBI" target="_blank" style="color:#00ffff;">Luka Luka★Night Fever</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Scn82i7XZ2Q" target="_blank" style="color:#00ffff;">RIP=RELEASE</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Wye8LjtUmlY" target="_blank" style="color:#00ffff;">Double Lariat</a></li>
-    <li><a href="https://www.youtube.com/watch?v=tTn6GgNzfek" target="_blank" style="color:#00ffff;">Stay With Me</a></li>
-  </ul>
-
-  <!-- KAFU -->
-  <h3 style="color: #c084fc;">💜 KAFU</h3>
-  <ul style="list-style-type: square; color: #fff; font-family: 'Press Start 2P', monospace;">
-    <li><a href="https://www.youtube.com/watch?v=7FaoSKRUgyU" target="_blank" style="color:#00ffff;">Mahou (魔法)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=GqXyqGo1p9Q" target="_blank" style="color:#00ffff;">Shirushi</a></li>
-    <li><a href="https://www.youtube.com/watch?v=WaUjp6PwF1Y" target="_blank" style="color:#00ffff;">Kataribe</a></li>
-    <li><a href="https://www.youtube.com/watch?v=qDvoUakU3z8" target="_blank" style="color:#00ffff;">Kurayami no Naka de</a></li>
-    <li><a href="https://www.youtube.com/watch?v=xXZFaLQ58VQ" target="_blank" style="color:#00ffff;">Reimei</a></li>
-    <li><a href="https://www.youtube.com/watch?v=IM-NEvJlBsA" target="_blank" style="color:#00ffff;">Jiyuu no Shoumei</a></li>
-    <li><a href="https://www.youtube.com/watch?v=V_PsPL5pfeU" target="_blank" style="color:#00ffff;">Kimi no Inai Yoru</a></li>
-  </ul>
-</section>
+              </html>
