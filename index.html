@@ -3,161 +3,202 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yamazaki - Página Pessoal</title>
+<title>Yamazaki - Perfil</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+  /* Fonte pixelada */
   body {
-    font-family: 'Press Start 2P', cursive;
-    background: #0e061c;
-    color: #e6dfff;
     margin: 0;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: url('https://i.imgur.com/8h6yWbj.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: #eee;
+    font-family: 'Press Start 2P', cursive, monospace;
+    overflow-x: hidden;
   }
-
-  h1 {
-    font-size: 1.8rem;
-    color: #c48aff;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px #3d1d5a;
+  /* Overlay escuro para melhor leitura */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: -1;
   }
-
+  .container {
+    max-width: 780px;
+    margin: 2rem auto 6rem auto;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #4caf50;
+  }
+  h1, h2 {
+    text-align: center;
+    color: #00ffea;
+    margin-bottom: 0.5rem;
+  }
   h2 {
-    font-size: 1rem;
-    color: #b67fff;
-    margin-top: 1.8rem;
-    margin-bottom: 0.8rem;
-    border-bottom: 1px solid #5a2380;
-    padding-bottom: 4px;
+    color: #ff66cc;
   }
-
+  p, li {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
   ul {
-    max-width: 480px;
-    padding-left: 1.5rem;
-    line-height: 1.4;
+    list-style: none;
+    padding-left: 0;
   }
-
   li {
-    margin-bottom: 0.6rem;
-    font-weight: 700;
+    margin-bottom: 0.7rem;
   }
-
-  p {
-    max-width: 480px;
-    font-size: 0.8rem;
-    line-height: 1.4;
+  /* Bolinhas coloridas antes dos nomes */
+  .tag {
+    font-weight: bold;
+    position: relative;
+    padding-left: 22px;
+    cursor: default;
   }
+  .tag::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 1.3rem;
+  }
+  .miku::before { color: #1eb0f4; }      /* azul */
+  .teto::before { color: #e03e2f; }      /* vermelho */
+  .neru::before { color: #f7d347; }      /* amarelo */
+  .luka::before { color: #d56ed6; }      /* rosa/púrpura */
+  .kafu::before { color: #4e8b76; }      /* verde azulado */
 
+  /* Links */
   a {
-    color: #c48aff;
+    color: #00ffea;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
+    transition: color 0.3s;
   }
   a:hover {
-    color: #f6ccff;
+    color: #ff66cc;
     text-decoration: underline;
   }
 
-  .tag {
-    font-weight: 700;
-  }
-
+  /* Form recados */
   .recados {
-    max-width: 480px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #00ffea;
+    border-radius: 8px;
     margin-top: 2rem;
-    background: #1b1035;
-    padding: 15px 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 8px #5a2380;
+    padding: 1rem;
   }
-
-  .recados p {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
+  .recados h2 {
+    color: #00ffea;
   }
-
   textarea {
     width: 100%;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.75rem;
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #5a2380;
-    background: #0e061c;
+    background: #111;
+    border: 1px solid #00ffea;
+    border-radius: 6px;
     color: #eee;
-    resize: vertical;
-    min-height: 80px;
-  }
-
-  textarea::placeholder {
-    color: #b199d4;
-  }
-
-  button {
-    margin-top: 10px;
-    background: #6f3dbb;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', monospace;
     font-size: 0.75rem;
-    padding: 10px 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background: #b67fff;
-  }
-
-  #mural {
-    margin-top: 1rem;
-    max-height: 150px;
-    overflow-y: auto;
-    background: #2d1c4c;
-    border-radius: 8px;
     padding: 10px;
+    resize: vertical;
+  }
+  button {
+    margin-top: 0.8rem;
+    background: #00ffea;
+    border: none;
+    color: #111;
+    font-weight: bold;
+    font-family: 'Press Start 2P', monospace;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background: #ff66cc;
+    color: #111;
+  }
+
+  footer {
+    text-align: center;
     font-size: 0.7rem;
-    line-height: 1.3;
-  }
-
-  footer p {
+    color: #777;
     margin-top: 3rem;
-    font-size: 0.6rem;
-    color: #8f7ec0;
-    user-select: none;
   }
 
-  #mural::-webkit-scrollbar {
-    width: 6px;
+  /* Confetti container */
+  #confetti-canvas {
+    position: fixed;
+    top:0; left:0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
   }
-  #mural::-webkit-scrollbar-track {
-    background: #3b2962;
-    border-radius: 10px;
+
+  /* Mikudayo container */
+  #mikudayo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    z-index: 10000;
+    opacity: 0;
+    animation: fadeInOut 7s forwards;
   }
-  #mural::-webkit-scrollbar-thumb {
-    background: #6f3dbb;
-    border-radius: 10px;
+
+  @keyframes fadeInOut {
+    0% {opacity: 0; transform: translateY(50px);}
+    10% {opacity: 1; transform: translateY(0);}
+    80% {opacity: 1; transform: translateY(0);}
+    100% {opacity: 0; transform: translateY(50px);}
+  }
+
+  /* Texto do mikudayo */
+  #mikudayo-text {
+    position: fixed;
+    bottom: 180px;
+    right: 20px;
+    font-family: 'Press Start 2P', monospace;
+    color: #00ffea;
+    font-size: 0.8rem;
+    text-shadow:
+      0 0 5px #00ffea,
+      0 0 10px #00ffea;
+    opacity: 0;
+    animation: textFadeInOut 7s forwards;
+  }
+
+  @keyframes textFadeInOut {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
   }
 </style>
 </head>
 <body>
 
+<canvas id="confetti-canvas"></canvas>
+
+<div id="mikudayo">
+  <img src="https://64.media.tumblr.com/952e7efbfed2ce9fdb4a85a7589aab9d/tumblr_p9z0b4wWn21v6sw2co1_500.gif" alt="Mikudayo" width="150" height="150" />
+</div>
+<div id="mikudayo-text">Yamazaki chegou! 🎧✨</div>
+
+<div class="container">
   <h1>Yamazaki</h1>
   <p>Meu nome é Yamazaki, mas Mateus para os íntimos. 🎧</p>
   <p>Amo Vocaloid, cultura japonesa e música nostálgica.</p>
 
   <h2>🎶 Vocaloids Favoritos</h2>
   <ul>
-    <li><span class="tag">🔵 Miku</span> Música: "Ah"</li>
-    <li><span class="tag">🔴 Kasane Teto</span> Música: "Kasane Territory"</li>
-    <li><span class="tag">🟡 Akita Neru</span> Música: "Paradichlorobenzene"</li>
-    <li><span class="tag">🟣 Megurine Luka</span> Música: "Just Be Friends"</li>
-    <li><span class="tag">🟢 KAFU</span> Música: "Kawareru Mono"</li>
+    <li><span class="tag miku">Ratsunomiku</span> - Música: "Ah"</li>
+    <li><span class="tag teto">Kasane Teto</span> - Música: "Kasane Territory"</li>
+    <li><span class="tag neru">Akita Neru</span> - Música: "Paradichlorobenzene"</li>
+    <li><span class="tag luka">Megurine Luka</span> - Música: "Just Be Friends"</li>
+    <li><span class="tag kafu">KAFU</span> - Música: "Kawareru Mono"</li>
   </ul>
 
   <h2>📺 Animes Preferidos</h2>
@@ -174,60 +215,113 @@
 
   <h2>🌐 Links</h2>
   <ul>
-    <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a></li>
-    <li><a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a></li>
-    <li><a href="https://discord.gg/SArvvrer49" target="_blank">Servidor Discord favorito</a></li>
+    <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==">Instagram</a></li>
+    <li><a href="https://www.youtube.com/@YAMAZAKImiku">YouTube</a></li>
+    <li><a href="https://discord.gg/SArvvrer49">Servidor Discord favorito</a></li>
   </ul>
 
   <div class="recados">
     <h2>💬 O que você achou?</h2>
     <p>Algo que sentiu? Deixe sua marca... ou um segredo.</p>
     <form id="recado-form">
-      <textarea id="recado-input" rows="4" placeholder="Deixe um recado..."></textarea>
+      <textarea rows="4" placeholder="Deixe um recado..."></textarea>
       <br />
       <button type="submit">Enviar</button>
     </form>
-    <div id="mural"></div>
+    <p id="recado-msg" style="color:#00ffea; margin-top: 1rem; font-family: 'Press Start 2P', monospace;"></p>
   </div>
+</div>
 
-  <footer>
-    <p>Desde quando tudo começou 🌙</p>
-  </footer>
+<footer>
+  <p>Desde quando tudo começou 🌙</p>
+</footer>
 
 <script>
-  const form = document.getElementById('recado-form');
-  const input = document.getElementById('recado-input');
-  const mural = document.getElementById('mural');
+// Confetti animation by https://codepen.io/anon/pen/ZOqNqP
+const confettiCanvas = document.getElementById('confetti-canvas');
+const ctx = confettiCanvas.getContext('2d');
+let W = window.innerWidth;
+let H = window.innerHeight;
+confettiCanvas.width = W;
+confettiCanvas.height = H;
 
-  function salvarRecado(texto) {
-    let recados = JSON.parse(localStorage.getItem('recadosYamazaki')) || [];
-    recados.push(texto);
-    localStorage.setItem('recadosYamazaki', JSON.stringify(recados));
+const colors = ['#1eb0f4', '#e03e2f', '#f7d347', '#d56ed6', '#4e8b76'];
+
+function randomRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function ConfettiParticle() {
+  this.x = Math.random() * W;
+  this.y = Math.random() * H - H;
+  this.r = randomRange(5, 12);
+  this.d = Math.random() * 20 + 10;
+  this.color = colors[Math.floor(Math.random() * colors.length)];
+  this.tilt = Math.floor(Math.random() * 10) - 10;
+  this.tiltAngleIncremental = (Math.random() * 0.07) + 0.05;
+  this.tiltAngle = 0;
+
+  this.draw = function() {
+    ctx.beginPath();
+    ctx.lineWidth = this.r / 2;
+    ctx.strokeStyle = this.color;
+    ctx.moveTo(this.x + this.tilt + (this.r / 4), this.y);
+    ctx.lineTo(this.x + this.tilt, this.y + this.tilt + (this.r / 4));
+    ctx.stroke();
   }
+}
 
-  function carregarRecados() {
-    let recados = JSON.parse(localStorage.getItem('recadosYamazaki')) || [];
-    if (recados.length === 0) {
-      mural.innerHTML = '<p style="opacity: 0.7;">Nenhum recado ainda. Seja o primeiro!</p>';
-      return;
-    }
-    mural.innerHTML = recados.map(r => `<p>📝 ${r}</p>`).join('');
+let confettiParticles = [];
+for(let i = 0; i < 150; i++) {
+  confettiParticles.push(new ConfettiParticle());
+}
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, W, H);
+  for(let i = 0; i < confettiParticles.length; i++) {
+    confettiParticles[i].draw();
   }
+  updateConfetti();
+}
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const texto = input.value.trim();
-    if (!texto) {
-      alert("Por favor, escreva algo antes de enviar!");
-      return;
+function updateConfetti() {
+  for(let i = 0; i < confettiParticles.length; i++) {
+    let p = confettiParticles[i];
+    p.tiltAngle += p.tiltAngleIncremental;
+    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+    p.x += Math.sin(p.d);
+    p.tilt = Math.sin(p.tiltAngle) * 15;
+
+    if(p.y > H) {
+      confettiParticles[i] = new ConfettiParticle();
+      confettiParticles[i].x = Math.random() * W;
+      confettiParticles[i].y = -10;
     }
-    salvarRecado(texto);
-    carregarRecados();
-    input.value = '';
-    alert("Recado recebido! Obrigado por deixar sua marca... 😉");
-  });
+  }
+}
 
-  carregarRecados();
+setInterval(drawConfetti, 20);
+
+// Recados form
+const form = document.getElementById('recado-form');
+const recadoMsg = document.getElementById('recado-msg');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const textarea = form.querySelector('textarea');
+  const text = textarea.value.trim();
+  if(text.length === 0) {
+    recadoMsg.textContent = "Por favor, escreva algo antes de enviar!";
+    return;
+  }
+  // Aqui você pode adicionar código para armazenar o recado, por exemplo localStorage
+  let recados = JSON.parse(localStorage.getItem('recadosYamazaki') || "[]");
+  recados.push(text);
+  localStorage.setItem('recadosYamazaki', JSON.stringify(recados));
+  textarea.value = "";
+  recadoMsg.textContent = "Recado recebido, obrigado por deixar sua marca! 🔥";
+  setTimeout(() => { recadoMsg.textContent = ""; }, 4000);
+});
 </script>
 
 </body>
