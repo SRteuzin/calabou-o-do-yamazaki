@@ -1,139 +1,124 @@
-<!DOCTYPE html><html lang="pt-br">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calabouço do Yamazaki</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yamazaki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <style>
+    * {
+      font-family: 'Ubuntu', sans-serif;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
     body {
-      font-family: 'Roboto Mono', monospace;
-      background-image: url('https://i.imgur.com/64wToDN.jpeg');
+      background: url('https://i.imgur.com/8h6yWbj.jpeg') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      color: #f5f5f5;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
       padding: 20px;
-      line-height: 1.8;
-      backdrop-filter: blur(6px);
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+    section {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
     }
     h1, h2, h3 {
-      font-style: italic;
-      color: #ffb6c1;
+      margin-bottom: 10px;
     }
-    .bloco {
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 30px;
+    ul {
+      list-style: none;
+      padding-left: 15px;
     }
-    img {
-      width: 200px;
-      border-radius: 15px;
-      margin: 10px;
+    ul li::before {
+      content: '🎵 ';
     }
-    .relogio {
-      font-size: 1.2em;
-      color: #ffffff;
-      font-style: italic;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-radius: 10px;
-      display: inline-block;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body>  <div class="relogio">
-    <strong>Horário no Brasil:</strong> <span id="relogio"></span>
-  </div>  <div class="bloco">
-    <h1>Quem sou eu?</h1>
-    <p>Meu nome é <strong>Yamazaki</strong>, mas <strong>Mateus</strong> para os íntimos. Tenho <span id="idade"></span> anos (faço aniversário em 21 de dezembro, então minha idade muda automaticamente!). Moro no <strong>Brasil</strong>, estado do <strong>Paraná</strong>. Sou apaixonado por Vocaloid, city pop, anime (principalmente Evangelion), e coisas criativas em geral.</p>
-    <p>Sou uma pessoa de vibe única, um tanto estranha até. Tem dia que tô ouvindo city pop com café, tem tarde que tô em Vocaloid dançante, e de noite, batida triste com letra filosófica. Gosto da cultura antiga japonesa, músicas que contam histórias e me fazem viajar no tempo.</p>
-    <p>Faço cosplay das minhas personagens favoritas: <strong>Hatsune Miku</strong>, <strong>Megurine Luka</strong> e em breve, da maravilhosa <strong>Kasane Teto</strong>!</p>
-  </div>  <div class="bloco">
+<body>
+  <header>
+    <h1>Yamazaki</h1>
+    <p>Meu nome é Yamazaki, mas Mateus para os íntimos. Nascido em 21 de dezembro.</p>
+  </header>  <section>
+    <h2>Quem sou eu</h2>
+    <p>Sou um fã de cultura japonesa, especialmente de Vocaloid e anime. Tenho uma vibe estranha e única — às vezes ouço city pop de manhã, músicas melancólicas à tarde, e algo totalmente diferente à noite.</p>
+  </section>  <section>
+    <h2>O que eu gosto</h2>
+    <p>Amo Hatsune Miku, Kasane Teto, Akita Neru, KAFU e Megurine Luka. Também gosto da estética dos anos 90 e da atmosfera introspectiva de Evangelion.</p>
+  </section>  <section>
     <h2>Meus animes favoritos</h2>
     <ul>
-      <li><strong>Evangelion</strong> (sério, me fez chorar de verdade... o filme quase me matou emocionalmente)</li>
-      <li><strong>Dr. Stone</strong></li>
-      <li><strong>Chainsaw Man</strong></li>
-      <li><strong>Tsuki ga Michibiku Isekai Douchuu</strong> (aquele com o Tsukasa, cabelo rosa)</li>
-      <li><strong>A Silent Voice</strong> (a história mais impactante que já vi... sem palavras)</li>
+      <li>Evangelion (principalmente os filmes)</li>
+      <li>Dr. Stone</li>
+      <li>Love is Like After the Rain (possivelmente o que você citou com "Tsukasa")</li>
+      <li>Chainsaw Man</li>
+      <li>A Silent Voice (Koe no Katachi)</li>
     </ul>
-  </div>  <div class="bloco">
-    <h2>O que é Vocaloid?</h2>
-    <p>Então... imagina um karaokê doido onde os próprios personagens cantam melhor que você. Isso é Vocaloid! É como se o futuro tivesse virado popstar. São vozes sintetizadas com personalidade, visual, carisma e hits que não saem da cabeça. Se você nunca ouviu "Senbonzakura" da Miku ou "Luka Luka Night Fever"... mano, tá perdendo uma parte essencial da existência. 💿✨</p>
-  </div>  <div class="bloco">
-    <h2>Personagens que eu amo</h2>
-    <div>
-      <h3>Megurine Luka</h3>
-      <img src="https://i.imgur.com/L2gtDNk.jpeg" alt="Luka">
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=8Z6P1J-MD0k" target="_blank">Luka Luka Night Fever</a></li>
-        <li><a href="https://www.youtube.com/watch?v=dWjC4AoLX5U" target="_blank">Just Be Friends</a></li>
-        <li><a href="https://www.youtube.com/watch?v=G3AX3Dqji7g" target="_blank">Dancer in the Dark</a></li>
-      </ul><h3>KAFU</h3>
-  <img src="https://i.imgur.com/tFgH0m4.jpeg" alt="KAFU">
-  <ul>
-    <li><a href="https://www.youtube.com/watch?v=Y3pT-XJjfks" target="_blank">Shinunoga E-Wa (cover)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=DK7U_x_OO5c" target="_blank">Bokura wa Mada Underground</a></li>
-    <li><a href="https://www.youtube.com/watch?v=l8sXrOQY78A" target="_blank">Ai no Uta</a></li>
-  </ul>
+  </section>  <section>
+    <h2>Músicas favoritas por Vocaloid</h2><h3>Hatsune Miku</h3>
+<ul>
+  <li>Ah... (あ)</li>
+  <li>Tell Your World</li>
+  <li>Senbonzakura</li>
+  <li>World is Mine</li>
+  <li>Hikyou Sentai Urotander</li>
+</ul>
 
-  <h3>Akita Neru</h3>
-  <img src="https://i.imgur.com/2dOym1S.jpeg" alt="Neru">
-  <ul>
-    <li><a href="https://www.youtube.com/watch?v=on8Pz6rzA4Y" target="_blank">Lost My Music</a></li>
-    <li><a href="https://www.youtube.com/watch?v=VXzTjR5mU3g" target="_blank">Happy Synthesizer</a></li>
-    <li><a href="https://www.youtube.com/watch?v=YqBAXA5Wx3s" target="_blank">Yellow</a></li>
-  </ul>
+<h3>Kasane Teto</h3>
+<ul>
+  <li>Kasane Territory</li>
+  <li>Triple Baka</li>
+  <li>Yokubari Fighter</li>
+  <li>Cendrillon (dueto com Kaito)</li>
+  <li>Rolling Girl (versão Teto)</li>
+</ul>
 
-  <h3>Kasane Teto</h3>
-  <img src="https://i.imgur.com/cPtfsP1.jpeg" alt="Teto">
-  <ul>
-    <li><a href="https://www.youtube.com/watch?v=jDL7zTdd9W0" target="_blank">Kasane Territory</a></li>
-    <li><a href="https://www.youtube.com/watch?v=0K7kWy3gqIs" target="_blank">Triple Baka</a></li>
-    <li><a href="https://www.youtube.com/watch?v=RHTnPnk5UNg" target="_blank">Rolling Girl</a></li>
-    <li><a href="https://www.youtube.com/watch?v=qEKNjRMUU5A" target="_blank">Yokubou no Kodomo</a></li>
-  </ul>
+<h3>Akita Neru</h3>
+<ul>
+  <li>Paradichlorobenzene</li>
+  <li>SPiCa (versão Neru)</li>
+  <li>Remote Control (com Len)</li>
+  <li>Meltdown (versão Neru)</li>
+  <li>Time Machine (versão Neru)</li>
+</ul>
 
-  <h3>Hatsune Miku</h3>
-  <img src="https://i.imgur.com/9JFEyGU.jpeg" alt="Miku">
-  <ul>
-    <li><a href="https://www.youtube.com/watch?v=TxKjZCDb9yA" target="_blank">Senbonzakura</a></li>
-    <li><a href="https://www.youtube.com/watch?v=pq3D9sCzqHk" target="_blank">Tell Your World</a></li>
-    <li><a href="https://www.youtube.com/watch?v=jhl5afLEKdo" target="_blank">World is Mine</a></li>
-    <li><a href="https://www.youtube.com/watch?v=ycdu1Szbk0g" target="_blank">Ah</a></li>
-  </ul>
-</div>
+<h3>KAFU</h3>
+<ul>
+  <li>Hated by Life Itself</li>
+  <li>Camellia</li>
+  <li>Rainy Proof</li>
+  <li>Musunde Hiraite Rasetsu to Mukuro</li>
+  <li>Palette</li>
+</ul>
 
-  </div>  <div class="bloco">
-    <h2>Músicas que eu curto muito</h2>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=JpEwF6G2C3g" target="_blank">Plastic Love - Maki Matsubara</a></li>
-      <li><a href="https://www.youtube.com/watch?v=pq3D9sCzqHk" target="_blank">Tell Your World - Hatsune Miku</a></li>
-      <li><a href="https://www.youtube.com/watch?v=8Z6P1J-MD0k" target="_blank">Luka Luka Night Fever - Luka</a></li>
-      <li><a href="https://www.youtube.com/watch?v=VXzTjR5mU3g" target="_blank">Happy Synthesizer - Miku & Neru</a></li>
-      <li><a href="https://www.youtube.com/watch?v=jDL7zTdd9W0" target="_blank">Kasane Territory - Teto</a></li>
-      <li><a href="https://www.youtube.com/watch?v=DK7U_x_OO5c" target="_blank">Bokura wa Mada Underground - KAFU</a></li>
-      <li><a href="https://www.youtube.com/watch?v=ycdu1Szbk0g" target="_blank">Ah - Hatsune Miku</a></li>
-    </ul>
-  </div><script>
-function atualizarRelogio() {
-  const agora = new Date().toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  document.getElementById("relogio").textContent = agora;
-}
-setInterval(atualizarRelogio, 1000);
+<h3>Megurine Luka</h3>
+<ul>
+  <li>Luka Luka★Night Fever</li>
+  <li>Dancer in the Dark</li>
+  <li>Just Be Friends</li>
+  <li>Double Lariat</li>
+  <li>Rip=Release</li>
+</ul>
 
-function calcularIdade() {
-  const hoje = new Date();
-  const nascimento = new Date(2005, 11, 21);
-  let idade = hoje.getFullYear() - nascimento.getFullYear();
-  const niverJaPassou = hoje.getMonth() > 11 || (hoje.getMonth() === 11 && hoje.getDate() >= 21);
-  if (!niverJaPassou) idade--;
-  return idade;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("idade").textContent = calcularIdade();
-  atualizarRelogio();
-});
-</script></body>
+  </section>  <section>
+    <h2>Contatos</h2>
+    <p>Instagram: <a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">@mateus_yamazaki</a></p>
+    <p>YouTube: <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YAMAZAKImiku</a></p>
+  </section>
+</body>
 </html>
