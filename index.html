@@ -3,126 +3,119 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yamazaki</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: 'Pixelify Sans', sans-serif;
-        margin: 0;
-        padding: 0;
+        font-family: 'Press Start 2P', monospace;
         background-image: url('https://i.imgur.com/8h6yWbj.jpeg');
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
+        background-attachment: fixed;
         color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        padding: 2rem;
+        line-height: 2;
       }
-      .container {
-        padding: 40px;
-        max-width: 800px;
-        margin: auto;
-        background-color: rgba(0, 0, 0, 0.7);
-        border-radius: 20px;
+      h1, h2 {
+        color: #fff;
+        font-size: 1.2rem;
       }
-      h1 {
-        color: #ff69b4;
-        font-size: 2.5rem;
-        margin-bottom: 0.5em;
-      }
-      h2 {
-        color: #ffb6c1;
-        font-size: 1.8rem;
-        margin-top: 1.5em;
-      }
-      p, li {
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-      ul {
-        padding-left: 1.2em;
+      .avatar {
+        width: 120px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin-bottom: 1rem;
       }
       a {
-        color: #87cefa;
+        color: #ffb6c1;
         text-decoration: none;
       }
-      footer {
-        text-align: center;
-        padding: 20px;
-        font-size: 0.9rem;
+      a:hover {
+        text-decoration: underline;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.2rem 0.4rem;
+        margin: 0.1rem;
+        border-radius: 5px;
+        font-size: 0.7rem;
+      }
+      .miku { background: #39c5bb; }
+      .teto { background: #ff4d6d; }
+      .neru { background: #ffcc00; }
+      .luka { background: #ff99cc; }
+      .kafu { background: #7b68ee; }
+      .recados {
+        margin-top: 4rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 1rem;
+        border-radius: 10px;
+      }
+      textarea {
+        width: 100%;
+        padding: 0.5rem;
+        font-family: monospace;
+        font-size: 0.8rem;
+        border-radius: 5px;
+        border: none;
+        resize: none;
+      }
+      button {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: #fff;
+        color: #000;
+        font-family: 'Press Start 2P', monospace;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Yamazaki</h1>
-      <p>Meu nome é Yamazaki, mas Mateus para os íntimos.</p><h2>✨ Sobre mim</h2>
-  <p>Sou um apaixonado por música japonesa, especialmente Vocaloid, e animes. Tenho uma vibe bem única: de manhã tô ouvindo uma coisa, de tarde outra totalmente diferente. Gosto da estética nostálgica da cultura japonesa e também de city pop. Faço aniversário dia 21 de dezembro e atualmente tenho 19 anos.</p>
+    <h1>Yamazaki</h1>
+    <p>Meu nome é Yamazaki, mas Mateus para os íntimos. 🎧</p>
+    <p>Amo Vocaloid, cultura japonesa e música nostálgica.</p><h2>🎶 Vocaloids Favoritos</h2>
+<ul>
+  <li><span class="tag miku">Miku</span> Música: "Ah"</li>
+  <li><span class="tag teto">Kasane Teto</span> Música: "Kasane Territory"</li>
+  <li><span class="tag neru">Akita Neru</span> Música: "Paradichlorobenzene"</li>
+  <li><span class="tag luka">Megurine Luka</span> Música: "Just Be Friends"</li>
+  <li><span class="tag kafu">KAFU</span> Música: "Kawareru Mono"</li>
+</ul>
 
-  <h2>🎧 Vocaloids Favoritas & Músicas</h2>
-  <h3>🎤 Hatsune Miku</h3>
-  <ul>
-    <li>Ah... (あ...)</li>
-    <li>Senbonzakura</li>
-    <li>Tell Your World</li>
-    <li>39</li>
-    <li>World is Mine</li>
-  </ul>
+<h2>📺 Animes Preferidos</h2>
+<ul>
+  <li>Evangelion (série principal e o último filme)</li>
+  <li>Dr. Stone</li>
+  <li>Tonikawa</li>
+  <li>Chainsaw Man</li>
+  <li>A Silent Voice (filme que mais me tocou)</li>
+</ul>
 
-  <h3>🔴 Kasane Teto</h3>
-  <ul>
-    <li>Kasane Territory</li>
-    <li>Triple Baka</li>
-    <li>Yokubari Fighter</li>
-    <li>Rolling Girl (cover)</li>
-    <li>Fake Diva</li>
-  </ul>
+<h2>🎂 Aniversário</h2>
+<p>21 de dezembro 🎉</p>
 
-  <h3>🟡 Akita Neru</h3>
-  <ul>
-    <li>Tokyo Teddy Bear</li>
-    <li>SPiCa (cover)</li>
-    <li>Remote Control</li>
-    <li>Lost One’s Weeping (cover)</li>
-    <li>Shady</li>
-  </ul>
+<h2>🌐 Links</h2>
+<ul>
+  <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==">Instagram</a></li>
+  <li><a href="https://www.youtube.com/@YAMAZAKImiku">YouTube</a></li>
+  <li><a href="https://discord.gg/SArvvrer49">Servidor Discord favorito</a></li>
+</ul>
 
-  <h3>🟣 Megurine Luka</h3>
-  <ul>
-    <li>Luka Luka★Night Fever</li>
-    <li>Dancer in the Dark</li>
-    <li>Just Be Friends</li>
-    <li>No Logic</li>
-    <li>Double Lariat</li>
-  </ul>
-
-  <h3>🟢 KAFU</h3>
-  <ul>
-    <li>Mahou (魔法)</li>
-    <li>ALIVE</li>
-    <li>Taion</li>
-    <li>Otogibanashi</li>
-    <li>Vanilla</li>
-  </ul>
-
-  <h2>📺 Animes Favoritos</h2>
-  <ul>
-    <li>Neon Genesis Evangelion (série principal)</li>
-    <li>Chainsaw Man</li>
-    <li>Dr. Stone</li>
-    <li>TONIKAWA: Over the Moon for You</li>
-    <li>A Silent Voice (Koe no Katachi)</li>
-  </ul>
-
-  <h2>🌐 Links</h2>
-  <ul>
-    <li><a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a></li>
-    <li><a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a></li>
-    <li><a href="https://discord.gg/YREKx5UQzY" target="_blank">Servidor Discord favorito</a></li>
-  </ul>
+<div class="recados">
+  <h2>💬 O que você achou?</h2>
+  <p>Algo que sentiu? Deixe sua marca... ou um segredo.</p>
+  <form>
+    <textarea rows="4" placeholder="Deixe um recado..."></textarea>
+    <br />
+    <button type="submit">Enviar</button>
+  </form>
 </div>
+
 <footer>
-  <p>Site pessoal de Yamazaki ・ Atualizado com carinho ・ Canal ativo desde sua criação 💖</p>
+  <p style="margin-top: 2rem; font-size: 0.7rem;">Desde quando tudo começou 🌙</p>
 </footer>
 
   </body>
