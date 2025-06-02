@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mateus Yamazaki</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1a0d2e url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD5UvwXy7oQKqwcOz58SZRMFqQpaUKcSd1HuI0Coj3veuDbrQWsFTqgLPZ&s=10') no-repeat center center fixed;
+      background: #1a0d2e url('https://i.imgur.com/XkxqtNj.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      backdrop-filter: brightness(0.5);
+      overflow-x: hidden;
     }
 
     header {
@@ -24,6 +24,12 @@
       font-size: 3rem;
       color: #ff66cc;
       margin: 0;
+    }
+
+    #relogio {
+      font-size: 1.5rem;
+      color: #ffccff;
+      margin-top: 0.5rem;
     }
 
     nav a {
@@ -75,11 +81,31 @@
       background: rgba(0, 0, 0, 0.7);
       color: #ccc;
     }
+
+    .miku {
+      position: fixed;
+      width: 40px;
+      animation: cair 10s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Mateus Yamazaki</h1>
+    <div id="relogio">Carregando horário...</div>
     <nav class="links">
       <a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a>
       <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a>
@@ -94,7 +120,7 @@
   <section>
     <h2>O que eu gosto</h2>
     <ul>
-      <li>🎧 City Pop japonês (Junko Ohashi, Max Barra...)</li>
+      <li>🎧 City Pop japonês (Junko Ohashi, Mariya Takeuchi...)</li>
       <li>🎤 Vocaloids: Hatsune Miku, Kasane Teto, Akita Neru, Megurine Luka</li>
       <li>📺 Anime: Evangelion (principalmente a Rei com cabelo longo)</li>
     </ul>
@@ -103,10 +129,10 @@
   <section>
     <h2>Músicas favoritas</h2>
     <ul>
-      <li>"Stay With Me" – Miki Matsubara</li>
-      <li>"Plastic Love" – Mariya Takeuchi</li>
-      <li>"Galaxy" – Megurine Luka</li>
-      <li>"Tell Your World" – Hatsune Miku</li>
+      <li><a href="https://www.youtube.com/watch?v=3bNITQR4Uso" target="_blank">🎵 Stay With Me – Miki Matsubara</a></li>
+      <li><a href="https://www.youtube.com/watch?v=3bNITQR4Uso" target="_blank">🎵 Plastic Love – Mariya Takeuchi</a></li>
+      <li><a href="https://www.youtube.com/watch?v=H1yL6fwz4jk" target="_blank">🎵 Galaxy – Megurine Luka</a></li>
+      <li><a href="https://www.youtube.com/watch?v=PqJNc9KVIZE" target="_blank">🎵 Tell Your World – Hatsune Miku</a></li>
     </ul>
   </section>
 
@@ -128,7 +154,19 @@
     <p>Site feito com carinho por Mateus Yamazaki © 2025</p>
   </footer>
 
+  <!-- CHUVA DE MIKUS -->
   <script>
+    for (let i = 0; i < 20; i++) {
+      const miku = document.createElement('img');
+      miku.src = 'https://i.imgur.com/Vbd1L60.png';
+      miku.className = 'miku';
+      miku.style.left = Math.random() * 100 + 'vw';
+      miku.style.animationDelay = Math.random() * 10 + 's';
+      miku.style.opacity = Math.random();
+      miku.style.width = (20 + Math.random() * 40) + 'px';
+      document.body.appendChild(miku);
+    }
+
     function mostrarRecado() {
       const nome = document.getElementById('nome').value;
       const mensagem = document.getElementById('mensagem').value;
@@ -139,6 +177,22 @@
       document.getElementById('nome').value = '';
       document.getElementById('mensagem').value = '';
     }
+
+    function atualizarRelogio() {
+      const agora = new Date();
+      const opcoes = {
+        timeZone: 'America/Sao_Paulo',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const horaBR = agora.toLocaleTimeString('pt-BR', opcoes);
+      document.getElementById('relogio').textContent = `Horário atual (BRT): ${horaBR}`;
+    }
+
+    setInterval(atualizarRelogio, 1000);
+    atualizarRelogio();
   </script>
 </body>
 </html>
