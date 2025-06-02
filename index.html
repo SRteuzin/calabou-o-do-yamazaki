@@ -1,182 +1,144 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mateus Yamazaki - Página Pessoal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mateus Yamazaki</title>
   <style>
-    /* Fonte e base */
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Press Start 2P', cursive;
-    }body {
-  background: linear-gradient(to bottom, #2a003f, #1a002b);
-  color: #fff;
-  padding: 20px;
-  background-image: url('https://i.imgur.com/JXkkR1l.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a0d2e url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD5UvwXy7oQKqwcOz58SZRMFqQpaUKcSd1HuI0Coj3veuDbrQWsFTqgLPZ&s=10') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      backdrop-filter: brightness(0.5);
+    }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    header {
+      padding: 2rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+    }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px #000;
-}
+    h1 {
+      font-size: 3rem;
+      color: #ff66cc;
+      margin: 0;
+    }
 
-p {
-  font-size: 14px;
-  margin: 10px 0;
-}
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
 
-.container {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 0 12px #9d4edd;
-}
+    section {
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      margin: 1rem;
+      border-radius: 15px;
+    }
 
-.section {
-  margin-bottom: 40px;
-}
+    h2 {
+      color: #ff99ff;
+    }
 
-.heart {
-  display: inline-block;
-  margin: 5px;
-  font-size: 18px;
-}
+    .links a {
+      color: #66ccff;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
 
-.miku { color: #00f0ff; }
-.teto { color: #ff4d6d; }
-.neru { color: #ffd700; }
-.luka { color: #ff8dc7; }
-.rei  { color: #9db4ff; }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+    }
 
-.links {
-  text-align: center;
-  margin-top: 20px;
-}
+    button {
+      padding: 0.5rem 1rem;
+      background: #cc66ff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
 
-.links a {
-  color: #fff;
-  text-decoration: none;
-  background: #6a00f4;
-  padding: 10px 20px;
-  border-radius: 10px;
-  margin: 0 10px;
-  display: inline-block;
-  transition: background 0.3s;
-}
-
-.links a:hover {
-  background: #9d4edd;
-}
-
-footer {
-  text-align: center;
-  font-size: 12px;
-  margin-top: 60px;
-  color: #aaa;
-}
-
-.decorative-line {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #ff00c8, #6a00f4);
-  margin: 30px 0;
-}
-
-.glow {
-  text-shadow: 0 0 5px #fff, 0 0 10px #9d4edd, 0 0 15px #9d4edd;
-}
-
-.character-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.character-box {
-  background: rgba(255,255,255,0.05);
-  border: 2px solid #9d4edd;
-  border-radius: 16px;
-  padding: 20px;
-  width: 180px;
-  text-align: center;
-  transition: transform 0.2s;
-}
-
-.character-box:hover {
-  transform: scale(1.05);
-}
-
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ccc;
+    }
   </style>
-</head><body>
+</head>
+<body>
   <header>
-    <h1 class="glow">Mateus Yamazaki</h1>
-    <p>Bem-vindo à minha página pessoal 💜</p>
-  </header>  <div class="container">
-    <div class="section">
-      <h2>Quem sou eu?</h2>
-      <p>Me chamo Mateus, tenho 19 anos, moro no Paraná e trabalho em restaurante. Sou uma pessoa introspectiva, criativa, caseira e apaixonada por cultura japonesa.</p>
-      <p>Sonho em abrir meu próprio restaurante com karaokê, árvore de sakura real, shows ao vivo e um ambiente que una o melhor do Japão com o Brasil 🇯🇵🇧🇷</p>
-    </div><div class="decorative-line"></div>
+    <h1>Mateus Yamazaki</h1>
+    <nav class="links">
+      <a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a>
+    </nav>
+  </header>
 
-<div class="section">
-  <h2>O que eu gosto?</h2>
-  <div class="character-section">
-    <div class="character-box">
-      <div class="heart miku">❤</div>
-      <p>Hatsune Miku</p>
-    </div>
-    <div class="character-box">
-      <div class="heart teto">❤</div>
-      <p>Kasane Teto</p>
-    </div>
-    <div class="character-box">
-      <div class="heart neru">❤</div>
-      <p>Akita Neru</p>
-    </div>
-    <div class="character-box">
-      <div class="heart luka">❤</div>
-      <p>Megurine Luka</p>
-    </div>
-    <div class="character-box">
-      <div class="heart rei">❤</div>
-      <p>Rei Ayanami</p>
-    </div>
-  </div>
-  <p>Sou fã de <strong>Vocaloid</strong>, especialmente da Miku, Teto e Luka. Amo também <strong>Evangelion</strong> — a Rei com cabelo longo é minha favorita!</p>
-</div>
+  <section>
+    <h2>Quem sou eu</h2>
+    <p>Sou Mateus Yamazaki, tenho 19 anos e trabalho em restaurante. Sonho em abrir meu próprio restaurante que una o Japão com o Brasil, com sakura, karaokê e muita música. Gosto de city pop, Evangelion e Vocaloid.</p>
+  </section>
 
-<div class="decorative-line"></div>
+  <section>
+    <h2>O que eu gosto</h2>
+    <ul>
+      <li>🎧 City Pop japonês (Junko Ohashi, Max Barra...)</li>
+      <li>🎤 Vocaloids: Hatsune Miku, Kasane Teto, Akita Neru, Megurine Luka</li>
+      <li>📺 Anime: Evangelion (principalmente a Rei com cabelo longo)</li>
+    </ul>
+  </section>
 
-<div class="section">
-  <h2>Músicas preferidas</h2>
-  <p>Adoro City Pop japonês e músicas com sentimento verdadeiro. Alguns artistas favoritos incluem Junko Ohashi e Max Barra.</p>
-</div>
+  <section>
+    <h2>Músicas favoritas</h2>
+    <ul>
+      <li>"Stay With Me" – Miki Matsubara</li>
+      <li>"Plastic Love" – Mariya Takeuchi</li>
+      <li>"Galaxy" – Megurine Luka</li>
+      <li>"Tell Your World" – Hatsune Miku</li>
+    </ul>
+  </section>
 
-<div class="decorative-line"></div>
+  <section>
+    <h2>Deixe seu recado!</h2>
+    <form onsubmit="event.preventDefault(); mostrarRecado();">
+      <label>Seu nome:
+        <input type="text" id="nome" required>
+      </label><br><br>
+      <label>Mensagem:
+        <textarea id="mensagem" rows="4" required></textarea>
+      </label><br>
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="recados" style="margin-top: 1rem;"></div>
+  </section>
 
-<div class="section">
-  <h2>Contatos</h2>
-  <div class="links">
-    <a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank">Instagram</a>
-    <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a>
-  </div>
-</div>
-
-  </div>  <footer>
-    <p>Feito com carinho por Mateus ✨</p>
+  <footer>
+    <p>Site feito com carinho por Mateus Yamazaki © 2025</p>
   </footer>
-</body></html>
+
+  <script>
+    function mostrarRecado() {
+      const nome = document.getElementById('nome').value;
+      const mensagem = document.getElementById('mensagem').value;
+      const recados = document.getElementById('recados');
+      const novo = document.createElement('p');
+      novo.innerHTML = `<strong>${nome}:</strong> ${mensagem}`;
+      recados.prepend(novo);
+      document.getElementById('nome').value = '';
+      document.getElementById('mensagem').value = '';
+    }
+  </script>
+</body>
+</html>
