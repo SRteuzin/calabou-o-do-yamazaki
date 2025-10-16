@@ -1,235 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mateus Yamazaki</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1a0d2e url('https://i.imgur.com/XkxqtNj.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamazaki - Diário & Metas 💫</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-    header {
-      padding: 2rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      position: relative;
-      z-index: 10;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #00ffe0, #0099ff, #7b00ff);
+            background-size: 400% 400%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: bgMove 12s ease infinite;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      font-size: 3rem;
-      color: #ff66cc;
-      margin: 0;
-    }
+        @keyframes bgMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    #relogio {
-      font-size: 1.5rem;
-      color: #ffccff;
-      margin-top: 0.5rem;
-    }
+        .card {
+            background: rgba(0,0,0,0.5);
+            border: 3px solid #00ffe0;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 50px rgba(123,0,255,0.5);
+            max-width: 750px;
+            text-align: center;
+            position: relative;
+            animation: cardGlow 3s infinite alternate;
+        }
 
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
+        @keyframes cardGlow {
+            0% { box-shadow: 0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(123,0,255,0.3); }
+            100% { box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 60px rgba(123,0,255,0.5); }
+        }
 
-    section {
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.5);
-      margin: 1rem auto;
-      max-width: 900px;
-      border-radius: 15px;
-      position: relative;
-      z-index: 10;
-    }
+        .miku {
+            width: 180px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
 
-    h2 {
-      color: #ff99ff;
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
 
-    .links a {
-      color: #66ccff;
-      text-decoration: none;
-      margin-right: 1rem;
-    }
+        h1 {
+            font-size: 2.5em;
+            color: #00ffe0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px #000;
+        }
 
-    input, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 5px;
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
+        h2 {
+            color: #fffc00;
+            margin-top: 25px;
+            text-shadow: 2px 2px 5px #000;
+        }
 
-    button {
-      padding: 0.5rem 1rem;
-      background: #cc66ff;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px #000;
+        }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      color: #ccc;
-      position: relative;
-      z-index: 10;
-    }
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
 
-    /* Estilo para as imagens da chuva de Miku */
-    .miku {
-      position: fixed;
-      width: 40px;
-      animation: cair 10s linear infinite;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-    }
+        ul li {
+            background: rgba(255,255,255,0.1);
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, background 0.3s;
+        }
 
-    @keyframes cair {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+        ul li.completed {
+            background: rgba(0,255,0,0.3);
+            text-decoration: line-through;
+        }
+
+        ul li:hover {
+            transform: scale(1.05) rotate(-1deg);
+            background: rgba(0,255,255,0.2);
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 0.9em;
+            opacity: 0.9;
+            color: #00ffe0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Mateus Yamazaki</h1>
-    <div id="relogio">Carregando horário...</div>
-    <nav class="links">
-      <a href="https://www.instagram.com/mateus_yamazaki?igsh=MW1ydmYzcHFheWJpYQ==" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank" rel="noopener noreferrer">YouTube</a>
-    </nav>
-  </header>
+    <div class="card">
+        <img class="miku" src="https://i.pinimg.com/originals/16/80/d2/1680d2739d99b76b89b9816a0f2d6814.png" alt="Hatsune Miku">
+        <h1>Oi, sumido por aqui 😅</h1>
+        <p>Meu nome é <strong>Yamazaki</strong>, tenho <strong>19 anos</strong> e estou compartilhando um pouco das minhas vibes!</p>
+        <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
 
-  <section>
-    <h2>Quem sou eu</h2>
-    <p>Sou Mateus Yamazaki, tenho 19 anos e trabalho em restaurante. Sonho em abrir meu próprio restaurante que una o Japão com o Brasil, com sakura, karaokê e muita música. Gosto de city pop, Evangelion e Vocaloid.</p>
-  </section>
+        <h2>Minhas paixões 🎶🎮🎭🧠</h2>
+        <ul>
+            <li>🎤 Hatsune Miku & Vocaloid</li>
+            <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
+            <li>🧠 Filosofia, história e conhecimento</li>
+            <li>🎭 Cosplay & cultura japonesa</li>
+            <li>🎵 Música que me inspira (tipo Ado, Rockstars)</li>
+        </ul>
 
-  <section>
-    <h2>O que eu gosto</h2>
-    <ul>
-      <li>🎧 City Pop japonês (Junko Ohashi, Mariya Takeuchi...)</li>
-      <li>🎤 Vocaloids: Hatsune Miku, Kasane Teto, Akita Neru, Megurine Luka</li>
-      <li>📺 Anime: Evangelion (principalmente a Rei com cabelo longo)</li>
-    </ul>
-  </section>
+        <h2>Metas & Conquistas 🚀</h2>
+        <ul>
+            <li class="completed">Aprender inglês básico ✅</li>
+            <li>Aprender japonês 🈴</li>
+            <li class="completed">Organizar minhas playlists de música 🎵</li>
+            <li>Fazer cosplay completo de Dandadan 🎭</li>
+            <li class="completed">Configurar setup para stream 🎮</li>
+            <li>Montar rotina de estudos de filosofia e história 📚</li>
+        </ul>
 
-  <section>
-    <h2>Músicas favoritas</h2>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=3bNITQR4Uso" target="_blank" rel="noopener noreferrer">🎵 Stay With Me – Miki Matsubara</a></li>
-      <li><a href="https://www.youtube.com/watch?v=Pe5v-kVpHm4" target="_blank" rel="noopener noreferrer">🎵 Plastic Love – Mariya Takeuchi</a></li>
-      <li><a href="https://www.youtube.com/watch?v=H1yL6fwz4jk" target="_blank" rel="noopener noreferrer">🎵 Galaxy – Megurine Luka</a></li>
-      <li><a href="https://www.youtube.com/watch?v=PqJNc9KVIZE" target="_blank" rel="noopener noreferrer">🎵 Tell Your World – Hatsune Miku</a></li>
-    </ul>
-  </section>
+        <p>Talvez eu volte, talvez diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
+        <footer>— Yamazaki ✨</footer>
+    </div>
 
-  <section>
-    <h2>Minhas Inspirações</h2>
-    <p>A cultura japonesa me inspira profundamente: os animes, a estética retrô dos anos 80/90, e principalmente as músicas city pop. Amo o visual, o sentimento nostálgico e a profundidade das histórias. Vocaloid também é uma das minhas maiores inspirações artísticas!</p>
-  </section>
-
-  <section>
-    <h2>Meu Sonho de Restaurante</h2>
-    <p>Um espaço acolhedor, com uma árvore sakura real no centro do salão, um palco para apresentações ao vivo de J-Pop, Vocaloid e city pop, karaokê liberado para os clientes e comidas que misturam o melhor do Japão e do Brasil. Quero que as pessoas se sintam em casa, com arte e alegria ao redor.</p>
-  </section>
-
-  <section>
-    <h2>Curiosidades sobre mim</h2>
-    <ul>
-      <li>🌙 Prefiro a noite do que o dia</li>
-      <li>🎧 Escuto música praticamente o tempo todo</li>
-      <li>🎮 Gosto de jogos que tenham história marcante</li>
-      <li>📚 Tenho um lado introspectivo e observo tudo em silêncio</li>
-      <li>💡 Tenho ideias criativas do nada — às vezes até em sonho</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Deixe seu recado!</h2>
-    <form onsubmit="event.preventDefault(); mostrarRecado();">
-      <label>Seu nome:
-        <input type="text" id="nome" required />
-      </label><br /><br />
-      <label>Mensagem:
-        <textarea id="mensagem" rows="4" required></textarea>
-      </label><br />
-      <button type="submit">Enviar</button>
-    </form>
-    <div id="recados" style="margin-top: 1rem;"></div>
-  </section>
-
-  <footer>
-    <p>Site feito com carinho por Mateus Yamazaki © 2025</p>
-  </footer>
-
-  <script>
-    // Relógio com horário do Brasil (BRT)
-    function atualizarRelogio() {
-      const agora = new Date();
-      const opcoes = {
-        timeZone: 'America/Sao_Paulo',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      };
-      const horaBR = agora.toLocaleTimeString('pt-BR', opcoes);
-      document.getElementById('relogio').textContent = `Horário atual (BRT): ${horaBR}`;
-    }
-
-    setInterval(atualizarRelogio, 1000);
-    atualizarRelogio();
-
-    // Função para mostrar recados no site
-    function mostrarRecado() {
-      const nome = document.getElementById('nome').value.trim();
-      const mensagem = document.getElementById('mensagem').value.trim();
-      if (!nome || !mensagem) return;
-
-      const recados = document.getElementById('recados');
-      const novoRecado = document.createElement('p');
-      novoRecado.innerHTML = `<strong>${nome}:</strong> ${mensagem}`;
-      recados.prepend(novoRecado);
-
-      document.getElementById('nome').value = '';
-      document.getElementById('mensagem').value = '';
-    }
-
-    // Criar chuva de Miku com a imagem que você enviou
-    for (let i = 0; i < 20; i++) {
-      const miku = document.createElement('img');
-      miku.src = 'https://i.imgur.com/jKS5o6G.png';
-      miku.className = 'miku';
-      miku.style.left = Math.random() * 100 + 'vw';
-      miku.style.animationDelay = Math.random() * 10 + 's';
-      miku.style.opacity = Math.random();
-      miku.style.width = (30 + Math.random() * 30) + 'px';
-      document.body.appendChild(miku);
-    }
-  </script>
+    <script>
+        // Função para atualizar o horário em tempo real
+        function atualizarHora() {
+            const agora = new Date();
+            const hora = agora.getHours().toString().padStart(2, '0');
+            const min = agora.getMinutes().toString().padStart(2, '0');
+            const seg = agora.getSeconds().toString().padStart(2, '0');
+            document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
+        }
+        setInterval(atualizarHora, 1000);
+        atualizarHora();
+    </script>
 </body>
 </html>
