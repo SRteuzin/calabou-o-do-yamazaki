@@ -79,6 +79,22 @@ ul.friends li:hover { transform: scale(1.05); background: rgba(255,0,255,0.3); }
     box-shadow: 0 0 25px rgba(0,255,255,0.8), 0 0 40px rgba(123,0,255,0.8);
 }
 footer { margin-top: 25px; font-size: 0.9em; opacity: 0.9; color: #00ffe0; }
+
+/* Confete/partículas */
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fffc00;
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -140,13 +156,28 @@ footer { margin-top: 25px; font-size: 0.9em; opacity: 0.9; color: #00ffe0; }
 <script>
 function atualizarHora() {
     const agora = new Date();
-    const hora = agora.getHours().toString().padStart(2, '0');
-    const min = agora.getMinutes().toString().padStart(2, '0');
-    const seg = agora.getSeconds().toString().padStart(2, '0');
+    const hora = agora.getHours().toString().padStart(2,'0');
+    const min = agora.getMinutes().toString().padStart(2,'0');
+    const seg = agora.getSeconds().toString().padStart(2,'0');
     document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
 }
-setInterval(atualizarHora, 1000);
+setInterval(atualizarHora,1000);
 atualizarHora();
+
+// Criar partículas/confete
+function criarParticulas() {
+    for(let i=0;i<50;i++){
+        let p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.left = Math.random()*window.innerWidth + 'px';
+        p.style.animationDuration = (2+Math.random()*3)+'s';
+        p.style.width = (5+Math.random()*10)+'px';
+        p.style.height = p.style.width;
+        document.body.appendChild(p);
+        setTimeout(()=>{p.remove()},5000);
+    }
+}
+setInterval(criarParticulas,500);
 </script>
 </body>
 </html>
