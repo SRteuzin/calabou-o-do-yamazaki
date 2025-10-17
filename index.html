@@ -21,14 +21,14 @@ body {
 }
 
 .card {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.75);
     border: 3px solid #00ffe0;
     padding: 40px;
     border-radius: 25px;
     max-width: 900px;
     text-align: center;
     position: relative;
-    box-shadow: 0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(123,0,255,0.3);
+    box-shadow: 0 0 25px rgba(0,255,255,0.6), 0 0 50px rgba(123,0,255,0.4);
 }
 
 h1 {
@@ -68,14 +68,22 @@ ul li {
     transition: transform 0.3s, background 0.3s;
 }
 
-ul li.completed {
+ul li.concluido {
     background: rgba(0,255,0,0.3);
-    text-decoration: line-through;
+    color: #00ff00;
+    font-weight: bold;
 }
 
-ul li.in-progress {
+ul li.progresso {
     background: rgba(255,255,0,0.2);
-    text-decoration: line-through wavy;
+    color: #fffc00;
+    font-weight: bold;
+}
+
+ul li.nao {
+    background: rgba(255,0,0,0.2);
+    color: #ff4d4d;
+    font-weight: bold;
 }
 
 ul li:hover {
@@ -85,18 +93,26 @@ ul li:hover {
 
 footer {
     margin-top: 25px;
-    font-size: 0.9em;
+    font-size: 1.1em;
     opacity: 0.9;
     color: #00ffe0;
+    text-shadow: 2px 2px 8px #000;
 }
 
 .link {
     color: #00ffe0;
     text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid #00ffe0;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
 .link:hover {
-    text-decoration: underline;
+    background: #00ffe0;
+    color: #000;
+    box-shadow: 0 0 10px #00ffe0;
 }
 
 .miku {
@@ -111,7 +127,6 @@ footer {
     50% { transform: translateY(-15px); }
 }
 
-/* Confetes */
 .confete {
     position: fixed;
     width: 10px;
@@ -138,7 +153,7 @@ footer {
 
     <h2>Minhas paixões 🎶🎮🧠</h2>
     <ul>
-        <li>🎤 Hatsune Miku & Vocaloid</li>
+        <li>🎤 Hatsune Miku, Megurine Luka, Kasane Teto & Vocaloid</li>
         <li>🎵 Cantores e produtores que me inspiram: Ado, Deco27</li>
         <li>🎮 Jogos & gameplay (Fortnite, Genshin, RPGs)</li>
         <li>🧠 Filosofia, história e conhecimento</li>
@@ -158,11 +173,11 @@ footer {
 
     <h2>Metas & Conquistas 🚀</h2>
     <ul>
-        <li class="completed">Aprender inglês básico ✅</li>
-        <li class="in-progress">Aprender japonês 🈴</li>
-        <li class="completed">Organizar playlists do Spotify 🎵</li>
-        <li class="in-progress">Montar rotina de estudos 📚</li>
-        <li class="in-progress">Configurar setup para stream 🎮</li>
+        <li class="concluido">Aprender inglês básico ✅</li>
+        <li class="nao">Aprender japonês ❌</li>
+        <li class="concluido">Organizar playlists do Spotify 🎵</li>
+        <li class="progresso">Montar rotina de estudos 📚</li>
+        <li class="progresso">Configurar setup para stream 🎮</li>
     </ul>
 
     <h2>Cosplays que quero fazer 🎭</h2>
@@ -170,13 +185,13 @@ footer {
         <li>Hatsune Miku</li>
         <li>Kasane Teto</li>
         <li>Akita Neru</li>
-        <li>Protagonista de The Silence Voice</li>
+        <li>Shoya Ishida (The Silence Voice) – Japão</li>
         <li>Outros personagens de anime que amo</li>
     </ul>
 
     <h2>Links importantes 🔗</h2>
     <ul>
-        <li><a class="link" href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" target="_blank">Canal do YouTube</a></li>
+        <li><a class="link" href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" target="_blank">Meu Canal do YouTube</a></li>
         <li><a class="link" href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" target="_blank">Minha Playlist do Spotify</a></li>
     </ul>
 
@@ -184,8 +199,8 @@ footer {
     <footer>— Yamazaki ✨</footer>
 </div>
 
-<!-- Confetes animados -->
 <script>
+// Confetes animados
 for(let i=0;i<50;i++){
     const c = document.createElement('div');
     c.classList.add('confete');
@@ -193,17 +208,6 @@ for(let i=0;i<50;i++){
     c.style.animationDuration = (Math.random() * 5 + 3) + 's';
     document.body.appendChild(c);
 }
-
-// Atualiza hora real
-function atualizarHora() {
-    const agora = new Date();
-    const hora = agora.getHours().toString().padStart(2,'0');
-    const min = agora.getMinutes().toString().padStart(2,'0');
-    const seg = agora.getSeconds().toString().padStart(2,'0');
-    document.getElementById('hora')?.textContent = `${hora}:${min}:${seg}`;
-}
-setInterval(atualizarHora, 1000);
-atualizarHora();
 </script>
 
 </body>
