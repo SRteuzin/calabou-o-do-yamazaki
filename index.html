@@ -3,29 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - MikuDayo Supremo Ultimate</title>
+<title>Yamazaki - Meu Cantinho</title>
 <style>
     body {
         margin: 0;
-        font-family: 'Arial', sans-serif;
+        font-family: Arial, sans-serif;
         background: #111;
         color: #fff;
         overflow-x: hidden;
-        position: relative;
     }
     header {
         width: 100%;
-        height: 300px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         background: url('https://imgur.com/jMckIoA') no-repeat center center;
         background-size: cover;
-        display: flex;
-        align-items: flex-end;
-        padding-left: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
     header h1 {
-        font-size: 3rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        font-size: 4rem;
+        text-transform: uppercase;
+        margin: 0;
+        text-shadow: 3px 3px 5px #000;
+    }
+    header p {
+        font-size: 1.5rem;
+        margin: 5px 0;
     }
     .miku, .chibi-miku {
         position: absolute;
@@ -34,12 +42,13 @@
         transform-origin: center;
     }
     .miku {
-        top: 50%;
+        top: 60%;
         left: 50%;
         width: 150px;
         height: 150px;
         background-image: url('https://i.imgur.com/roPhKUc.png');
-        animation: float 5s ease-in-out infinite, blink 3s infinite;
+        animation: float 5s ease-in-out infinite;
+        transform: translate(-50%, -50%);
     }
     .chibi-miku {
         bottom: 50px;
@@ -50,66 +59,57 @@
         animation: chibiFloat 6s ease-in-out infinite;
     }
     @keyframes float {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -60%) scale(1.1); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+        0%,100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -60%) scale(1.05); }
     }
     @keyframes chibiFloat {
-        0% { transform: translate(0,0); }
+        0%,100% { transform: translate(0,0); }
         50% { transform: translate(10px,-10px); }
-        100% { transform: translate(0,0); }
-    }
-    @keyframes blink {
-        0%, 90%, 100% { transform: translate(-50%, -50%) scale(1); }
-        91%, 93% { transform: translate(-50%, -50%) scaleY(0.1); }
     }
     .content {
+        max-width: 900px;
+        margin: auto;
         padding: 20px;
         text-align: center;
     }
+    .section { margin: 30px 0; }
     .button {
         background-color: #ff4081;
         color: #fff;
         padding: 10px 20px;
+        margin: 5px;
         border-radius: 5px;
         text-decoration: none;
-        font-size: 1.2rem;
-        margin: 5px;
         display: inline-block;
         transition: 0.3s;
     }
     .button:hover { background-color: #f50057; }
-    .section { margin: 30px 0; }
-    .amigos, .metas { display: flex; justify-content: center; flex-wrap: wrap; }
-    .amigo, .meta { background: #222; margin: 5px; padding: 10px; border-radius: 5px; min-width: 120px; text-align: center; transition: 0.3s, box-shadow 0.3s; }
-    .amigo:hover, .meta:hover { box-shadow: 0 0 10px #ff4081, 0 0 20px #f50057; transform: scale(1.05); }
+    .amigos, .metas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .amigo, .meta { background: #222; padding: 10px; border-radius: 5px; min-width: 140px; }
     .concluida { text-decoration: line-through; color: #0f0; }
-    #hora { font-size: 1.5rem; margin-top: 10px; }
-    .confetti div {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: #ff4081;
-        animation: confettiFall 3s linear infinite;
-        opacity: 0.8;
-        border-radius: 50%;
-    }
-    @keyframes confettiFall { 0%{transform:translateY(-100vh);} 100%{transform:translateY(100vh);} }
+    #hora { margin-top: 10px; font-size: 1.2rem; }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Bem-vindo ao MikuDayo Supremo Ultimate</h1>
+    <h1>YAMAZAKI</h1>
+    <p>Oi, pessoal! Aqui é meu cantinho.</p>
 </header>
 
 <div class="miku"></div>
 <div class="chibi-miku"></div>
 
 <div class="content">
-    <p>Confira meu canal no YouTube e minha playlist no Spotify:</p>
-    <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
-    <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
+    <div class="section">
+        <h2>Explicação</h2>
+        <p>Ainda estou afastado da internet, sem data pra voltar. Estou tirando um tempo pra mim. 😊</p>
+    </div>
+
+    <div class="section">
+        <h2>Meus Hobbies e Interesses</h2>
+        <p>Jogos, Memes, Fortnite, Genshin Impact, RPGs Legais, Filosofia, História, Conhecimento, Música (Deco 27, Hatsune Miku).</p>
+    </div>
 
     <div class="section">
         <h2>Amigos</h2>
@@ -130,24 +130,18 @@
         <div class="metas">
             <div class="meta concluida">Aprender Inglês Básico</div>
             <div class="meta">Playlist Completa (em andamento)</div>
-            <div class="meta">Jogos, Memes, Fortnite, Genshin, RPGs Legais</div>
-            <div class="meta">Filosofia, História, Conhecimento</div>
+            <div class="meta">Explorar mais jogos e RPGs</div>
+            <div class="meta">Filosofia, História e Conhecimento</div>
         </div>
     </div>
 
-    <div id="hora"></div>
-</div>
+    <div class="section">
+        <h2>Links Importantes</h2>
+        <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
+        <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
+    </div>
 
-<div class="confetti">
-    <div style="left:10%; animation-delay:0s;"></div>
-    <div style="left:20%; animation-delay:0.2s;"></div>
-    <div style="left:30%; animation-delay:0.4s;"></div>
-    <div style="left:40%; animation-delay:0.6s;"></div>
-    <div style="left:50%; animation-delay:0.8s;"></div>
-    <div style="left:60%; animation-delay:1s;"></div>
-    <div style="left:70%; animation-delay:1.2s;"></div>
-    <div style="left:80%; animation-delay:1.4s;"></div>
-    <div style="left:90%; animation-delay:1.6s;"></div>
+    <div id="hora"></div>
 </div>
 
 <script>
