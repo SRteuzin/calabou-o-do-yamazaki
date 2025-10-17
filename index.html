@@ -3,216 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - Cantinho & Diário 💫</title>
+<title>Yamazaki - Meu Cantinho 🎶🎮</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap');
 
 body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0d0d0d, #000000, #111111);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    min-height:100vh;
-    padding-top:40px;
-    overflow-x:hidden;
+    background: linear-gradient(135deg, #0a0a0a, #111111);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
 }
 
 .card {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     border: 3px solid #00ffe0;
-    padding:40px;
-    border-radius:30px;
-    box-shadow:0 0 30px rgba(0,255,255,0.7),0 0 50px rgba(123,0,255,0.5);
-    max-width:900px;
-    text-align:center;
-    position:relative;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 50px rgba(123,0,255,0.5);
+    max-width: 900px;
+    text-align: center;
+    position: relative;
 }
 
 h1 {
-    font-size:3em;
-    color:#00ffe0;
-    margin-bottom:10px;
-    text-shadow:2px 2px 10px #000;
+    font-family: 'Great Vibes', cursive;
+    font-size: 4em;
+    color: #00ffe0;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px #000;
 }
 
 h2 {
-    color:#fffc00;
-    margin-top:25px;
-    text-shadow:2px 2px 5px #000;
+    color: #fffc00;
+    margin-top: 25px;
+    text-shadow: 2px 2px 5px #000;
 }
 
 p, li {
-    font-size:1.2em;
-    line-height:1.6;
-    text-shadow:1px 1px 3px #000;
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px #000;
 }
 
 ul {
-    list-style:none;
-    padding:0;
-    text-align:left;
+    list-style: none;
+    padding: 0;
+    text-align: left;
 }
 
 ul li {
     background: rgba(255,255,255,0.05);
-    margin:8px 0;
-    padding:10px 15px;
-    border-radius:15px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+    margin: 8px 0;
+    padding: 12px 18px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     transition: transform 0.3s, background 0.3s;
 }
 
-ul li.completed {
-    background: rgba(0,255,0,0.3);
-    color:#00ff00;
-    font-weight:bold;
-}
-
-ul li.in-progress {
-    background: rgba(255,255,0,0.3);
-    color:#ffff00;
-    font-weight:bold;
-}
-
-ul li.pending {
-    background: rgba(255,0,0,0.3);
-    color:#ff4444;
-    font-weight:bold;
-}
-
 ul li:hover {
-    transform: scale(1.05) rotate(-1deg);
-    background: rgba(0,255,255,0.2);
+    transform: scale(1.05);
+    background: rgba(0,255,255,0.1);
 }
 
-.friend-name {
-    font-weight:bold;
-    color:#00ffe0;
-}
+.completed { color: #00ff00; }
+.inprogress { color: #ffcc00; }
+.pending { color: #ff4444; }
 
-.friend-desc {
-    font-style:italic;
-    color:#ffcc00;
-}
+.friend-name { font-weight: bold; }
+.friend-desc { font-style: italic; font-size: 0.95em; color: #ccc; }
 
-.cosplay-list li {
-    color:#ff66ff;
-    font-weight:bold;
+.cosplay { display: inline-block; margin: 5px 10px; padding: 5px 10px; border-radius: 10px; background: rgba(0,255,255,0.2); color: #00ffe0; font-weight: bold; }
+
+.links a {
+    display: inline-block;
+    margin: 10px 15px;
+    padding: 8px 15px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #00ffe0, #7b00ff);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.links a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0,255,255,0.6);
 }
 
 footer {
-    margin-top:25px;
-    font-size:1em;
-    opacity:0.9;
-    color:#00ffe0;
-}
-
-/* Botões links */
-a.button {
-    display:inline-block;
-    padding:10px 20px;
-    margin:5px;
-    background:#00ffe0;
-    color:#000;
-    font-weight:bold;
-    border-radius:15px;
-    text-decoration:none;
-    box-shadow:0 0 10px #00ffe0;
-    transition:0.3s;
-}
-
-a.button:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 20px #fffc00;
-}
-
-/* Confetes simples */
-@keyframes confete {
-    0%{transform:translateY(0) rotate(0deg);}
-    100%{transform:translateY(800px) rotate(360deg);}
-}
-
-.confete {
-    position:absolute;
-    width:10px;
-    height:10px;
-    background:red;
-    top:0;
-    animation:confete 3s linear infinite;
-    opacity:0.8;
-    border-radius:50%;
+    margin-top: 25px;
+    font-size: 1.2em;
+    font-family: 'Great Vibes', cursive;
+    color: #00ffe0;
 }
 </style>
 </head>
 <body>
 <div class="card">
-
     <h1>YAMAZAKI</h1>
-    <p>Oi, pessoal! Aqui é meu cantinho 😄</p>
-    <p>Eu estou me afastando por enquanto da internet, não tenho previsão de volta. Quero um tempo pra organizar minha cabeça e focar nos meus objetivos pessoais.</p>
-    <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
+    <p>Oi, pessoal! Aqui é meu cantinho 💫</p>
+    <p>Tenho <strong>19 anos</strong> e me afastei um pouco da internet para organizar minha cabeça e meus projetos. Não tenho data certa pra voltar, mas volto diferente e com energia renovada!</p>
 
     <h2>Minhas paixões 🎶🎮🧠</h2>
     <ul>
-        <li>🎤 Hatsune Miku, Megurine Luka, Kasane Teto</li>
-        <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
-        <li>🧠 Filosofia, História e conhecimento</li>
-        <li>🎭 Cosplay & cultura japonesa</li>
-        <li>🎵 Música que me inspira: Ado, Deco27</li>
+        <li>🎤 Vocaloid: Hatsune Miku, Megurine Luka, Kasane Teto</li>
+        <li>🎮 Jogos & Gameplay: Fortnite, Genshin Impact, RPGs legais</li>
+        <li>🧠 Filosofia, História & Conhecimento</li>
+        <li>🎭 Cosplay & Cultura Japonesa</li>
+        <li>🎵 Música que me inspira: "Ado", "Deco27"</li>
     </ul>
 
-    <h2>Meus amigos 🌟</h2>
+    <h2>Meus amigos 👫</h2>
     <ul>
-        <li><span class="friend-name">Melissa</span> - Parceira de cosplay, Meme Sem Fim</li>
-        <li><span class="friend-name">Dark</span> - Fã de Hatsune Miku</li>
-        <li><span class="friend-name">Jujuba</span> - Fofa e engraçada</li>
-        <li><span class="friend-name">Front</span> - Ideias malucas, jogos legais</li>
-        <li><span class="friend-name">Clover</span> - Super aleatório</li>
-        <li><span class="friend-name">Consta</span> - Portuguesa e engraçada</li>
-        <li><span class="friend-name">Epic</span> - A pessoa que eu mais amassei no Fortnite</li>
+        <li><span class="friend-name">Melissa</span> - parceiro de cosplay, Meme Sem Fim</li>
+        <li><span class="friend-name">Dark</span> - fã de Hatsune Miku</li>
+        <li><span class="friend-name">Jujuba</span> - fofa e engraçada</li>
+        <li><span class="friend-name">Front</span> - ideias malucas, jogos legais</li>
+        <li><span class="friend-name">Clover</span> - super aleatório e divertido</li>
+        <li><span class="friend-name">Consta</span> - portuguesa, engraçada</li>
+        <li><span class="friend-name">Epic</span> - a pessoa que eu mais amassei no Fortnite</li>
     </ul>
 
     <h2>Metas & Conquistas 🚀</h2>
     <ul>
         <li class="completed">Aprender inglês básico ✅</li>
         <li class="pending">Aprender japonês 🈴</li>
-        <li class="completed">Organizar minhas playlists do Spotify 🎵</li>
-        <li class="in-progress">Montar rotina de estudos de Filosofia e História 📚</li>
+        <li class="completed">Organizar playlists do Spotify 🎵</li>
+        <li class="inprogress">Montar rotina de estudos de filosofia e história 📚</li>
+        <li class="inprogress">Configurar setup para stream 🎮</li>
     </ul>
 
     <h2>Cosplays que quero fazer 🎭</h2>
-    <ul class="cosplay-list">
-        <li>Hatsune Miku</li>
-        <li>Kasane Teto</li>
-        <li>Akita Neru</li>
-        <li>Shoya Ishida (The Silence Voice)</li>
-    </ul>
+    <div class="cosplay">Hatsune Miku</div>
+    <div class="cosplay" style="color:#00f;">Kasane Teto</div>
+    <div class="cosplay" style="color:#ffdd00;">Akita Neru</div>
+    <div class="cosplay">Outros personagens de anime</div>
+    <div class="cosplay">Shoya Ishida (The Silence Voice)</div>
 
-    <h2>Links importantes 🔗</h2>
-    <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button" target="_blank">Meu Canal no YouTube</a>
-    <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button" target="_blank">Minha Playlist Spotify</a>
+    <h2>Links importantes 🌐</h2>
+    <div class="links">
+        <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" target="_blank">Meu Canal no YouTube</a>
+        <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" target="_blank">Minha Playlist no Spotify</a>
+    </div>
 
-    <p>Talvez eu volte diferente, mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
-    <footer>— Yamazaki ✨</footer>
-
+    <p>Talvez eu volte diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
+    <footer>— Yamazaki</footer>
 </div>
-
-<script>
-function atualizarHora() {
-    const agora = new Date();
-    const hora = agora.getHours().toString().padStart(2,'0');
-    const min = agora.getMinutes().toString().padStart(2,'0');
-    const seg = agora.getSeconds().toString().padStart(2,'0');
-    document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
-}
-setInterval(atualizarHora,1000);
-atualizarHora();
-</script>
 </body>
 </html>
