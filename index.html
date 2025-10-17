@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - Diário & Metas 💫</title>
+<title>Yamazaki - Cantinho Vocaloid 💫</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Permanent+Marker&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0a0a0a, #0a0a0a 60%, #00cfff 100%);
+    background: linear-gradient(135deg, #0a0a0a, #001f3f, #003366);
     color: white;
     display: flex;
     justify-content: center;
@@ -21,26 +21,21 @@ body {
 }
 
 .card {
-    background: rgba(0,0,0,0.95);
-    border: 3px solid #00cfff;
+    background: rgba(0,0,0,0.7);
+    border: 3px solid #00ffe0;
     padding: 40px;
-    border-radius: 30px;
+    border-radius: 25px;
     max-width: 900px;
-    width: 90%;
     text-align: center;
     position: relative;
-    box-shadow: 0 0 40px #00cfff, 0 0 60px #7b00ff;
-    animation: glow 3s infinite alternate;
-}
-
-@keyframes glow {
-    0% { box-shadow: 0 0 20px #00cfff, 0 0 40px #7b00ff; }
-    100% { box-shadow: 0 0 30px #00ffe0, 0 0 60px #9b00ff; }
+    box-shadow: 0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(123,0,255,0.3);
 }
 
 h1 {
+    font-family: 'Permanent Marker', cursive;
     font-size: 3em;
-    color: #00cfff;
+    color: #00ffe0;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 10px #000;
 }
 
@@ -65,7 +60,7 @@ ul {
 ul li {
     background: rgba(255,255,255,0.05);
     margin: 8px 0;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -84,118 +79,132 @@ ul li.in-progress {
 }
 
 ul li:hover {
-    transform: scale(1.03);
-    background: rgba(0,255,255,0.15);
+    transform: scale(1.05) rotate(-1deg);
+    background: rgba(0,255,255,0.2);
 }
-
-.section-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.box-item {
-    background: rgba(255,255,255,0.05);
-    padding: 8px 12px;
-    border-radius: 12px;
-    min-width: 140px;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.box-item:hover {
-    transform: translateY(-3px);
-    background: rgba(0,255,255,0.15);
-}
-
-.button {
-    background-color: #00cfff;
-    color: #000;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
-    font-weight: bold;
-}
-
-.button:hover { background-color: #00ffe0; }
 
 footer {
     margin-top: 25px;
     font-size: 0.9em;
     opacity: 0.9;
-    color: #00cfff;
+    color: #00ffe0;
+}
+
+.link {
+    color: #00ffe0;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.miku {
+    width: 180px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Confetes */
+.confete {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #00ffe0;
+    top: -10px;
+    animation: confeteDrop linear infinite;
+    opacity: 0.8;
+    border-radius: 50%;
+}
+
+@keyframes confeteDrop {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
 }
 </style>
 </head>
 <body>
+
 <div class="card">
     <h1>YAMAZAKI</h1>
-    <p>Oi, pessoal! Aqui é meu cantinho.</p>
-    <p>Tenho <strong>19 anos</strong> e estou compartilhando um pouco das minhas vibes!</p>
-    <p><strong>Motivo do meu sumiço:</strong> Quero continuar me afastando da internet por um tempo, sem previsão de retorno, apenas cuidando de mim e das minhas metas.</p>
-    <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
+    <p style="font-size:1.3em;">Oi, pessoal! Aqui é meu cantinho. 💫</p>
+    <p>Estou me afastando da internet por um tempo para organizar minhas ideias e prioridades. Não tenho data certa para voltar, mas quero continuar focando em mim e nos meus hobbies, mantendo a mesma energia que sempre curti compartilhar!</p>
 
-    <h2>Minhas paixões 🎶🎮🎭🧠</h2>
+    <h2>Minhas paixões 🎶🎮🧠</h2>
     <ul>
         <li>🎤 Hatsune Miku & Vocaloid</li>
-        <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
+        <li>🎵 Cantores e produtores que me inspiram: Ado, Deco27</li>
+        <li>🎮 Jogos & gameplay (Fortnite, Genshin, RPGs)</li>
         <li>🧠 Filosofia, história e conhecimento</li>
         <li>🎭 Cosplay & cultura japonesa</li>
-        <li>🎵 Música que me inspira (tipo Ado, Deco 27, Rockstars)</li>
     </ul>
 
-    <h2>Amigos 🫂</h2>
-    <div class="section-box">
-        <div class="box-item">Melissa - Cosplay & Meme Sem Fim</div>
-        <div class="box-item">Dark</div>
-        <div class="box-item">Jujuba</div>
-        <div class="box-item">Front - Ideias Malucas, Jogos Legais</div>
-        <div class="box-item">Clover - Super Aleatório</div>
-        <div class="box-item">Consta</div>
-        <div class="box-item">EPIK</div>
-    </div>
+    <h2>Meus amigos 👾</h2>
+    <ul>
+        <li>Melissa: Cosplay & Meme Sem Fim</li>
+        <li>Dark: fã da Hatsune Miku</li>
+        <li>Jujuba: fofa e engraçada</li>
+        <li>Front: Ideias Malucas & Jogos Legais</li>
+        <li>Clover: super aleatório</li>
+        <li>Consta: portuguesa e engraçada</li>
+        <li>EPIK: a pessoa que eu mais amassei no Fortnite</li>
+    </ul>
 
     <h2>Metas & Conquistas 🚀</h2>
     <ul>
         <li class="completed">Aprender inglês básico ✅</li>
-        <li>Aprender japonês 🈴</li>
-        <li class="completed">Organizar playlists/Netflix ✅</li>
+        <li class="in-progress">Aprender japonês 🈴</li>
+        <li class="completed">Organizar playlists do Spotify 🎵</li>
         <li class="in-progress">Montar rotina de estudos 📚</li>
         <li class="in-progress">Configurar setup para stream 🎮</li>
     </ul>
 
     <h2>Cosplays que quero fazer 🎭</h2>
-    <div class="section-box">
-        <div class="box-item">Hatsune Miku</div>
-        <div class="box-item">Kasane Teto</div>
-        <div class="box-item">Akita Neru</div>
-        <div class="box-item">Saniteta</div>
-        <div class="box-item">Dandadan</div>
-        <div class="box-item">Outros personagens que curti</div>
-    </div>
+    <ul>
+        <li>Hatsune Miku</li>
+        <li>Kasane Teto</li>
+        <li>Akita Neru</li>
+        <li>Protagonista de The Silence Voice</li>
+        <li>Outros personagens de anime que amo</li>
+    </ul>
 
-    <h2>Links importantes 🌐</h2>
-    <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
-    <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
+    <h2>Links importantes 🔗</h2>
+    <ul>
+        <li><a class="link" href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" target="_blank">Canal do YouTube</a></li>
+        <li><a class="link" href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" target="_blank">Minha Playlist do Spotify</a></li>
+    </ul>
 
-    <p>Talvez eu volte, talvez diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
+    <p>Talvez eu volte diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
     <footer>— Yamazaki ✨</footer>
 </div>
 
+<!-- Confetes animados -->
 <script>
+for(let i=0;i<50;i++){
+    const c = document.createElement('div');
+    c.classList.add('confete');
+    c.style.left = Math.random() * window.innerWidth + 'px';
+    c.style.animationDuration = (Math.random() * 5 + 3) + 's';
+    document.body.appendChild(c);
+}
+
+// Atualiza hora real
 function atualizarHora() {
     const agora = new Date();
     const hora = agora.getHours().toString().padStart(2,'0');
     const min = agora.getMinutes().toString().padStart(2,'0');
     const seg = agora.getSeconds().toString().padStart(2,'0');
-    document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
+    document.getElementById('hora')?.textContent = `${hora}:${min}:${seg}`;
 }
 setInterval(atualizarHora, 1000);
 atualizarHora();
 </script>
+
 </body>
 </html>
