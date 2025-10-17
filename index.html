@@ -1,118 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - Meu Cantinho</title>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #111;
-        color: #fff;
-        overflow-x: hidden;
-    }
-    header {
-        width: 100%;
-        height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: url('https://imgur.com/jMckIoA') no-repeat center center;
-        background-size: cover;
-        text-align: center;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-    header h1 {
-        font-size: 4rem;
-        text-transform: uppercase;
-        margin: 0;
-        text-shadow: 3px 3px 5px #000;
-    }
-    header p {
-        font-size: 1.5rem;
-        margin: 5px 0;
-    }
-    .miku, .chibi-miku {
-        position: absolute;
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform-origin: center;
-    }
-    .miku {
-        top: 60%;
-        left: 50%;
-        width: 150px;
-        height: 150px;
-        background-image: url('https://i.imgur.com/roPhKUc.png');
-        animation: float 5s ease-in-out infinite;
-        transform: translate(-50%, -50%);
-    }
-    .chibi-miku {
-        bottom: 50px;
-        right: 20px;
-        width: 100px;
-        height: 100px;
-        background-image: url('https://i.imgur.com/loLUN9p.png');
-        animation: chibiFloat 6s ease-in-out infinite;
-    }
-    @keyframes float {
-        0%,100% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -60%) scale(1.05); }
-    }
-    @keyframes chibiFloat {
-        0%,100% { transform: translate(0,0); }
-        50% { transform: translate(10px,-10px); }
-    }
-    .content {
-        max-width: 900px;
-        margin: auto;
-        padding: 20px;
-        text-align: center;
-    }
-    .section { margin: 30px 0; }
-    .button {
-        background-color: #ff4081;
-        color: #fff;
-        padding: 10px 20px;
-        margin: 5px;
-        border-radius: 5px;
-        text-decoration: none;
-        display: inline-block;
-        transition: 0.3s;
-    }
-    .button:hover { background-color: #f50057; }
-    .amigos, .metas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .amigo, .meta { background: #222; padding: 10px; border-radius: 5px; min-width: 140px; }
-    .concluida { text-decoration: line-through; color: #0f0; }
-    #hora { margin-top: 10px; font-size: 1.2rem; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamazaki - Diário & Metas 💫</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #00ffe0, #0099ff, #7b00ff);
+            background-size: 400% 400%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: bgMove 12s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes bgMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background: rgba(0,0,0,0.5);
+            border: 3px solid #00ffe0;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 50px rgba(123,0,255,0.5);
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            animation: cardGlow 3s infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(123,0,255,0.3); }
+            100% { box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 60px rgba(123,0,255,0.5); }
+        }
+
+        .miku, .chibi-miku {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform-origin: center;
+        }
+
+        .miku {
+            top: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background-image: url('https://i.pinimg.com/originals/16/80/d2/1680d2739d99b76b89b9816a0f2d6814.png');
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .chibi-miku {
+            bottom: -20px;
+            left: -20px;
+            width: 120px;
+            height: 120px;
+            background-image: url('https://i.imgur.com/loLUN9p.png');
+            animation: floatChibi 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes floatChibi {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #00ffe0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px #000;
+        }
+
+        h2 {
+            color: #fffc00;
+            margin-top: 25px;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        ul li {
+            background: rgba(255,255,255,0.1);
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        ul li.completed {
+            background: rgba(0,255,0,0.3);
+            text-decoration: line-through;
+        }
+
+        ul li:hover {
+            transform: scale(1.05) rotate(-1deg);
+            background: rgba(0,255,255,0.2);
+        }
+
+        .amigos, .metas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .amigo, .meta {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 15px;
+            min-width: 140px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .amigo:hover, .meta:hover {
+            transform: translateY(-5px);
+            background: rgba(0,255,255,0.2);
+        }
+
+        .button {
+            background-color: #ff4081;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .button:hover { background-color: #f50057; }
+
+        footer {
+            margin-top: 25px;
+            font-size: 0.9em;
+            opacity: 0.9;
+            color: #00ffe0;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="card">
+        <div class="miku"></div>
+        <div class="chibi-miku"></div>
 
-<header>
-    <h1>YAMAZAKI</h1>
-    <p>Oi, pessoal! Aqui é meu cantinho.</p>
-</header>
+        <h1>YAMAZAKI</h1>
+        <p>Oi, pessoal! Aqui é meu cantinho.</p>
+        <p>Tenho <strong>19 anos</strong> e estou compartilhando um pouco das minhas vibes!</p>
+        <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
 
-<div class="miku"></div>
-<div class="chibi-miku"></div>
+        <h2>Minhas paixões 🎶🎮🎭🧠</h2>
+        <ul>
+            <li>🎤 Hatsune Miku & Vocaloid</li>
+            <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
+            <li>🧠 Filosofia, história e conhecimento</li>
+            <li>🎭 Cosplay & cultura japonesa</li>
+            <li>🎵 Música que me inspira (tipo Ado, Deco 27, Rockstars)</li>
+        </ul>
 
-<div class="content">
-    <div class="section">
-        <h2>Explicação</h2>
-        <p>Ainda estou afastado da internet, sem data pra voltar. Estou tirando um tempo pra mim. 😊</p>
-    </div>
-
-    <div class="section">
-        <h2>Meus Hobbies e Interesses</h2>
-        <p>Jogos, Memes, Fortnite, Genshin Impact, RPGs Legais, Filosofia, História, Conhecimento, Música (Deco 27, Hatsune Miku).</p>
-    </div>
-
-    <div class="section">
-        <h2>Amigos</h2>
+        <h2>Amigos 🫂</h2>
         <div class="amigos">
             <div class="amigo">Melissa - Meme Sem Fim</div>
             <div class="amigo">Dark</div>
@@ -123,38 +198,35 @@
             <div class="amigo">EPIK</div>
             <div class="amigo">Ratsonimico</div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Metas</h2>
+        <h2>Metas & Conquistas 🚀</h2>
         <div class="metas">
-            <div class="meta concluida">Aprender Inglês Básico</div>
-            <div class="meta">Playlist Completa (em andamento)</div>
-            <div class="meta">Explorar mais jogos e RPGs</div>
-            <div class="meta">Filosofia, História e Conhecimento</div>
+            <div class="meta completed">Aprender inglês básico ✅</div>
+            <div class="meta">Aprender japonês 🈴</div>
+            <div class="meta completed">Organizar minhas playlists de música 🎵</div>
+            <div class="meta">Fazer cosplay completo de Dandadan 🎭</div>
+            <div class="meta completed">Configurar setup para stream 🎮</div>
+            <div class="meta">Montar rotina de estudos de filosofia e história 📚</div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Links Importantes</h2>
+        <h2>Links importantes 🌐</h2>
         <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
         <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
+
+        <p>Talvez eu volte, talvez diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
+        <footer>— Yamazaki ✨</footer>
     </div>
 
-    <div id="hora"></div>
-</div>
-
-<script>
-function atualizarHora(){
-    const agora = new Date();
-    const hora = String(agora.getHours()).padStart(2,'0');
-    const min = String(agora.getMinutes()).padStart(2,'0');
-    const seg = String(agora.getSeconds()).padStart(2,'0');
-    document.getElementById('hora').textContent = `Hora atual: ${hora}:${min}:${seg}`;
-}
-setInterval(atualizarHora,1000);
-atualizarHora();
-</script>
-
+    <script>
+        function atualizarHora() {
+            const agora = new Date();
+            const hora = agora.getHours().toString().padStart(2,'0');
+            const min = agora.getMinutes().toString().padStart(2,'0');
+            const seg = agora.getSeconds().toString().padStart(2,'0');
+            document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
+        }
+        setInterval(atualizarHora, 1000);
+        atualizarHora();
+    </script>
 </body>
 </html>
