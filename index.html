@@ -1,232 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yamazaki - Diário & Metas 💫</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yamazaki - Diário & Metas 💫</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #00ffe0, #0099ff, #7b00ff);
-            background-size: 400% 400%;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            animation: bgMove 12s ease infinite;
-            overflow-x: hidden;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        @keyframes bgMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+.card {
+    background: rgba(0,0,0,0.7);
+    border: 3px solid #00cfff;
+    padding: 30px 25px;
+    border-radius: 30px;
+    max-width: 400px;
+    width: 95%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 25px #00cfff, 0 0 50px #7b00ff;
+    animation: glow 3s infinite alternate;
+}
 
-        .card {
-            background: rgba(0,0,0,0.5);
-            border: 3px solid #00ffe0;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 50px rgba(123,0,255,0.5);
-            max-width: 800px;
-            text-align: center;
-            position: relative;
-            animation: cardGlow 3s infinite alternate;
-        }
+@keyframes glow {
+    0% { box-shadow: 0 0 20px #00cfff, 0 0 40px #7b00ff; }
+    100% { box-shadow: 0 0 30px #00ffe0, 0 0 60px #9b00ff; }
+}
 
-        @keyframes cardGlow {
-            0% { box-shadow: 0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(123,0,255,0.3); }
-            100% { box-shadow: 0 0 30px rgba(0,255,255,0.7), 0 0 60px rgba(123,0,255,0.5); }
-        }
+.miku, .chibi-miku {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
-        .miku, .chibi-miku {
-            position: absolute;
-            background-size: contain;
-            background-repeat: no-repeat;
-            transform-origin: center;
-        }
+.miku {
+    top: -20px;
+    right: -20px;
+    width: 140px;
+    height: 140px;
+    background-image: url('https://i.pinimg.com/originals/16/80/d2/1680d2739d99b76b89b9816a0f2d6814.png');
+    animation: float 4s ease-in-out infinite;
+}
 
-        .miku {
-            top: -20px;
-            right: -20px;
-            width: 150px;
-            height: 150px;
-            background-image: url('https://i.pinimg.com/originals/16/80/d2/1680d2739d99b76b89b9816a0f2d6814.png');
-            animation: float 4s ease-in-out infinite;
-        }
+.chibi-miku {
+    bottom: -15px;
+    left: -15px;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://i.imgur.com/loLUN9p.png');
+    animation: floatChibi 5s ease-in-out infinite;
+}
 
-        .chibi-miku {
-            bottom: -20px;
-            left: -20px;
-            width: 120px;
-            height: 120px;
-            background-image: url('https://i.imgur.com/loLUN9p.png');
-            animation: floatChibi 5s ease-in-out infinite;
-        }
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+@keyframes floatChibi {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
 
-        @keyframes floatChibi {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+h1 {
+    font-size: 2.5em;
+    color: #00cfff;
+    text-shadow: 2px 2px 10px #000;
+}
 
-        h1 {
-            font-size: 2.5em;
-            color: #00ffe0;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px #000;
-        }
+h2 {
+    color: #fffc00;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
 
-        h2 {
-            color: #fffc00;
-            margin-top: 25px;
-            text-shadow: 2px 2px 5px #000;
-        }
+p, li {
+    font-size: 1em;
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px #000;
+}
 
-        p, li {
-            font-size: 1.1em;
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px #000;
-        }
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
 
-        ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
+ul li {
+    background: rgba(255,255,255,0.05);
+    margin: 6px 0;
+    padding: 8px 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s, background 0.3s;
+}
 
-        ul li {
-            background: rgba(255,255,255,0.1);
-            margin: 8px 0;
-            padding: 10px 15px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s, background 0.3s;
-        }
+ul li.completed {
+    background: rgba(0,255,0,0.2);
+    text-decoration: line-through;
+}
 
-        ul li.completed {
-            background: rgba(0,255,0,0.3);
-            text-decoration: line-through;
-        }
+ul li:hover {
+    transform: scale(1.05) rotate(-1deg);
+    background: rgba(0,255,255,0.15);
+}
 
-        ul li:hover {
-            transform: scale(1.05) rotate(-1deg);
-            background: rgba(0,255,255,0.2);
-        }
+.amigos, .metas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 5px;
+}
 
-        .amigos, .metas {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
+.amigo, .meta {
+    background: rgba(255,255,255,0.05);
+    padding: 6px 10px;
+    border-radius: 12px;
+    min-width: 120px;
+    transition: transform 0.3s, background 0.3s;
+}
 
-        .amigo, .meta {
-            background: rgba(255,255,255,0.1);
-            padding: 10px 15px;
-            border-radius: 15px;
-            min-width: 140px;
-            transition: transform 0.3s, background 0.3s;
-        }
+.amigo:hover, .meta:hover {
+    transform: translateY(-3px);
+    background: rgba(0,255,255,0.15);
+}
 
-        .amigo:hover, .meta:hover {
-            transform: translateY(-5px);
-            background: rgba(0,255,255,0.2);
-        }
+.button {
+    background-color: #00cfff;
+    color: #000;
+    padding: 8px 15px;
+    margin: 4px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    font-weight: bold;
+}
 
-        .button {
-            background-color: #ff4081;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
+.button:hover { background-color: #00ffe0; }
 
-        .button:hover { background-color: #f50057; }
+footer {
+    margin-top: 15px;
+    font-size: 0.9em;
+    opacity: 0.9;
+    color: #00cfff;
+}
 
-        footer {
-            margin-top: 25px;
-            font-size: 0.9em;
-            opacity: 0.9;
-            color: #00ffe0;
-        }
-
-    </style>
+</style>
 </head>
 <body>
-    <div class="card">
-        <div class="miku"></div>
-        <div class="chibi-miku"></div>
+<div class="card">
+    <div class="miku"></div>
+    <div class="chibi-miku"></div>
 
-        <h1>YAMAZAKI</h1>
-        <p>Oi, pessoal! Aqui é meu cantinho.</p>
-        <p>Tenho <strong>19 anos</strong> e estou compartilhando um pouco das minhas vibes!</p>
-        <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
+    <h1>YAMAZAKI</h1>
+    <p>Oi, pessoal! Aqui é meu cantinho.</p>
+    <p>Tenho <strong>19 anos</strong> e estou compartilhando um pouco das minhas vibes!</p>
+    <p><strong>Motivo do meu sumiço:</strong> Quero continuar me afastando da internet por um tempo, sem previsão de retorno, apenas cuidando de mim e das minhas metas.</p>
+    <p>🕒 Hora atual: <span id="hora">--:--:--</span></p>
 
-        <h2>Minhas paixões 🎶🎮🎭🧠</h2>
-        <ul>
-            <li>🎤 Hatsune Miku & Vocaloid</li>
-            <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
-            <li>🧠 Filosofia, história e conhecimento</li>
-            <li>🎭 Cosplay & cultura japonesa</li>
-            <li>🎵 Música que me inspira (tipo Ado, Deco 27, Rockstars)</li>
-        </ul>
+    <h2>Minhas paixões 🎶🎮🎭🧠</h2>
+    <ul>
+        <li>🎤 Hatsune Miku & Vocaloid</li>
+        <li>🎮 Jogos e gameplay (Fortnite, Genshin, RPGs)</li>
+        <li>🧠 Filosofia, história e conhecimento</li>
+        <li>🎭 Cosplay & cultura japonesa</li>
+        <li>🎵 Música que me inspira (tipo Ado, Deco 27, Rockstars)</li>
+    </ul>
 
-        <h2>Amigos 🫂</h2>
-        <div class="amigos">
-            <div class="amigo">Melissa - Meme Sem Fim</div>
-            <div class="amigo">Dark</div>
-            <div class="amigo">Jujuba</div>
-            <div class="amigo">Front - Ideias Malucas, Jogos Legais</div>
-            <div class="amigo">Clover - Super Aleatório</div>
-            <div class="amigo">Consta</div>
-            <div class="amigo">EPIK</div>
-            <div class="amigo">Ratsonimico</div>
-        </div>
-
-        <h2>Metas & Conquistas 🚀</h2>
-        <div class="metas">
-            <div class="meta completed">Aprender inglês básico ✅</div>
-            <div class="meta">Aprender japonês 🈴</div>
-            <div class="meta completed">Organizar minhas playlists de música 🎵</div>
-            <div class="meta">Fazer cosplay completo de Dandadan 🎭</div>
-            <div class="meta completed">Configurar setup para stream 🎮</div>
-            <div class="meta">Montar rotina de estudos de filosofia e história 📚</div>
-        </div>
-
-        <h2>Links importantes 🌐</h2>
-        <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
-        <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
-
-        <p>Talvez eu volte, talvez diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
-        <footer>— Yamazaki ✨</footer>
+    <h2>Amigos 🫂</h2>
+    <div class="amigos">
+        <div class="amigo">Melissa - Cosplay & Meme Sem Fim</div>
+        <div class="amigo">Dark</div>
+        <div class="amigo">Jujuba</div>
+        <div class="amigo">Front - Ideias Malucas, Jogos Legais</div>
+        <div class="amigo">Clover - Super Aleatório</div>
+        <div class="amigo">Consta</div>
+        <div class="amigo">EPIK</div>
     </div>
 
-    <script>
-        function atualizarHora() {
-            const agora = new Date();
-            const hora = agora.getHours().toString().padStart(2,'0');
-            const min = agora.getMinutes().toString().padStart(2,'0');
-            const seg = agora.getSeconds().toString().padStart(2,'0');
-            document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
-        }
-        setInterval(atualizarHora, 1000);
-        atualizarHora();
-    </script>
+    <h2>Metas & Conquistas 🚀</h2>
+    <div class="metas">
+        <div class="meta completed">Aprender inglês básico ✅</div>
+        <div class="meta">Aprender japonês 🈴</div>
+        <div class="meta completed">Organizar minhas playlists de música 🎵</div>
+        <div class="meta">Fazer cosplay completo de Dandadan 🎭</div>
+        <div class="meta completed">Configurar setup para stream 🎮</div>
+        <div class="meta">Montar rotina de estudos de filosofia e história 📚</div>
+    </div>
+
+    <h2>Links importantes 🌐</h2>
+    <a href="https://www.youtube.com/channel/UC1ILgmgMDht8YR-Y_ShpeVw" class="button">Meu Canal</a>
+    <a href="https://open.spotify.com/playlist/7mASMeAzMap1cEwaC4CUNt?si=d40391aebb034b0c" class="button">Minha Playlist</a>
+
+    <p>Talvez eu volte, talvez diferente… mas com certeza com a mesma energia que sempre curti compartilhar 💫</p>
+    <footer>— Yamazaki ✨</footer>
+</div>
+
+<script>
+function atualizarHora() {
+    const agora = new Date();
+    const hora = agora.getHours().toString().padStart(2,'0');
+    const min = agora.getMinutes().toString().padStart(2,'0');
+    const seg = agora.getSeconds().toString().padStart(2,'0');
+    document.getElementById('hora').textContent = `${hora}:${min}:${seg}`;
+}
+setInterval(atualizarHora, 1000);
+atualizarHora();
+</script>
 </body>
 </html>
