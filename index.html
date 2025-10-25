@@ -1,194 +1,125 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki Live</title>
+<title id="pageTitle">Yamazaki • Vocaloid Universe</title>
 <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
+/* Reset básico */
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
+body {background:#0a0a0a;color:#fff;overflow-x:hidden;}
+a {color:#ff79c6;text-decoration:none;}
+a:hover {text-decoration:underline;transition:0.3s;}
+header {display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
+header h1 {font-family:'Courier New', monospace; color:#ff79c6;text-shadow:0 0 5px #ff79c6;}
+.nav {display:flex;gap:15px;}
+.nav a {padding:5px 10px;border-radius:5px;transition:0.3s;position:relative;}
+.nav a::after {content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#50fa7b;transition:0.3s;transform:translateX(-50%);}
+.nav a:hover::after {width:100%;}
 
-  header {
-    background: linear-gradient(90deg, #ff5f6d, #ffc371);
-    padding: 20px;
-    text-align: center;
-    color: white;
-    position: relative;
-  }
+/* Bandeira do Japão */
+#japanFlag {width:40px;height:40px;animation:flagWave 2s infinite alternate;}
+@keyframes flagWave {0% {transform:rotate(0deg);}50% {transform:rotate(5deg);}100% {transform:rotate(-5deg);}}
 
-  header h1 {
-    font-size: 2.5em;
-  }
+/* Bio */
+.bio {padding:40px 20px;text-align:center;line-height:1.6;animation:fadeIn 1.5s ease-in;}
+.bio h2 {color:#50fa7b; margin-bottom:20px;text-shadow:0 0 5px #50fa7b;}
+.bio p {max-width:800px;margin:0 auto;font-size:1.1em;}
 
-  .bio {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
+/* Amigos */
+.friends {display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:20px;animation:fadeIn 1.5s ease-in;}
+.friend {background:#1f1f1f;padding:20px 25px;border-radius:15px;transition:0.3s;cursor:pointer;box-shadow:0 0 5px #ff79c6;}
+.friend:hover {background:#ff79c6;color:#0a0a0a;transform:scale(1.05);box-shadow:0 0 15px #50fa7b;text-shadow:0 0 5px #0a0a0a;}
 
-  .bio img {
-    width: 30px;
-    vertical-align: middle;
-    animation: wave 1s infinite alternate;
-  }
+/* Agenda */
+.agenda {padding:40px 20px;animation:fadeIn 1.5s ease-in;}
+.agenda h2 {color:#8be9fd;margin-bottom:20px;text-align:center;text-shadow:0 0 5px #8be9fd;}
+.agenda ul {list-style:none;}
+.agenda li {background:#2b2b2b;margin:12px 0;padding:15px 20px;border-radius:12px;transition:0.3s;box-shadow:0 0 5px #8be9fd;}
+.agenda li:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;transform:scale(1.03);}
 
-  @keyframes wave {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(20deg); }
-    100% { transform: rotate(-20deg); }
-  }
+/* Formulário de colaboração */
+.collab {padding:40px 20px;text-align:center;animation:fadeIn 1.5s ease-in;}
+.collab h2 {color:#ffb86c;margin-bottom:20px;text-shadow:0 0 5px #ffb86c;}
+.collab form {display:flex;flex-direction:column;gap:15px;max-width:450px;margin:0 auto;}
+.collab input, .collab textarea, .collab button {padding:12px;border-radius:8px;border:none;font-size:1em;}
+.collab input, .collab textarea {background:#1f1f1f;color:#fff;}
+.collab input:focus, .collab textarea:focus {outline:none;box-shadow:0 0 5px #50fa7b;}
+.collab button {background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;box-shadow:0 0 5px #ff79c6;}
+.collab button:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;}
 
-  .friends {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 20px auto;
-  }
+/* Footer */
+footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
 
-  .friend {
-    background: #fff;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    width: 200px;
-    text-align: center;
-    transition: transform 0.3s, background 0.3s;
-  }
+/* Playlist */
+#playlistContainer {display:flex;flex-direction:column;align-items:center;padding:20px;animation:fadeIn 1.5s ease-in;}
+#playlistContainer iframe {width:350px;height:200px;border:none;border-radius:15px;margin-bottom:10px;}
 
-  .friend:hover {
-    transform: scale(1.05);
-    background: #ffe6e6;
-  }
+/* Animações */
+@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
 
-  .agenda {
-    max-width: 900px;
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-  }
+/* Responsive */
+@media(max-width:768px){
+  .friends{flex-direction:column;align-items:center;}
+  .nav{flex-direction:column;}
+  .bio p{padding:0 10px;}
+  #playlistContainer iframe{width:300px;height:170px;}
+}
 
-  .event {
-    background: #fff;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s, background 0.3s;
-    cursor: pointer;
-  }
-
-  .event:hover {
-    transform: scale(1.05);
-    background: #e0ffe0;
-  }
-
-  iframe {
-    display: block;
-    margin: 30px auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  }
-
-  .collab-button {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: background 0.3s, transform 0.3s;
-  }
-
-  .collab-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-  }
+/* Neon effects adicionais */
+h1, h2, .friend, li, .collab button {transition:all 0.3s ease;}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Yamazaki Live <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Bandeira do Japão"></h1>
+<h1>Yamazaki</h1>
+<img id="japanFlag" src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Bandeira do Japão">
+<nav class="nav">
+<a href="#bio">Sobre</a>
+<a href="#friends">Amigos</a>
+<a href="#agenda">Agenda</a>
+<a href="#collab">Colab</a>
+<a href="#playlistContainer">Playlist</a>
+</nav>
 </header>
 
-<section class="bio">
-  <h2>Sobre Yamazaki</h2>
-  <p>Oi! Meu nome é <strong>Yamazaki</strong>, que em japonês significa “colina da montanha”. Eu adoro cultura japonesa, música, jogos, e claro, fazer lives divertidas pro pessoal que me acompanha. Aqui você encontra minhas lives, eventos e a galera que faz parte da minha jornada!</p>
+<section class="bio" id="bio">
+<h2>Quem sou eu?</h2>
+<p>Oi, meu nome é <strong>Yamazaki</strong> — um nome japonês que significa “punho da colina”. Sou apaixonado por Vocaloid, cultura japonesa e música. Amo criar conteúdo, fazer lives no YouTube e compartilhar minhas playlists com quem curte o mesmo universo. Minha vibe é elegante, mas divertida, com muitos detalhes e referências que só quem é fã entende.</p>
 </section>
 
-<section class="friends">
-  <div class="friend" title="Epic, o mais ruim do Fortnite. Tenta sempre, mas não ajuda muito... hahaha">
-    <h3>Epic</h3>
-  </div>
-  <div class="friend" title="Clover, o cara super aleatório e cheio de frases engraçadas">
-    <h3>Clover</h3>
-  </div>
-  <div class="friend" title="Consta, gente boa pra caralho, sempre tranquilo">
-    <h3>Consta</h3>
-  </div>
-  <div class="friend" title="Front, conversamos pouco mas super da hora">
-    <h3>Front</h3>
-  </div>
-  <div class="friend" title="Jesus de Patinete, trabalha comigo e é super aleatório">
-    <h3>Jesus de Patinete</h3>
-  </div>
-  <div class="friend" title="Pedro49Gamer, música muito boa, gamer de primeira">
-    <h3>Pedro49Gamer</h3>
-  </div>
-  <div class="friend" title="Jujuba, mora em Chique Chique, Bahia, adoro tirar sarro dela">
-    <h3>Jujuba</h3>
-  </div>
+<section class="friends" id="friends">
+<div class="friend" title="Epic: o pior do Fortnite, mas é divertido zoar ele!">Epic</div>
+<div class="friend" title="Clover: aleatório, frases de efeito engraçadas.">Clover</div>
+<div class="friend" title="Consta: gente boa demais, parceria certa.">Consta</div>
+<div class="friend" title="Front: super da hora, conversa rápida e direta.">Front</div>
+<div class="friend" title="Jesus de Patinete: trabalha comigo, muito aleatório.">Jesus de Patinete</div>
+<div class="friend" title="Pedro49Gamer: gamer, música foda no Spotify.">Pedro49Gamer</div>
+<div class="friend" title="Juju: Bahia, zoeira garantida, coração gigante.">Juju</div>
 </section>
 
-<section class="agenda">
-  <div class="event" title="Live de Jogos em Nuvem, leve e divertida">
-    <h4>01/11/2025</h4>
-    <p>🎮 Jogos em Nuvem</p>
-  </div>
-  <div class="event" title="Karaoke virtual com a comunidade">
-    <h4>05/11/2025</h4>
-    <p>🎤 Karaoke Virtual</p>
-  </div>
-  <div class="event" title="Desafio de Enigmas e Quebra-Cabeças">
-    <h4>10/11/2025</h4>
-    <p>🧩 Enigmas e Quebra-Cabeças</p>
-  </div>
-  <div class="event" title="Sessão de Arte Digital">
-    <h4>15/11/2025</h4>
-    <p>🎨 Arte Digital</p>
-  </div>
-  <div class="event" title="Live colaborativa com outro criador">
-    <h4>20/11/2025</h4>
-    <p>🎥 Colaboração</p>
-  </div>
-  <div class="event" title="Retro Gaming: Clássicos dos anos 90">
-    <h4>25/11/2025</h4>
-    <p>🎮 Retro Gaming</p>
-  </div>
-  <div class="event" title="Q&A com a comunidade">
-    <h4>30/11/2025</h4>
-    <p>🎤 Q&A</p>
-  </div>
+<section class="agenda" id="agenda">
+<h2>Próximas Lives</h2>
+<ul>
+<li>25/11/2025 • 18h • Live no YouTube</li>
+<li>27/11/2025 • 20h • Live no YouTube</li>
+<li>29/11/2025 • 17h • Live no YouTube</li>
+<li>02/12/2025 • 19h • Live no YouTube</li>
+<li>05/12/2025 • 18h • Live no YouTube</li>
+<li>07/12/2025 • 21h • Live no YouTube</li>
+<li>10/12/2025 • 20h • Live no YouTube</li>
+<li>12/12/2025 • 18h • Live no YouTube</li>
+<li>15/12/2025 • 19h • Live no YouTube</li>
+<li>18/12/2025 • 20h • Live no YouTube</li>
+<li>21/12/2025 • 17h • Live no YouTube</li>
+<li>23/12/2025 • 18h • Live no YouTube</li>
+<li>26/12/2025 • 20h • Live no YouTube</li>
+<li>28/12/2025 • 19h • Live no YouTube</li>
+<li>31/12/2025 • 21h • Live no YouTube</li>
+</ul>
 </section>
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/live_stream?channel=@YAMAZAKImiku" frameborder="0" allowfullscreen></iframe>
-
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank" class="collab-button">Enviar Pedido de Collab</a>
-
-</body>
-</html>
+<section class="collab" id="collab">
+<h2>Quero colaborar!</h2>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFK
