@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Yamazaki • Vocaloid Universe</title>
+<title id="pageTitle"></title>
 <style>
-/* Reset básico */
+/* Reset e base */
 * {margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
 body {background:#0a0a0a;color:#fff;overflow-x:hidden;}
 a {color:#ff79c6;text-decoration:none;}
 a:hover {text-decoration:underline;transition:0.3s;}
-header {display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
-header h1 {font-family:'Courier New', monospace; color:#ff79c6;text-shadow:0 0 5px #ff79c6;}
+
+/* Header */
+header {display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
+header h1 {font-family:'Courier New',monospace;color:#ff79c6;text-shadow:0 0 5px #ff79c6;font-size:2em;}
 .nav {display:flex;gap:15px;}
 .nav a {padding:5px 10px;border-radius:5px;transition:0.3s;position:relative;}
 .nav a::after {content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#50fa7b;transition:0.3s;transform:translateX(-50%);}
 .nav a:hover::after {width:100%;}
-
-/* Bandeira do Japão */
-#japanFlag {width:40px;height:40px;animation:flagWave 2s infinite alternate;}
-@keyframes flagWave {0% {transform:rotate(0deg);}50% {transform:rotate(5deg);}100% {transform:rotate(-5deg);}}
 
 /* Bio */
 .bio {padding:40px 20px;text-align:center;line-height:1.6;animation:fadeIn 1.5s ease-in;}
@@ -37,8 +35,11 @@ header h1 {font-family:'Courier New', monospace; color:#ff79c6;text-shadow:0 0 5
 .agenda ul {list-style:none;}
 .agenda li {background:#2b2b2b;margin:12px 0;padding:15px 20px;border-radius:12px;transition:0.3s;box-shadow:0 0 5px #8be9fd;}
 .agenda li:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;transform:scale(1.03);}
+.agenda .more {text-align:center;margin-top:10px;}
+.agenda button {padding:10px 20px;border:none;border-radius:8px;background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;}
+.agenda button:hover {background:#50fa7b;box-shadow:0 0 10px #50fa7b;}
 
-/* Formulário de colaboração */
+/* Colaboração */
 .collab {padding:40px 20px;text-align:center;animation:fadeIn 1.5s ease-in;}
 .collab h2 {color:#ffb86c;margin-bottom:20px;text-shadow:0 0 5px #ffb86c;}
 .collab form {display:flex;flex-direction:column;gap:15px;max-width:450px;margin:0 auto;}
@@ -48,15 +49,19 @@ header h1 {font-family:'Courier New', monospace; color:#ff79c6;text-shadow:0 0 5
 .collab button {background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;box-shadow:0 0 5px #ff79c6;}
 .collab button:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;}
 
-/* Footer */
-footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
-
 /* Playlist */
 #playlistContainer {display:flex;flex-direction:column;align-items:center;padding:20px;animation:fadeIn 1.5s ease-in;}
 #playlistContainer iframe {width:350px;height:200px;border:none;border-radius:15px;margin-bottom:10px;}
 
+/* Footer */
+footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
+
 /* Animações */
 @keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+@keyframes titleTyping {
+  0% {content: "";}
+  100% {content: "Yamazaki • Vocaloid Universe";}
+}
 
 /* Responsive */
 @media(max-width:768px){
@@ -65,16 +70,12 @@ footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
   .bio p{padding:0 10px;}
   #playlistContainer iframe{width:300px;height:170px;}
 }
-
-/* Neon effects adicionais */
-h1, h2, .friend, li, .collab button {transition:all 0.3s ease;}
 </style>
 </head>
 <body>
 
 <header>
 <h1>Yamazaki</h1>
-<img id="japanFlag" src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Bandeira do Japão">
 <nav class="nav">
 <a href="#bio">Sobre</a>
 <a href="#friends">Amigos</a>
@@ -86,25 +87,30 @@ h1, h2, .friend, li, .collab button {transition:all 0.3s ease;}
 
 <section class="bio" id="bio">
 <h2>Quem sou eu?</h2>
-<p>Oi, meu nome é <strong>Yamazaki</strong> — um nome japonês que significa “punho da colina”. Sou apaixonado por Vocaloid, cultura japonesa e música. Amo criar conteúdo, fazer lives no YouTube e compartilhar minhas playlists com quem curte o mesmo universo. Minha vibe é elegante, mas divertida, com muitos detalhes e referências que só quem é fã entende.</p>
+<p>Oi! Eu sou <strong>Yamazaki</strong>, um jovem apaixonado por música, Vocaloid, cultura japonesa e tecnologia. Amo criar conteúdo no YouTube, fazer lives e compartilhar minhas playlists. O nome Yamazaki significa “punho da colina”, e sempre achei incrível como ele conecta minha identidade à estética japonesa que tanto admiro. Aqui, você vai conhecer minhas referências, meus amigos, minhas lives e minhas músicas favoritas.</p>
 </section>
 
 <section class="friends" id="friends">
-<div class="friend" title="Epic: o pior do Fortnite, mas é divertido zoar ele!">Epic</div>
-<div class="friend" title="Clover: aleatório, frases de efeito engraçadas.">Clover</div>
-<div class="friend" title="Consta: gente boa demais, parceria certa.">Consta</div>
-<div class="friend" title="Front: super da hora, conversa rápida e direta.">Front</div>
-<div class="friend" title="Jesus de Patinete: trabalha comigo, muito aleatório.">Jesus de Patinete</div>
-<div class="friend" title="Pedro49Gamer: gamer, música foda no Spotify.">Pedro49Gamer</div>
-<div class="friend" title="Juju: Bahia, zoeira garantida, coração gigante.">Juju</div>
+<div class="friend" title="Epic: o mais ruim do Fortnite, mas zoar ele é divertido.">Epic</div>
+<div class="friend" title="Clover: aleatório, frases de efeito engraçadas, risadas garantidas.">Clover</div>
+<div class="friend" title="Consta: gente boa pra caramba, sempre ajuda na zoeira.">Consta</div>
+<div class="friend" title="Front: super da hora, poucas conversas, mas boas vibes.">Front</div>
+<div class="friend" title="Jesus de Patinete: trabalha comigo, super aleatório, sempre divertido.">Jesus de Patinete</div>
+<div class="friend" title="Pedro49Gamer: gamer nato, músicas incríveis no Spotify, jams épicas.">Pedro49Gamer</div>
+<div class="friend" title="Juju: Bahia, zoeira garantida, coração gigante, dá pra tirar a sala da cara dela e rir.">Juju</div>
 </section>
 
 <section class="agenda" id="agenda">
 <h2>Próximas Lives</h2>
-<ul>
+<ul id="shortAgenda">
 <li>25/11/2025 • 18h • Live no YouTube</li>
 <li>27/11/2025 • 20h • Live no YouTube</li>
 <li>29/11/2025 • 17h • Live no YouTube</li>
+</ul>
+<div class="more">
+<button id="showFull">Ver Cronograma Completo</button>
+</div>
+<ul id="fullAgenda" style="display:none;">
 <li>02/12/2025 • 19h • Live no YouTube</li>
 <li>05/12/2025 • 18h • Live no YouTube</li>
 <li>07/12/2025 • 21h • Live no YouTube</li>
@@ -122,4 +128,7 @@ h1, h2, .friend, li, .collab button {transition:all 0.3s ease;}
 
 <section class="collab" id="collab">
 <h2>Quero colaborar!</h2>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFK
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank">
+<input type="text" name="entry.2005620554" placeholder="Seu nome" required>
+<input type="email" name="entry.1045781291" placeholder="Seu e-mail" required>
+<textarea name="entry.839337160" placeholder="Interesse na colaboração" required></textarea>
