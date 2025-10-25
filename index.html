@@ -4,183 +4,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iamazake</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(120deg,#ffdee9,#b5fffc);
-    color: #333;
-  }
-  .container {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  }
-  h1, h2 {
-    text-align: center;
-    color: #222;
-  }
-  .quiz, .final {
-    display: none;
-  }
-  .question {
-    font-size: 18px;
-    margin: 20px 0 10px 0;
-  }
-  .options button {
-    display: block;
-    width: 100%;
-    margin: 5px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background-color: #00b5e2;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .options button:hover {
-    background-color: #007ea7;
-  }
-  .confetti {
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:9999;
-  }
-  .friend-card {
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    text-align: center;
-    flex: 1 1 250px;
-    max-width: 250px;
-  }
-  .friend-card h3 {
-    margin: 10px 0;
-  }
-  .friend-card p {
-    font-size: 14px;
-    color: #555;
-  }
-  .friends {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  iframe {
-    display:none;
-  }
+/* ===================== RESET E FONTES ===================== */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Roboto', sans-serif; background: linear-gradient(135deg,#ffecd2,#fcb69f); color:#222; overflow-x:hidden;}
+.container {max-width:980px; margin:40px auto; padding:30px; background: rgba(255,255,255,0.97); border-radius:25px; box-shadow:0 0 40px rgba(0,0,0,0.25); transition:all 0.5s ease;}
+h1,h2 {text-align:center; font-family:'Press Start 2P', cursive; color:#222; margin-bottom:25px;}
+.quiz,.final {display:none; opacity:0; transition:opacity 0.7s ease;}
+.active {display:block; opacity:1;}
+.question {font-size:22px; margin:25px 0 20px 0; text-align:center;}
+.options button {display:block; width:100%; margin:12px 0; padding:16px; font-size:17px; border:none; border-radius:15px; background:linear-gradient(90deg,#ff7e5f,#feb47b); color:white; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s, background 0.3s;}
+.options button:hover {transform: translateY(-5px); box-shadow:0 12px 20px rgba(0,0,0,0.3); background:linear-gradient(90deg,#feb47b,#ff7e5f);}
+a {color:#ff7e5f; text-decoration:none; font-weight:bold;}
+a:hover {text-decoration:underline;}
+.friend-card {background:#fff; border-radius:18px; padding:20px; margin:15px; box-shadow:0 8px 20px rgba(0,0,0,0.25); text-align:center; flex:1 1 250px; max-width:250px; transition:transform 0.3s, box-shadow 0.3s;}
+.friend-card:hover {transform:translateY(-7px); box-shadow:0 15px 25px rgba(0,0,0,0.3);}
+.friend-card h3 {margin:12px 0; font-family:'Press Start 2P', cursive; color:#ff7e5f;}
+.friend-card p {font-size:14px; color:#555;}
+.friends {display:flex; flex-wrap:wrap; justify-content:center;}
+iframe {display:none;}
+.feedback {font-size:19px; text-align:center; margin-top:25px; font-weight:bold; color:#ff4b5c; min-height:25px; transition:all 0.5s ease;}
+/* ===================== ANIMAÇÕES ===================== */
+@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+button:active {animation:pulse 0.3s;}
+.fade-text {animation:fadeInText 1s ease forwards; opacity:0;}
+@keyframes fadeInText {0%{opacity:0; transform:translateY(10px);}100%{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 <body>
+
 <div class="container">
-  <h1>Bem-vindo ao site do iamazake</h1>
-  <div class="quiz">
-    <h2>Quiz sobre iamazake</h2>
-    <div id="questionBox">
-      <p class="question"></p>
-      <div class="options"></div>
-    </div>
-  </div>
-  <div class="final">
-    <h2>Você acertou!</h2>
-    <p>Olá! Eu sou iamazake, tenho 19 anos, trabalho como garçom e sou fã de Vocaloid, especialmente Hatsune Miku. Também gosto de Megurine Luka e outras músicas da Ado, como Aishite e Rockstar. Faço lives no YouTube e tenho Instagram.</p>
-    <h3>Meus amigos:</h3>
-    <div class="friends">
-      <div class="friend-card"><h3>Epic</h3><p>O cara que mais amassei no Fortnite.</p></div>
-      <div class="friend-card"><h3>Front</h3><p>Um cara legal que conversei poucas vezes, mas achei super da hora.</p></div>
-      <div class="friend-card"><h3>Pedro49Gamer</h3><p>O cara que tem as melhores músicas do Spotify.</p></div>
-      <div class="friend-card"><h3>Jesus de Patinete</h3><p>Um cara super aleatório, meu amigo, trabalha comigo.</p></div>
-      <div class="friend-card"><h3>Consta</h3><p>Uma portuguesa, gente boa pra caralho.</p></div>
-      <div class="friend-card"><h3>ENOZI</h3><p>O Clover, também conhecido como ENOZI.</p></div>
-    </div>
-  </div>
+<h1 class="fade-text">Bem-vindo ao site do iamazake</h1>
+
+<div class="quiz active">
+<h2 class="fade-text">Quiz sobre iamazake</h2>
+<div id="questionBox">
+  <p class="question"></p>
+  <div class="options"></div>
+</div>
+<p class="feedback" id="feedback"></p>
+</div>
+
+<div class="final">
+<h2>Página Final</h2>
+<p>Olá! Eu sou <strong>iamazake</strong>, tenho 19 anos, trabalho como garçom e sou apaixonado pelo Vocaloid, especialmente <strong>Hatsune Miku</strong>. Tenho carinho especial pela Megurine Luka e adoro músicas da Ado como <strong>Aishite</strong>, <strong>Rockstar</strong> e outras. Conheci o Vocaloid antes da pandemia, quando ouvia músicas sem saber que eram cantadas por personagens virtuais, e desde então me apaixonei. Faço lives no YouTube e estou no Instagram.</p>
+<p>Confira meu canal do YouTube: <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">Canal do iamazake</a></p>
+
+<h3>Meus amigos:</h3>
+<div class="friends">
+<div class="friend-card"><h3>Epic</h3><p>O cara que mais amassei no Fortnite.</p></div>
+<div class="friend-card"><h3>Front</h3><p>Um cara legal que conversei poucas vezes, mas achei super da hora.</p></div>
+<div class="friend-card"><h3>Pedro49Gamer</h3><p>O cara que tem as melhores músicas do Spotify.</p></div>
+<div class="friend-card"><h3>Jesus de Patinete</h3><p>Um cara super aleatório, meu amigo, trabalha comigo.</p></div>
+<div class="friend-card"><h3>Consta</h3><p>Uma portuguesa, gente boa pra caralho.</p></div>
+<div class="friend-card"><h3>ENOZI</h3><p>O Clover, também conhecido como ENOZI.</p></div>
+</div>
+</div>
 </div>
 
 <iframe src="https://www.youtube.com/embed/NRQRC_0ZQ00?autoplay=1&loop=1&playlist=NRQRC_0ZQ00&controls=0&mute=0&modestbranding=1" allow="autoplay"></iframe>
 
-<canvas class="confetti" id="confetti"></canvas>
-
 <script>
-  const quiz = [
-    {q:"Qual é meu nick?", o:["iamazake","Yamazaki","iamazaki","Yamazake"], a:0},
-    {q:"Qual personagem Vocaloid eu mais gosto?", o:["Megurine Luka","Hatsune Miku","Kaito","Meiko"], a:1},
-    {q:"Qual carro clássico eu gosto?", o:["Honda Silvia","Toyota Supra","Nissan Skyline","Mazda RX7"], a:0},
-    {q:"Qual país eu mais gosto?", o:["Japão","Coreia","Brasil","EUA"], a:0},
-    {q:"Uma das músicas da Ado que gosto?", o:["Rockstar","GiraGira","Aishite","Todas acima"], a:3},
-  ];
-  let score=0, current=0;
-  const quizDiv = document.querySelector('.quiz');
-  const finalDiv = document.querySelector('.final');
-  const qEl = document.querySelector('.question');
-  const optionsEl = document.querySelector('.options');
-  quizDiv.style.display="block";
+// ===================== VARIÁVEIS DO QUIZ =====================
+const quiz=[
+  {q:"Qual é meu nick?", o:["iamazake","iamazaki","Yamazaki"], a:0},
+  {q:"Qual personagem Vocaloid eu mais gosto?", o:["Hatsune Miku","Megurine Luka","Kaito"], a:0},
+  {q:"Uma das músicas da Ado que gosto?", o:["Aishite","Rockstar","GiraGira"], a:0},
+  {q:"Qual país eu mais gosto?", o:["Japão","Brasil","Coreia"], a:0},
+  {q:"Qual é minha idade?", o:["19","20","18"], a:0}
+];
 
-  function showQuestion(){
-    qEl.textContent=quiz[current].q;
-    optionsEl.innerHTML='';
-    quiz[current].o.forEach((opt,i)=>{
-      const btn=document.createElement('button');
-      btn.textContent=opt;
-      btn.onclick=()=>{checkAnswer(i)};
-      optionsEl.appendChild(btn);
-    });
-  }
+let score=0, current=0;
+const quizDiv=document.querySelector('.quiz');
+const finalDiv=document.querySelector('.final');
+const qEl=document.querySelector('.question');
+const optionsEl=document.querySelector('.options');
+const feedbackEl=document.getElementById('feedback');
 
-  function checkAnswer(i){
-    if(i===quiz[current].a) score++;
-    current++;
-    if(current<quiz.length) showQuestion();
-    else finishQuiz();
-  }
+// ===================== FUNÇÕES DE ANIMAÇÃO =====================
+function fadeIn(element){element.classList.add('active');}
+function fadeOut(element,callback){element.classList.remove('active'); setTimeout(callback,700);}
 
-  function finishQuiz(){
-    if(score>=3){
-      quizDiv.style.display="none";
-      finalDiv.style.display="block";
-      startConfetti();
-    } else {
-      alert("Você não acertou o suficiente. Tente novamente!");
-      current=0; score=0;
-      showQuestion();
-    }
-  }
+// ===================== EXIBE PERGUNTA =====================
+function showQuestion(){
+  qEl.textContent=quiz[current].q;
+  optionsEl.innerHTML='';
+  quiz[current].o.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.textContent=opt;
+    btn.onclick=()=>{checkAnswer(i)};
+    optionsEl.appendChild(btn);
+  });
+}
 
-  showQuestion();
+// ===================== CHECA RESPOSTA =====================
+function checkAnswer(i){
+  if(i===quiz[current].a) score++;
+  current++;
+  if(current<quiz.length){fadeOut(quizDiv,showQuestion);}
+  else{fadeOut(quizDiv,finishQuiz);}
+}
 
-  function startConfetti(){
-    const confetti = document.getElementById('confetti');
-    const ctx = confetti.getContext('2d');
-    confetti.width = window.innerWidth;
-    confetti.height = window.innerHeight;
-    const pieces=[];
-    for(let i=0;i<300;i++){
-      pieces.push({x:Math.random()*confetti.width, y:Math.random()*confetti.height, r:Math.random()*6+4, d:Math.random()*10+5, color:`hsl(${Math.random()*360},100%,50%)`});
-    }
-    function draw(){
-      ctx.clearRect(0,0,confetti.width,confetti.height);
-      pieces.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle=p.color;
-        ctx.fill();
-        p.y+=p.d;
-        if(p.y>confetti.height){p.y=0;p.x=Math.random()*confetti.width;}
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  }
+// ===================== FINALIZA QUIZ =====================
+function finishQuiz(){
+  finalDiv.style.display="block";
+  setTimeout(()=>fadeIn(finalDiv),50);
+  if(score===5) feedbackEl.textContent="Uau! Você me conhece muito bem!";
+  else if(score>=3) feedbackEl.textContent="Tá indo no caminho certo!";
+  else feedbackEl.textContent="Você precisa me conhecer melhor!";
+}
+
+// ===================== INICIA QUIZ =====================
+showQuestion();
 </script>
 </body>
 </html>
