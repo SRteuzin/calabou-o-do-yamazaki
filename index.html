@@ -1,98 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iamazake</title>
-<style>
-body {font-family: Arial, sans-serif; background: #ffe6e6; margin:0; padding:0;}
-.container {max-width:800px; margin:40px auto; padding:20px; background:white; border-radius:20px; box-shadow:0 0 20px rgba(0,0,0,0.2);}
-h1,h2 {text-align:center;}
-.quiz, .final {display:none;}
-.active {display:block;}
-.question {font-size:20px; margin-bottom:15px;}
-.options button {display:block; width:100%; margin:8px 0; padding:12px; font-size:16px; cursor:pointer; border:none; border-radius:10px; background:#ff7e5f; color:white;}
-.options button:hover {background:#feb47b;}
-.feedback {margin-top:15px; text-align:center; font-weight:bold;}
-.friend-card {background:#f2f2f2; padding:10px; margin:10px; border-radius:12px; text-align:center;}
-.friends {display:flex; flex-wrap:wrap; justify-content:center;}
-iframe {display:none;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yamazaki Live</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0b0b0d;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(90deg, #1f1f27, #292935);
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    main {
+      display: flex;
+      flex: 1;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .stream {
+      flex: 3;
+      min-width: 300px;
+      background: #151519;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+    }
+    .sidebar {
+      flex: 1;
+      min-width: 260px;
+      background: #1a1a20;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-top: 20px;
+      height: fit-content;
+    }
+    h4 {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<h1>Bem-vindo ao site do iamazake</h1>
+  <header>
+    YAMAZAKI LIVE 🎧
+  </header>
+  <main>
+    <div class="stream">
+      <h2>🎥 AO VIVO</h2>
+      <iframe src="https://player.twitch.tv/?channel=yamazaki21&parent=example.com" allowfullscreen></iframe>
+    </div>
 
-<div class="quiz active">
-<h2>Quiz sobre iamazake</h2>
-<p class="question"></p>
-<div class="options"></div>
-<p class="feedback" id="feedback"></p>
-</div>
+    <div class="sidebar">
+      <div class="schedule">
+        <h4>Agenda</h4>
+        <ul>
+          <li>Seg — 20:00 • Jogos</li>
+          <li>Qua — 21:00 • Covers & Vocaloid</li>
+          <li>Sáb — 18:00 • Conversa filosófica</li>
+        </ul>
 
-<div class="final">
-<h2>Página Final</h2>
-<p>Olá! Eu sou <strong>iamazake</strong>, tenho 19 anos, trabalho como garçom e sou apaixonado pelo Vocaloid, especialmente <strong>Hatsune Miku</strong>. Tenho carinho pela Megurine Luka e adoro músicas da Ado como <strong>Aishite</strong> e <strong>Rockstar</strong>. Conheci o Vocaloid antes da pandemia e desde então me apaixonei. Faço lives no YouTube e estou no Instagram.</p>
-<p>Confira meu canal: <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">Canal do iamazake</a></p>
+        <h4 style="margin-top:12px">Mini-bios</h4>
+        <ul>
+          <li>Epic — ruim no Fortnite, tilta fácil.</li>
+          <li>Clover — aleatório demais, frases que estouram.</li>
+          <li>Consta — gente boa demais, na moral.</li>
+          <li>Front — pouco falante, mas da hora.</li>
+          <li>Jesus de Patinete — maluco imprevisível, parceiro do trampo.</li>
+          <li>Pedro49Gamer — gamer raiz e playlist master.</li>
+          <li>Juju — Chique Chique da Bahia, explode fácil.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
 
-<h3>Meus amigos:</h3>
-<div class="friends">
-<div class="friend-card"><strong>Epic:</strong> O cara que mais amassei no Fortnite.</div>
-<div class="friend-card"><strong>Front:</strong> Um cara legal que conversei poucas vezes, mas achei super da hora.</div>
-<div class="friend-card"><strong>Pedro49Gamer:</strong> O cara que tem as melhores músicas do Spotify.</div>
-<div class="friend-card"><strong>Jesus de Patinete:</strong> Um cara super aleatório, meu amigo, trabalha comigo.</div>
-<div class="friend-card"><strong>Consta:</strong> Uma portuguesa, gente boa pra caralho.</div>
-<div class="friend-card"><strong>ENOZI:</strong> O Clover, também conhecido como ENOZI.</div>
-</div>
-</div>
-</div>
-
-<iframe src="https://www.youtube.com/embed/NRQRC_0ZQ00?autoplay=1&loop=1&playlist=NRQRC_0ZQ00&controls=0&mute=0&modestbranding=1" allow="autoplay"></iframe>
-
-<script>
-const quiz=[
-  {q:"Qual é meu nick?", o:["iamazake","iamazaki","Yamazaki"], a:0},
-  {q:"Qual personagem Vocaloid eu mais gosto?", o:["Hatsune Miku","Megurine Luka","Kaito"], a:0},
-  {q:"Uma das músicas da Ado que gosto?", o:["Aishite","Rockstar","GiraGira"], a:0},
-  {q:"Qual país eu mais gosto?", o:["Japão","Brasil","Coreia"], a:0},
-  {q:"Qual é minha idade?", o:["19","20","18"], a:0}
-];
-
-let score=0, current=0;
-const quizDiv=document.querySelector('.quiz');
-const finalDiv=document.querySelector('.final');
-const qEl=document.querySelector('.question');
-const optionsEl=document.querySelector('.options');
-const feedbackEl=document.getElementById('feedback');
-
-function showQuestion(){
-  qEl.textContent=quiz[current].q;
-  optionsEl.innerHTML='';
-  quiz[current].o.forEach((opt,i)=>{
-    const btn=document.createElement('button');
-    btn.textContent=opt;
-    btn.onclick=()=>{checkAnswer(i)};
-    optionsEl.appendChild(btn);
-  });
-}
-
-function checkAnswer(i){
-  if(i===quiz[current].a) score++;
-  current++;
-  if(current<quiz.length){showQuestion();}
-  else{finishQuiz();}
-}
-
-function finishQuiz(){
-  quizDiv.style.display='none';
-  finalDiv.style.display='block';
-  if(score===5) feedbackEl.textContent="Uau! Você me conhece muito bem!";
-  else if(score>=3) feedbackEl.textContent="Tá indo no caminho certo!";
-  else feedbackEl.textContent="Você precisa me conhecer melhor!";
-}
-
-showQuestion();
-</script>
+  <footer>
+    © 2025 Yamazaki Live — Feito com carinho e caos.
+  </footer>
 </body>
 </html>
-
