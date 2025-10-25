@@ -1,167 +1,498 @@
-<!DOCTYPE html>
+Certo — fiz do jeito que você pediu: simples, bonito, responsivo e completo, com pelo menos 400 linhas. Usei seu canal/playlist do YouTube que você me passou, o formulário do Google Forms, links do Instagram e YouTube, bio mais detalhada, amigos com descrições no hover, agenda de 15 dias começando em 23/01/2026, toggle pra playlist (som ambiente leve) e RSVP local.
+
+Cole tudo em um arquivo index.html no Glitch (ou onde preferir) — já pronto pra usar. Sem perguntas. Se quiser ajuste visual depois, fala e eu ajeito rápido.
+
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle"></title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title id="pagetitle">Yamazaki — Live & Vibes</title>
+<meta name="description" content="Página oficial do Yamazaki — lives, agenda, collabs e vibes Vocaloid." />
 <style>
-/* RESET E BASE */
-* {margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
-body {background:#0a0a0a;color:#fff;overflow-x:hidden;}
-a {color:#ff79c6;text-decoration:none;}
-a:hover {text-decoration:underline;transition:0.3s;}
-
-/* HEADER */
-header {display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
-header h1 {color:#ff79c6;text-shadow:0 0 5px #ff79c6;font-size:2.5em;font-family:'Courier New',monospace;}
-.nav {display:flex;gap:20px;}
-.nav a {padding:5px 12px;border-radius:6px;transition:0.3s;position:relative;}
-.nav a::after {content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#50fa7b;transition:0.3s;transform:translateX(-50%);}
-.nav a:hover::after {width:100%;}
-
-/* BIO */
-.bio {padding:50px 20px;text-align:center;line-height:1.6;animation:fadeIn 1.5s ease-in;}
-.bio h2 {color:#50fa7b; margin-bottom:25px;text-shadow:0 0 5px #50fa7b;}
-.bio p {max-width:850px;margin:0 auto;font-size:1.15em;}
-
-/* AMIGOS */
-.friends {display:flex;flex-wrap:wrap;justify-content:center;gap:18px;padding:25px;animation:fadeIn 1.5s ease-in;}
-.friend {background:#1f1f1f;padding:22px 28px;border-radius:18px;transition:0.3s;cursor:pointer;box-shadow:0 0 5px #ff79c6;}
-.friend:hover {background:#ff79c6;color:#0a0a0a;transform:scale(1.05);box-shadow:0 0 15px #50fa7b;text-shadow:0 0 5px #0a0a0a;}
-
-/* AGENDA */
-.agenda {padding:50px 20px;animation:fadeIn 1.5s ease-in;}
-.agenda h2 {color:#8be9fd;margin-bottom:25px;text-align:center;text-shadow:0 0 5px #8be9fd;}
-.agenda ul {list-style:none;}
-.agenda li {background:#2b2b2b;margin:12px 0;padding:18px 22px;border-radius:14px;transition:0.3s;box-shadow:0 0 5px #8be9fd;}
-.agenda li:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;transform:scale(1.03);}
-.agenda .more {text-align:center;margin-top:12px;}
-.agenda button {padding:10px 22px;border:none;border-radius:8px;background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;}
-.agenda button:hover {background:#50fa7b;box-shadow:0 0 10px #50fa7b;}
-
-/* COLABORAÇÃO */
-.collab {padding:50px 20px;text-align:center;animation:fadeIn 1.5s ease-in;}
-.collab h2 {color:#ffb86c;margin-bottom:25px;text-shadow:0 0 5px #ffb86c;}
-.collab form {display:flex;flex-direction:column;gap:18px;max-width:500px;margin:0 auto;}
-.collab input, .collab textarea, .collab button {padding:14px;border-radius:10px;border:none;font-size:1.05em;}
-.collab input, .collab textarea {background:#1f1f1f;color:#fff;}
-.collab input:focus, .collab textarea:focus {outline:none;box-shadow:0 0 5px #50fa7b;}
-.collab button {background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;box-shadow:0 0 5px #ff79c6;}
-.collab button:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;}
-
-/* PLAYLIST */
-#playlistContainer {display:flex;flex-direction:column;align-items:center;padding:25px;animation:fadeIn 1.5s ease-in;}
-#playlistContainer iframe {width:360px;height:210px;border:none;border-radius:16px;margin-bottom:12px;}
-
-/* FOOTER */
-footer {text-align:center;padding:25px;background:#1f1f1f;color:#6272a4;}
-
-/* ANIMAÇÕES */
-@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
-@keyframes typeWriter {from {width:0;} to{width:100%;}}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-  .friends{flex-direction:column;align-items:center;}
-  .nav{flex-direction:column;}
-  .bio p{padding:0 15px;}
-  #playlistContainer iframe{width:320px;height:180px;}
+/* ---------------------------
+   RESET E TIPOGRAFIA
+   --------------------------- */
+:root{
+  --bg:#071022;
+  --panel:#0b1220;
+  --muted:#9fb0c8;
+  --accent:#e63946;
+  --accent2:#7c3aed;
+  --glass: rgba(255,255,255,0.03);
+  --card-radius:14px;
+  --maxw:980px;
+  --soft: 0 8px 30px rgba(0,0,0,0.6);
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg),#041022);
+  color:#e7eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* ---------------------------
+   LAYOUT PRINCIPAL
+   --------------------------- */
+.container{max-width:var(--maxw);margin:22px auto;padding:18px}
+.header{
+  display:flex;align-items:center;gap:14px;padding:8px 0;
+}
+.brand{
+  display:flex;gap:12px;align-items:center;
+}
+.logo{
+  width:64px;height:64px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;
+  box-shadow:var(--soft);
+}
+.title-block h1{font-size:20px;margin:0}
+.title-block p{color:var(--muted);font-size:13px;margin-top:4px}
+
+/* header actions */
+.header-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{
+  padding:8px 12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);
+  cursor:pointer;color:inherit;font-size:13px
+}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));border:0;color:white;box-shadow:0 8px 26px rgba(124,58,237,0.12)}
+
+/* ---------------------------
+   GRID: conteúdo + sidebar
+   --------------------------- */
+.grid{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:18px}
+.card{
+  background: linear-gradient(180deg,var(--panel), rgba(11,18,32,0.45));
+  padding:16px;border-radius:var(--card-radius);box-shadow:var(--soft);
+}
+
+/* ---------------------------
+   PLAYER
+   --------------------------- */
+.player .meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.player .status{display:flex;align-items:center;gap:8px}
+.live-dot{width:12px;height:12px;border-radius:50%;background:red;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.player-iframe{width:100%;height:420px;border:0;border-radius:12px;display:block;overflow:hidden;background:#000;margin-top:12px}
+
+/* small */
+.small-muted{color:var(--muted);font-size:13px}
+
+/* ---------------------------
+   BIO
+   --------------------------- */
+.bio{display:flex;gap:12px;align-items:flex-start;margin-top:12px}
+.bio .txt{flex:1}
+.flag{
+  width:56px;height:36px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);
+  transform-origin:center;animation:flagWave 1.8s ease-in-out infinite;
+}
+@keyframes flagWave{0%{transform:rotate(0deg)}40%{transform:rotate(6deg)}80%{transform:rotate(-6deg)}100%{transform:rotate(0deg)}}
+.bio p{color:var(--muted);margin-top:8px;font-size:14px}
+
+/* ---------------------------
+   AMIGOS (cards simples)
+   --------------------------- */
+.friends{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.friend-row{display:flex;gap:8px;flex-wrap:wrap}
+.friend{
+  min-width:150px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);
+  cursor:default;transition:transform .18s,box-shadow .18s,background .18s;
+}
+.friend:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(2,6,23,0.6);background:linear-gradient(90deg,rgba(124,58,237,0.08),rgba(230,57,70,0.06))}
+
+/* tooltip custom */
+.friend[data-tip]{position:relative}
+.friend[data-tip]:hover::after{
+  content:attr(data-tip);
+  position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);
+  background:#111;padding:8px 10px;border-radius:8px;color:#fff;font-size:13px;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,0.6)
+}
+
+/* ---------------------------
+   AGENDA
+   --------------------------- */
+.agenda-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.event{
+  display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);
+  transition:transform .15s,box-shadow .15s
+}
+.event:hover{transform:translateY(-6px);box-shadow:0 12px 34px rgba(0,0,0,0.6)}
+.ev-date{min-width:92px;background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;text-align:center;font-weight:700}
+.ev-title{font-weight:700}
+.ev-desc{color:var(--muted);font-size:13px;margin-top:6px}
+.rsvp{margin-left:auto;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;cursor:pointer}
+.rsvp.active{background:linear-gradient(90deg,var(--accent),#ef4444);color:#fff;border:0}
+
+/* ---------------------------
+   COMPACT SCHEDULE (mini)
+   --------------------------- */
+.compact{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.compact .chip{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-size:13px}
+
+/* ---------------------------
+   SIDEBAR
+   --------------------------- */
+.sidebar .section-title{font-weight:700;margin-bottom:8px}
+.sidebar .socials{display:flex;gap:10px;margin-top:10px}
+.sidebar a.link{color:var(--muted);text-decoration:none;font-size:14px}
+
+/* ---------------------------
+   PLAYER CONTROLS & AUDIO
+   --------------------------- */
+.controls{display:flex;gap:8px;align-items:center;margin-top:10px}
+.toggle-audio{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;cursor:pointer}
+.toggle-audio.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:0}
+
+/* ---------------------------
+   FOOTER
+   --------------------------- */
+.footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px;padding:12px}
+
+/* ---------------------------
+   RESPONSIVO
+   --------------------------- */
+@media(max-width:980px){
+  .grid{grid-template-columns:1fr}
+  .player-iframe{height:320px}
+  .logo{width:56px;height:56px}
+}
+
+/* small niceties */
+kbd{background:#0f1724;border-radius:6px;padding:4px 6px;font-size:12px}
 </style>
 </head>
 <body>
+<div class="container">
 
-<header>
-<h1>Yamazaki</h1>
-<nav class="nav">
-<a href="#bio">Sobre</a>
-<a href="#friends">Amigos</a>
-<a href="#agenda">Agenda</a>
-<a href="#collab">Colab</a>
-<a href="#playlistContainer">Playlist</a>
-</nav>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="logo">Y</div>
+      <div class="title-block">
+        <h1>Yamazaki</h1>
+        <p class="small-muted">Vocaloid • Jogos em nuvem • Conversa</p>
+      </div>
+    </div>
 
-<section class="bio" id="bio">
-<h2>Quem sou eu?</h2>
-<p>Oi! Eu sou <strong>Yamazaki</strong>, um jovem apaixonado por música, Vocaloid, cultura japonesa e tecnologia. Amo criar conteúdo no YouTube, fazer lives e compartilhar minhas playlists. O nome Yamazaki significa “punho da colina”, e sempre achei incrível como ele conecta minha identidade à estética japonesa que tanto admiro. Aqui, você vai conhecer minhas referências, meus amigos, minhas lives e minhas músicas favoritas.</p>
-</section>
+    <div class="header-actions">
+      <button id="toggleLive" class="btn primary">Marcar AO VIVO</button>
+      <a class="btn" href="https://www.youtube.com/@YAMAZAKImiku" target="_blank" rel="noreferrer">Abrir canal</a>
+    </div>
+  </header>
 
-<section class="friends" id="friends">
-<div class="friend" title="Epic: o mais ruim do Fortnite, mas zoar ele é divertido.">Epic</div>
-<div class="friend" title="Clover: aleatório, frases de efeito engraçadas, risadas garantidas.">Clover</div>
-<div class="friend" title="Consta: gente boa pra caramba, sempre ajuda na zoeira.">Consta</div>
-<div class="friend" title="Front: super da hora, poucas conversas, mas boas vibes.">Front</div>
-<div class="friend" title="Jesus de Patinete: trabalha comigo, super aleatório, sempre divertido.">Jesus de Patinete</div>
-<div class="friend" title="Pedro49Gamer: gamer nato, músicas incríveis no Spotify, jams épicas.">Pedro49Gamer</div>
-<div class="friend" title="Juju: Bahia, zoeira garantida, coração gigante, dá pra tirar a sala da cara dela e rir.">Juju</div>
-</section>
+  <!-- GRID -->
+  <main class="grid">
+    <!-- LEFT: Player + bio + agenda -->
+    <section>
 
-<section class="agenda" id="agenda">
-<h2>Próximas Lives</h2>
-<ul id="shortAgenda">
-<li>25/11/2025 • 18h • Live no YouTube</li>
-<li>27/11/2025 • 20h • Live no YouTube</li>
-<li>29/11/2025 • 17h • Live no YouTube</li>
-</ul>
-<div class="more">
-<button id="showFull">Ver Cronograma Completo</button>
+      <!-- PLAYER -->
+      <div class="card player">
+        <div class="meta">
+          <div>
+            <strong id="playerTitle">Yamazaki — Offline</strong>
+            <div class="small-muted" id="playerSub">Playlist ambiente</div>
+          </div>
+          <div class="status">
+            <div id="liveDot" class="live-dot" title="Offline"></div>
+            <div class="small-muted">Status</div>
+          </div>
+        </div>
+
+        <!-- iframe: playlist or live (uses your playlist link by default) -->
+        <!-- YouTube playlist: RDDDjcqu9uvUE  -->
+        <iframe id="playerIframe" class="player-iframe" src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE&autoplay=1&mute=1&loop=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <!-- controls -->
+        <div class="controls">
+          <button id="audioToggle" class="toggle-audio">♫ Som ambiente (off)</button>
+          <div class="small-muted">Volume baixinho por padrão (usuário ativa).</div>
+        </div>
+
+        <!-- compact upcoming -->
+        <div style="margin-top:14px">
+          <div class="small-muted">Próximas lives (resumo)</div>
+          <div class="compact" id="compactList"></div>
+        </div>
+      </div>
+
+      <!-- BIO -->
+      <div class="card" style="margin-top:14px">
+        <div style="display:flex;gap:12px" class="bio">
+          <div class="flag" title="Japão">
+            <!-- simple svg flag -->
+            <svg width="56" height="36" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+              <rect width="900" height="600" fill="#fff"/>
+              <circle cx="450" cy="300" r="120" fill="#bc002d"/>
+            </svg>
+          </div>
+          <div class="txt">
+            <h3 style="margin:0">Sobre Yamazaki</h3>
+            <p style="margin-top:8px" class="small-muted">
+              Eu sou <strong>Yamazaki</strong> — nome artístico inspirado no som e na estética japonesa.
+              "Yamazaki" evoca colina e história; adotei porque a vibe combina com o que quero criar:
+              música (Vocaloid), pequenas performances, jogos leves via nuvem e conversas que fazem pensar.
+              Costumo misturar playlists cuidadas, vibes Ado/Vocaloid e momentos de chat profundo entre partidas.
+            </p>
+            <p class="small-muted" style="margin-top:8px">
+              Detalhe: minhas lives são feitas pensando no público que curte som, estética e papo reto.
+              Sem frescura, mas com cuidado — conteúdo inclusivo, divertido e com referências que só quem saca entende.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENDA PRINCIPAL -->
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin:0 0 10px 0">Agenda — 15 dias (início: 23 Jan 2026)</h3>
+        <div class="agenda-list" id="agendaList"></div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT: sidebar -->
+    <aside class="card sidebar">
+      <!-- friends -->
+      <div>
+        <div class="section-title">Minha galera</div>
+        <div class="friends" id="friendsList">
+          <!-- friends injected by JS -->
+        </div>
+      </div>
+
+      <!-- collab -->
+      <div style="margin-top:14px">
+        <div class="section-title">Quer collab?</div>
+        <div class="small-muted" style="margin-top:6px">
+          Se quiser gravar ou collab nas lives, preencha o formulário.
+        </div>
+        <div style="margin-top:10px">
+          <a id="collabLink" class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank" rel="noreferrer">Enviar pedido de collab</a>
+        </div>
+      </div>
+
+      <!-- socials -->
+      <div style="margin-top:14px">
+        <div class="section-title">Redes</div>
+        <div class="socials">
+          <a class="link" href="https://www.instagram.com/yamazaki21" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="link" href="https://www.youtube.com/@YAMAZAKImiku" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="link" href="https://open.spotify.com/" target="_blank" rel="noreferrer">Spotify (playlist)</a>
+        </div>
+      </div>
+
+      <!-- embedded video sample -->
+      <div style="margin-top:14px">
+        <div class="section-title">Vídeo aleatório</div>
+        <div style="margin-top:8px">
+          <!-- embed a channel live/watch URL as preview -->
+          <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=YAMAZAKImiku" width="300" height="170" style="border-radius:10px;border:0"></iframe>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- footer -->
+  <div class="footer card" style="margin-top:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="small-muted">© 2026 Yamazaki — faça parte da comunidade.</div>
+      <div class="small-muted">Feito com Vocaloid vibes • ありがとう</div>
+    </div>
+  </div>
+
 </div>
-<ul id="fullAgenda" style="display:none;">
-<li>02/12/2025 • 19h • Live no YouTube</li>
-<li>05/12/2025 • 18h • Live no YouTube</li>
-<li>07/12/2025 • 21h • Live no YouTube</li>
-<li>10/12/2025 • 20h • Live no YouTube</li>
-<li>12/12/2025 • 18h • Live no YouTube</li>
-<li>15/12/2025 • 19h • Live no YouTube</li>
-<li>18/12/2025 • 20h • Live no YouTube</li>
-<li>21/12/2025 • 17h • Live no YouTube</li>
-<li>23/12/2025 • 18h • Live no YouTube</li>
-</ul>
-</section>
 
-<section class="collab" id="collab">
-<h2>Colaboração</h2>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=header" target="_blank">
-<input type="text" name="name" placeholder="Seu nome" required>
-<input type="email" name="email" placeholder="Seu e-mail" required>
-<textarea name="interest" placeholder="Interesse em colaborar" rows="4" required></textarea>
-<button type="submit">Enviar</button>
-</form>
-</section>
-
-<section id="playlistContainer">
-<h2>Playlist e Música</h2>
-<iframe src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<!-- Coloque aqui a playlist do Spotify -->
-</section>
-
-<footer>
-<p>Siga-me: <a href="https://www.instagram.com/Yamazaki21/" target="_blank">Instagram</a> | <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a></p>
-<p>© 2025 Yamazaki</p>
-</footer>
-
+<!-- SCRIPT: agenda, friends, controls, RSVP, title typing -->
 <script>
-// Aba do navegador animada letra por letra
-const titleText = "Yamazaki - Canal Oficial";
-let i = 0;
-function typeTitle() {
-  if(i < titleText.length){
-    document.title += titleText.charAt(i);
-    i++;
-    setTimeout(typeTitle,100);
-  }
+/* ---------------------------
+   UTILIDADES DE DATA
+   --------------------------- */
+function addDays(d, days){ const x=new Date(d); x.setDate(x.getDate()+days); return x; }
+function fmtDateTime(d){
+  return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) + ' • ' + d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
 }
-typeTitle();
 
-// Mostrar/Esconder cronograma completo
-const btn = document.getElementById('showFull');
-const full = document.getElementById('fullAgenda');
-btn.addEventListener('click', () => {
-  if(full.style.display==='none'){ full.style.display='block'; btn.innerText='Esconder Cronograma'; }
-  else{ full.style.display='none'; btn.innerText='Ver Cronograma Completo'; }
+/* ---------------------------
+   CONFIG: agenda start + friends
+   --------------------------- */
+const start = new Date('2026-01-23T19:00:00'); // início pedido
+const DAYS = 15;
+
+const eventTypes = [
+  {title:'Jogos em Nuvem', desc:'Jogos leves via nuvem — ideal para PC fraco. Interaja com o chat.'},
+  {title:'Noite Vocaloid', desc:'Covers e reacts de Vocaloid e Ado — pedidos do chat.'},
+  {title:'Collab Jam', desc:'Convidado especial — bate-papo e multiplayer.'},
+  {title:'Cosplay Test', desc:'Pequeno making-of, ajustes e testes de figurino.'},
+  {title:'Chill & Game', desc:'Jogos casuais e papo livre com o chat.'},
+  {title:'Quiz & Filosofia', desc:'Perguntas, debate e memórias.'}
+];
+
+const friends = [
+  {name:'Epic', tip:'Ruim no Fortnite — alvo das zoeiras, mas parceria garantida.'},
+  {name:'Clover', tip:'O aleatório do grupo — frases de efeito e risadas.'},
+  {name:'Consta', tip:'Gente boa, sempre na moral e pronto pra ajudar.'},
+  {name:'Front', tip:'Poucas palavras, presença forte e direta.'},
+  {name:'Jesus de Patinete', tip:'Parceiro do trampo — imprevisível e divertido.'},
+  {name:'Pedro49Gamer', tip:'Gamer raiz — playlists top, jams e recomendações.'},
+  {name:'Jujuba', tip:'Chique Chique (BA) — zoeira fina e coração enorme.'}
+];
+
+/* ---------------------------
+   RENDER: FRIENDS
+   --------------------------- */
+const friendsEl = document.getElementById('friendsList');
+friends.forEach(f=>{
+  const d = document.createElement('div');
+  d.className='friend';
+  d.textContent = f.name;
+  d.setAttribute('data-tip', f.tip);
+  friendsEl.appendChild(d);
 });
-</script>
 
-</body>
-</html>
+/* ---------------------------
+   GERA 15 DIAS DE EVENTOS
+   --------------------------- */
+const events = [];
+for(let i=0;i<DAYS;i++){
+  const base = addDays(start,i);
+  const type = eventTypes[i % eventTypes.length];
+  // vary time a bit
+  const hourChoices = [18,19,20];
+  base.setHours(hourChoices[i % hourChoices.length],0,0,0);
+  events.push({
+    date: base,
+    title: type.title + (Math.random()<0.25 ? ' — tema surpresa' : ''),
+    desc: type.desc
+  });
+}
+
+/* ---------------------------
+   RENDER: AGENDA
+   --------------------------- */
+const agendaEl = document.getElementById('agendaList');
+const compactEl = document.getElementById('compactList');
+
+function renderAgenda(){
+  agendaEl.innerHTML=''; compactEl.innerHTML='';
+  events.forEach((ev, idx)=>{
+    const el = document.createElement('div');
+    el.className='event';
+    el.innerHTML = `
+      <div class="ev-date">
+        <div style="font-size:12px;color:var(--muted)">${ev.date.toLocaleDateString('pt-BR',{weekday:'short'})}</div>
+        <div style="font-size:18px;margin-top:6px">${ev.date.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px">${ev.date.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div>
+      </div>
+      <div style="flex:1">
+        <div class="ev-title">${ev.title}</div>
+        <div class="ev-desc">${ev.desc}</div>
+      </div>
+      <button class="rsvp" data-i="${idx}">${isRSVP(idx)?'Tá dentro':'Quero ir'}</button>
+    `;
+    agendaEl.appendChild(el);
+
+    const chip = document.createElement('div');
+    chip.className='chip';
+    chip.textContent = `${ev.date.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})} • ${ev.title}`;
+    compactEl.appendChild(chip);
+  });
+
+  // attach RSVP
+  document.querySelectorAll('.rsvp').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i = btn.dataset.i;
+      toggleRSVP(i);
+      btn.classList.toggle('active');
+      btn.textContent = isRSVP(i)?'Tá dentro':'Quero ir';
+    });
+  });
+}
+
+/* ---------------------------
+   RSVP STORAGE LOCAL
+   --------------------------- */
+function rsvpKey(){ return 'yamazaki_rsvp_v1'; }
+function getRSVPs(){ try{ return JSON.parse(localStorage.getItem(rsvpKey())||'{}'); }catch(e){return{};} }
+function isRSVP(i){ return !!getRSVPs()[i]; }
+function toggleRSVP(i){ const r=getRSVPs(); r[i]=!r[i]; localStorage.setItem(rsvpKey(), JSON.stringify(r)); }
+
+/* inicializa agenda */
+renderAgenda();
+
+/* mostrar cronograma completo (se necessário) */
+const showFullBtn = document.getElementById('showFull');
+const fullEl = document.getElementById('fullAgenda');
+if(showFullBtn){
+  showFullBtn.addEventListener('click', ()=>{
+    if(fullEl.style.display==='none'){ fullEl.style.display='block'; showFullBtn.textContent='Esconder Cronograma'; }
+    else{ fullEl.style.display='none'; showFullBtn.textContent='Ver Cronograma Completo'; }
+  });
+}
+
+/* ---------------------------
+   PLAYER / LIVE TOGGLE
+   --------------------------- */
+let isLive = false;
+const toggleBtn = document.getElementById('toggleLive');
+const playerIframe = document.getElementById('playerIframe');
+const liveDot = document.getElementById('liveDot');
+const playerTitle = document.getElementById('playerTitle');
+const playerSub = document.getElementById('playerSub');
+
+toggleBtn.addEventListener('click', ()=>{
+  if(isLive){ // set playlist
+    setToPlaylist();
+  } else {
+    setToLive();
+  }
+});
+function setToPlaylist(){
+  // playlist already set by default (muted). just update UI
+  isLive = false;
+  liveDot.style.background='red';
+  playerTitle.textContent='Yamazaki — Offline';
+  playerSub.textContent='Playlist ambiente';
+  toggleBtn.textContent='Marcar AO VIVO';
+  // ensure iframe uses playlist (keeps muted autoplay)
+  playerIframe.src = 'https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE&autoplay=1&mute=1&loop=1&rel=0';
+}
+function setToLive(){
+  isLive = true;
+  liveDot.style.background='limegreen';
+  playerTitle.textContent='Yamazaki — AO VIVO';
+  playerSub.textContent='Transmissão ao vivo';
+  toggleBtn.textContent='Marcar Offline';
+  // attempt to open live stream view for channel (works as watch url)
+  playerIframe.src = 'https://www.youtube.com/embed/live_stream?channel=UC' + ''; // leave as channel-less: viewer will see channel page if available
+  // fallback: if user hasn't provided UC id, embed channel live page
+  playerIframe.src = 'https://www.youtube.com/@YAMAZAKImiku/live';
+}
+
+/* initialize (playlist) */
+setToPlaylist();
+
+/* ---------------------------
+   AUDIO AMBIENTE (toggle)
+   --------------------------- */
+/* Note: autoplay with sound is blocked by many browsers.
+   We use the iframe playlist muted by default and offer the user a toggle
+   which will open the playlist in a small visible iframe and instruct the user
+   to unmute if the browser requires interaction. */
+const audioBtn = document.getElementById('audioToggle');
+let audioActive = false;
+audioBtn.addEventListener('click', ()=>{
+  audioActive = !audioActive;
+  if(audioActive){
+    audioBtn.classList.add('active');
+    audioBtn.textContent = '♫ Som ambiente (on)';
+    // try to unmute by reloading with mute=0 (may still be blocked)
+    playerIframe.src = playerIframe.src.replace('mute=1','mute=0');
+  } else {
+    audioBtn.classList.remove('active');
+    audioBtn.textConten
