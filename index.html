@@ -1,111 +1,723 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz do iamazake</title>
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: linear-gradient(135deg, #d4fc79, #96e6a1); color: #333; margin: 0; padding: 0; }
-    h1 { margin-top: 50px; font-size: 2.5em; color: #6a5acd; text-shadow: 1px 1px 2px #fff; }
-    button { margin: 10px; padding: 12px 25px; font-size: 1em; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
-    button:hover { transform: translateY(-3px); box-shadow: 3px 5px 10px rgba(0,0,0,0.3); }
-    #options button { display: block; width: 250px; margin: 10px auto; background: #ffb6c1; color: #fff; font-weight: bold; }
-    #options button:hover { background: #ff69b4; }
-    #quiz, #result { display: none; margin-top: 30px; animation: fadeIn 0.5s ease-in-out; }
-    #question { font-size: 1.5em; margin-bottom: 20px; color: #4b0082; }
-    #result h2 { font-size: 2em; color: #ff4500; text-shadow: 1px 1px 2px #fff; }
-    #result p { font-size: 1.2em; margin-top: 20px; color: #333; }
-    canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quem sou eu? — Yamazaki</title>
+<style>
+/* ============================
+   Reset e base
+   ============================ */
+:root{
+  --bg1: #0f0c29;
+  --bg2: #302b63;
+  --accent1: #9b5cff;
+  --accent2: #00e5ff;
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --text: #eae7ff;
+  --muted: rgba(234,231,255,0.7);
+  --neon: #7bffea;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  overflow-x:hidden;
+}
+
+/* ============================
+   Layout principal
+   ============================ */
+.container{
+  width:100%;
+  max-width:980px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:16px;
+  padding:28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  position:relative;
+  overflow:hidden;
+}
+
+/* header com brilho neon */
+.header {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:14px;
+}
+.logo {
+  width:72px;
+  height:72px;
+  border-radius:12px;
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 28px rgba(123,92,255,0.18);
+  transform: rotate(-6deg);
+}
+.logo h2{font-size:20px;color:#051;letter-spacing:0.5px}
+.title{
+  flex:1;
+}
+.title h1{
+  font-size:26px;
+  letter-spacing:0.6px;
+  color:var(--text);
+  text-shadow: 0 2px 20px rgba(155,92,255,0.16);
+}
+.title p{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* interface do quiz */
+.card {
+  margin-top:16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;
+  padding:22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* botão principal grande */
+.btn-start{
+  display:inline-block;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#071122;
+  font-weight:700;
+  padding:12px 22px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 8px 30px rgba(123,92,255,0.18);
+}
+.btn-start:hover{ transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.45); }
+
+/* área das perguntas */
+#quiz{display:none}
+#question{
+  font-size:20px;
+  margin-bottom:20px;
+  color:var(--neon);
+  text-shadow: 0 3px 18px rgba(0,229,255,0.07);
+}
+.options { display:flex; flex-direction:column; gap:12px; align-items:center; }
+
+/* botões de opção */
+.option-btn {
+  width:100%;
+  max-width:420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
+  border-radius:12px;
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,0.04);
+  cursor:pointer;
+  color:var(--text);
+  font-weight:700;
+  letter-spacing:0.2px;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.option-btn:hover{ transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+.option-btn small { color:var(--muted); font-weight:600; font-size:12px; }
+
+/* contador e progresso */
+.progress {
+  height:10px;
+  background: rgba(255,255,255,0.03);
+  border-radius:8px;
+  overflow:hidden;
+  margin-top:16px;
+}
+.progress > i {
+  display:block;
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg,var(--accent2),var(--accent1));
+  transition: width .45s cubic-bezier(.22,.9,.28,1);
+}
+
+/* final */
+#result{display:none;padding-top:6px}
+#result h2{
+  font-size:22px;
+  color: #ffd166;
+  text-shadow: 0 4px 22px rgba(255,209,102,0.08);
+}
+.secret {
+  margin-top:12px;
+  color:var(--muted);
+  line-height:1.5;
+  font-size:15px;
+  text-align:left;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);
+}
+
+/* area do player e opções extras */
+.player-wrap{
+  margin-top:14px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.video-frame {
+  width:100%;
+  max-width:560px;
+  border-radius:12px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  transform: translateY(0);
+  transition: transform .2s ease;
+}
+.video-frame iframe{display:block;width:100%;height:315px;border:0}
+
+/* mini gallery de vídeos (se tiver mais links) */
+.video-list {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.video-thumb{
+  width:120px;height:68px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+  cursor:pointer; transition: transform .12s ease;
+}
+.video-thumb img{width:100%;height:100%;object-fit:cover}
+.video-thumb:hover{ transform: translateY(-6px) }
+
+/* footer / instruções */
+.note {
+  margin-top:14px;
+  color:var(--muted);
+  font-size:13px;
+  text-align:center;
+}
+
+/* confetti canvas: ocupa tudo */
+canvas#confetti {
+  position:fixed;
+  left:0;top:0;pointer-events:none;
+  z-index:9999;
+}
+
+/* responsividade */
+@media (max-width:760px){
+  .video-frame iframe{height:200px}
+  .video-thumb{width:96px;height:56px}
+  .option-btn{max-width:100%}
+  .container{padding:18px}
+}
+
+/* ============================
+   Extras visuais (neon lines)
+   ============================ */
+.decor-top{
+  position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+  background:radial-gradient(circle at 20% 20%, rgba(123,92,255,0.18), transparent 20%),
+             radial-gradient(circle at 80% 80%, rgba(0,229,255,0.12), transparent 20%);
+  filter: blur(30px); transform: rotate(18deg);
+  pointer-events:none;
+}
+.decor-bottom{
+  position:absolute;left:-140px;bottom:-120px;width:380px;height:380px;
+  background:radial-gradient(circle at 20% 20%, rgba(255,92,150,0.09), transparent 25%),
+             radial-gradient(circle at 80% 80%, rgba(155,255,200,0.06), transparent 20%);
+  filter: blur(32px);
+  pointer-events:none;
+}
+
+/* pequena animação pulsante no título */
+.pulse {
+  display:inline-block;
+  animation: pulseGlow 2.8s infinite;
+}
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 10px rgba(123,92,255,0.08); transform: translateY(0); }
+  50% { text-shadow: 0 0 30px rgba(0,229,255,0.12); transform: translateY(-2px); }
+  100% { text-shadow: 0 0 10px rgba(123,92,255,0.08); transform: translateY(0); }
+}
+
+/* botão reiniciar */
+.btn-retry{
+  display:inline-block;
+  background:transparent;
+  color:var(--muted);
+  border:1px dashed rgba(255,255,255,0.06);
+  padding:8px 14px;border-radius:10px;cursor:pointer;margin-left:8px;
+}
+.btn-retry:hover{ color:var(--text); border-style:solid }
+
+/* fim do CSS grande e caprichado */
+</style>
 </head>
 <body>
+<div class="container" role="main" aria-labelledby="main-title">
+  <div class="decor-top" aria-hidden="true"></div>
+  <div class="decor-bottom" aria-hidden="true"></div>
 
-<h1>Quem é o iamazake?</h1>
-<button onclick="startQuiz()">Começar Quiz</button>
+  <div class="header">
+    <div class="logo" aria-hidden="true">
+      <!-- ícone estilizado -->
+      <svg width="46" height="46" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="white" opacity="0.06"/>
+        <path d="M6 12h12" stroke="white" stroke-opacity="0.8" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M6 8h12" stroke="white" stroke-opacity="0.6" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="title">
+      <h1 id="main-title"><span class="pulse">Quem sou eu?</span></h1>
+      <p>Responda o quiz — descubra o mundo do Yamazaki (Vocaloid lover ✨)</p>
+    </div>
+    <div style="width:90px;text-align:right">
+      <button class="btn-start" id="startBtn" aria-controls="quiz">Começar</button>
+    </div>
+  </div>
 
-<div id="quiz">
-  <p id="question"></p>
-  <div id="options"></div>
+  <div class="card" role="region" aria-live="polite">
+    <div id="intro">
+      <p style="color:var(--muted);">Você vai ver 5 perguntas. Responda uma por vez, sem sinal imediato de acerto. Se acertar pelo menos <strong>3 de 5</strong>, o conteúdo secreto será desbloqueado com confetti e música!</p>
+      <div style="margin-top:12px;">
+        <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div id="quiz" aria-hidden="true">
+      <p id="question" aria-live="polite">Pergunta aqui</p>
+      <div class="options" id="options" role="list">
+        <!-- botões gerados por JS -->
+      </div>
+
+      <div style="margin-top:16px;text-align:center;">
+        <button id="nextBtn" class="btn-start" style="display:none">Próxima</button>
+        <button id="skipBtn" class="btn-retry" style="display:none">Pular</button>
+      </div>
+    </div>
+
+    <!-- Resultado / Conteúdo secreto -->
+    <div id="result" aria-hidden="true">
+      <h2 id="message">Resultado</h2>
+
+      <div class="secret" id="secretText" role="article">
+        <!-- conteúdo secreto preenchido por JS -->
+      </div>
+
+      <div class="player-wrap" id="playerWrap" aria-hidden="true">
+        <div class="video-frame" id="mainVideoWrap" title="Player de vídeo">
+          <!-- iframe será inserido aqui -->
+        </div>
+
+        <div style="flex:1; min-width:220px;">
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Outros vídeos / opções</div>
+          <div class="video-list" id="videoList" aria-hidden="true">
+            <!-- thumbnails -->
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;text-align:center;">
+        <button id="retryBtn" class="btn-retry">Tentar de novo</button>
+        <button id="shareBtn" class="btn-retry">Copiar link (modo demo)</button>
+      </div>
+
+      <p class="note">Quer trocar músicas/vídeos? Abra o arquivo e edite a lista <code>videoLinks</code> no final do script.</p>
+    </div>
+  </div>
 </div>
 
-<div id="result">
-  <h2 id="message"></h2>
-  <p>Conteúdo secreto: Bem-vindo ao meu mundo! 😎</p>
-</div>
-
+<!-- Canvas para confetti -->
 <canvas id="confetti"></canvas>
 
 <script>
-const questions = [
-  { q: "Qual é o meu nick?", a: ["iamazake", "Yamazaki", "Mateus"], correct: 0 },
-  { q: "Qual personagem Vocaloid eu mais gosto?", a: ["Hatsune Miku", "Megurine Luka", "Meiko"], correct: 0 },
-  { q: "Qual gênero de anime eu curto?", a: ["Shonen", "Seinen", "Shojo"], correct: 1 },
-  { q: "Qual música da Ado eu curto?", a: ["Rockstar", "Usseewa", "Gira Gira"], correct: 0 },
-  { q: "Qual é a minha profissão atual?", a: ["Garçom", "Programador", "Estudante"], correct: 0 }
+/*
+  ============================
+  QUIZ + CONFETTI + VIDEO SETUP
+  ============================
+  Versão: Ultimate (personalizada para Yamazaki)
+  Observações:
+   - Se quiser trocar ou adicionar vídeos, edite `videoLinks` abaixo.
+   - O quiz é 5 perguntas, precisa acertar >=3 para desbloquear.
+   - Conteúdo secreto é gerado conforme os dados do usuário.
+*/
+
+/* ============================
+   Configurações que você pode editar
+   ============================ */
+
+/* Vídeos do YouTube — adicione quantos quiser.
+   Exemplos:
+   - "https://youtu.be/NRQRC_0ZQ00?si=..."
+   - "https://www.youtube.com/watch?v=NRQRC_0ZQ00"
+*/
+const videoLinks = [
+  "https://youtu.be/NRQRC_0ZQ00?si=NQp-N_mB6b9b6vZ3"
 ];
 
-let current = 0;
-let score = 0;
+/* Dados que aparecem no conteúdo secreto (edite se quiser) */
+const profile = {
+  displayName: "Yamazaki", // nome de apresentação
+  realIntro: "Eu sou o Yamazaki, tenho 19 anos, trabalho como garçom. Amo Vocaloid, Ado, e sonho em morar no Japão. Gosto de carros clássicos como o Honda Silvia e curtir músicas como 'Rockstar' da Ado.",
+  age: 19,
+  job: "Garçom",
+  loves: ["Vocaloid", "Ado", "Megurine Luka", "Hatsune Miku"],
+  dream: "Morar no Japão num cantinho tranquilo"
+};
 
-function startQuiz() {
-  document.querySelector('button').style.display = 'none';
-  document.getElementById('quiz').style.display = 'block';
+/* Perguntas do quiz — totalmente focadas em você */
+const questions = [
+  { q: "Qual é o meu nick online?", a: ["iamazake", "Yamazaki", "iamazake_21"], correct: 0 },
+  { q: "Qual personagem Vocaloid eu mais curto?", a: ["Megurine Luka", "Kaito", "Meiko"], correct: 0 },
+  { q: "Qual país eu mais gosto?", a: ["Japão", "Estados Unidos", "Alemanha"], correct: 0 },
+  { q: "Qual carro clássico eu curto?", a: ["Honda Silvia", "Nissan Skyline", "Toyota Supra"], correct: 0 },
+  { q: "Qual música da Ado eu curto?", a: ["Rockstar", "Usseewa", "Gira Gira"], correct: 0 }
+];
+
+/* Quantidade mínima de acertos pra desbloquear */
+const requiredCorrect = 3;
+
+/* ============================
+   Variáveis internas (não editar)
+   ============================ */
+let currentIndex = 0;
+let score = 0;
+let answers = [];
+const totalQuestions = questions.length;
+
+/* ============================
+   Utilitários
+   ============================ */
+function qText(i){ return questions[i].q }
+function qOpts(i){ return questions[i].a }
+function qCorrect(i){ return questions[i].correct }
+
+/* ============================
+   Elementos do DOM
+   ============================ */
+const startBtn = document.getElementById('startBtn');
+const quizWrap = document.getElementById('quiz');
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const progressBar = document.getElementById('progressBar');
+const resultWrap = document.getElementById('result');
+const messageEl = document.getElementById('message');
+const secretTextEl = document.getElementById('secretText');
+const mainVideoWrap = document.getElementById('mainVideoWrap');
+const videoListEl = document.getElementById('videoList');
+const retryBtn = document.getElementById('retryBtn');
+const shareBtn = document.getElementById('shareBtn');
+const confettiCanvas = document.getElementById('confetti');
+
+/* Buttons auxiliares (não exibidos na versão simples) */
+const nextBtn = document.getElementById('nextBtn');
+const skipBtn = document.getElementById('skipBtn');
+
+/* ============================
+   Inicialização
+   ============================ */
+startBtn.addEventListener('click', startQuiz);
+retryBtn.addEventListener('click', resetQuiz);
+shareBtn.addEventListener('click', copyDemoLink);
+
+/* Start */
+function startQuiz(){
+  startBtn.style.display = 'none';
+  quizWrap.style.display = 'block';
+  document.getElementById('intro').style.display = 'none';
+  currentIndex = 0; score = 0; answers = [];
+  updateProgress();
   showQuestion();
 }
 
-function showQuestion() {
-  const q = questions[current];
-  document.getElementById('question').textContent = q.q;
-  const optionsDiv = document.getElementById('options');
-  optionsDiv.innerHTML = '';
-  q.a.forEach((option, i) => {
+/* Mostrar pergunta atual */
+function showQuestion(){
+  const q = questions[currentIndex];
+  questionEl.textContent = q.q;
+  optionsEl.innerHTML = '';
+  q.a.forEach((opt, idx) => {
     const btn = document.createElement('button');
-    btn.textContent = option;
-    btn.onclick = () => checkAnswer(i);
-    optionsDiv.appendChild(btn);
+    btn.className = 'option-btn';
+    btn.type = 'button';
+    btn.setAttribute('role','button');
+    btn.innerHTML = `<span>${opt}</span> <small>Escolher</small>`;
+    btn.onclick = () => selectOption(idx);
+    optionsEl.appendChild(btn);
   });
+  // esconder botões extras
+  nextBtn.style.display = 'none';
+  skipBtn.style.display = 'none';
+  updateProgress();
 }
 
-function checkAnswer(i) {
-  if (i === questions[current].correct) score++;
-  current++;
-  if (current < questions.length) showQuestion();
-  else showResult();
+/* Quando o usuário escolhe uma opção — não mostramos resultado ainda */
+function selectOption(choiceIdx){
+  // registrar resposta (true/false)
+  const correct = (choiceIdx === questions[currentIndex].correct);
+  answers.push({ q: currentIndex, choice: choiceIdx, correct });
+  if(correct) score++;
+  // avançar
+  currentIndex++;
+  if(currentIndex < totalQuestions){
+    showQuestion();
+  } else {
+    showResult();
+  }
 }
 
-function showResult() {
-  document.getElementById('quiz').style.display = 'none';
-  document.getElementById('result').style.display = 'block';
-  const message = score >= 3 ? "Parabéns! Você me conhece bem!" : "Ops! Não acertou o suficiente, tente de novo!";
-  document.getElementById('message').textContent = message;
-  if(score >= 3) startConfetti();
+/* Atualizar barra de progresso */
+function updateProgress(){
+  const percent = Math.round((answers.length / totalQuestions) * 100);
+  progressBar.style.width = percent + '%';
 }
 
-// Confetti simples
-function startConfetti() {
-  const canvas = document.getElementById('confetti');
+/* Mostrar resultado final */
+function showResult(){
+  quizWrap.style.display = 'none';
+  resultWrap.style.display = 'block';
+  const ok = (score >= requiredCorrect);
+  messageEl.textContent = ok ? "Parabéns! Você me conhece bem!" : "Ops! Não acertou o suficiente, tente de novo!";
+  // construir o conteúdo secreto (com estilo)
+  secretTextEl.innerHTML = buildSecretHtml(ok);
+  // montar player com vídeo(s)
+  buildVideoSection();
+  // iniciar confetti se passou
+  if(ok) {
+    startConfetti({ duration: 5000, particleCount: 220 });
+  }
+}
+
+/* Gera o HTML do conteúdo secreto */
+function buildSecretHtml(unlocked){
+  // Quando destrancado, mostra todo o perfil do Yamazaki
+  if(unlocked){
+    return `
+      <strong>Olá! 👋 Eu sou o ${profile.displayName}.</strong>
+      <p style="margin-top:8px">${profile.realIntro}</p>
+      <ul style="margin-top:8px;color:var(--muted);">
+        <li>Idade: ${profile.age} anos</li>
+        <li>Profissão: ${profile.job}</li>
+        <li>Interesses: ${profile.loves.join(' • ')}</li>
+        <li>Sonho: ${profile.dream}</li>
+      </ul>
+      <p style="margin-top:10px;color:var(--muted)">A página também toca uma música/vídeo de fundo — se quiser trocar, edite <code>videoLinks</code> no script.</p>
+    `;
+  } else {
+    return `
+      <strong>Hm... quase lá.</strong>
+      <p style="margin-top:8px;color:var(--muted)">Você acertou ${score} de ${totalQuestions}. Volte e tente de novo para desbloquear a página completa!</p>
+    `;
+  }
+}
+
+/* Constrói a seção de vídeo/player com base em videoLinks */
+function buildVideoSection(){
+  // limpa
+  mainVideoWrap.innerHTML = '';
+  videoListEl.innerHTML = '';
+  if(!videoLinks || videoLinks.length === 0) {
+    mainVideoWrap.innerHTML = '<div style="padding:18px;color:var(--muted)">Nenhum vídeo configurado.</div>';
+    return;
+  }
+
+  // transforma URL do YouTube em embed clean
+  const embedIds = videoLinks.map(url => {
+    try {
+      // lidar com variantes: youtu.be, watch?v=, embed/
+      const u = new URL(url);
+      let id = "";
+      if(u.hostname.includes("youtu.be")){
+        id = u.pathname.slice(1);
+      } else if(u.searchParams.has("v")){
+        id = u.searchParams.get("v");
+      } else if(u.pathname.includes("/embed/")){
+        id = u.pathname.split("/embed/")[1];
+      } else {
+        // fallback simples: pega último segmento
+        id = u.pathname.split("/").pop();
+      }
+      // limpar parâmetros extras (se tiver ?si=)
+      id = id.split('?')[0];
+      return id;
+    } catch(e){
+      // se não for URL válida, retornar null
+      return null;
+    }
+  }).filter(Boolean);
+
+  // inserir o primeiro como player principal
+  const primaryId = embedIds[0];
+  const iframe = document.createElement('iframe');
+  // autoplay e loop (playlist=ID) para tentar contornar políticas; navegadores podem bloquear autoplay até interação do usuário.
+  iframe.src = `https://www.youtube.com/embed/${primaryId}?autoplay=1&mute=0&loop=1&playlist=${primaryId}&rel=0`;
+  iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+  iframe.setAttribute('allowfullscreen','');
+  mainVideoWrap.appendChild(iframe);
+
+  // mini thumbs para demais vídeos
+  embedIds.forEach((id, idx) => {
+    const thumb = document.createElement('div');
+    thumb.className = 'video-thumb';
+    const img = document.createElement('img');
+    img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    img.alt = `Vídeo ${idx+1}`;
+    thumb.appendChild(img);
+    thumb.onclick = () => {
+      // trocar o player principal
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&loop=1&playlist=${id}&rel=0`;
+      // pequeno destaque visual
+      document.querySelectorAll('.video-thumb').forEach(t=>t.style.outline='none');
+      thumb.style.outline = '2px solid rgba(155,92,255,0.25)';
+    };
+    videoListEl.appendChild(thumb);
+  });
+
+  // exibir seção (caso estivesse escondida)
+  document.getElementById('playerWrap').style.display = 'flex';
+}
+
+/* Reiniciar quiz */
+function resetQuiz(){
+  resultWrap.style.display = 'none';
+  startBtn.style.display = 'inline-block';
+  document.getElementById('intro').style.display = 'block';
+  progressBar.style.width = '0%';
+  score = 0; answers = []; currentIndex = 0;
+  // limpar video
+  mainVideoWrap.innerHTML = '';
+  videoListEl.innerHTML = '';
+}
+
+/* Copiar link (função demo) */
+function copyDemoLink(){
+  const demo = location.href;
+  navigator.clipboard?.writeText(demo).then(()=>{
+    alert('Link copiado (modo demo).');
+  }).catch(()=>{ alert('Não foi possível copiar.'); });
+}
+
+/* ============================
+   Confetti - simples, leve e personalizável
+   ============================ */
+function startConfetti(opts = {}) {
+  const defaults = { duration:4000, particleCount:150, spread:60, size:8 };
+  const { duration, particleCount, spread, size } = Object.assign({}, defaults, opts);
+
+  const canvas = confettiCanvas;
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  const confetti = [];
-  for(let i=0; i<200; i++) {
-    confetti.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*6+2, d: Math.random()*10+1, color:`hsl(${Math.random()*360},100%,50%)` });
+
+  const particles = [];
+  const colors = [
+    "hsl(265,92%,70%)", "hsl(188,100%,62%)", "hsl(330,96%,68%)",
+    "hsl(220,90%,65%)", "hsl(160,85%,65%)", "hsl(40,95%,65%)"
+  ];
+
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+
+  for(let i=0;i<particleCount;i++){
+    particles.push({
+      x: rand(0,canvas.width),
+      y: rand(-canvas.height,0),
+      r: rand(size*0.4,size),
+      d: rand(1,6),
+      vx: rand(-spread/10, spread/10),
+      vy: rand(2, 6),
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: rand(-0.4,0.4)
+    });
   }
-  function draw() {
+
+  let start = null;
+  function frame(ts){
+    if(!start) start = ts;
+    const elapsed = ts - start;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    confetti.forEach(p => {
+    particles.forEach(p => {
+      ctx.save();
       ctx.fillStyle = p.color;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fill();
-      p.y += Math.cos(p.d) + 2 + p.r/2;
-      if(p.y>canvas.height) { p.y = -10; p.x = Math.random()*canvas.width; }
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
-</script>
+      // desenha retângulo inclinado para efeito confetti
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.tilt);
+      ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*0.6);
+      ctx.restore();
 
+      p.x += p.vx + Math.sin(elapsed/600 + p.d);
+      p.y += p.vy;
+      p.tilt += 0.02;
+
+      if(p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = rand(0, canvas.width);
+      }
+    });
+    if(elapsed < duration) {
+      requestAnimationFrame(frame);
+    } else {
+      // limpa depois
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+  }
+  requestAnimationFrame(frame);
+
+  // ajustar onresize
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }, {passive:true});
+}
+
+/* ============================
+   Inicializa mini-thumbs de vídeos (se tiver) ao carregar a página
+   ============================ */
+(function initThumbs(){
+  // mostra mini-thumbs invisíveis apenas na área final — nada aqui por agora
+})();
+
+/* ============================
+   Pequena proteção para tocar autoplay: se o navegador bloquear
+   tentamos ativar som após interação (clicar Start)
+   ============================ */
+document.addEventListener('visibilitychange', () => {
+  // se usuário voltar à aba e o resultado já estiver mostrado com vídeo, nada a fazer por enquanto
+});
+
+/* ============================
+   Pequeno enhancer: teclas rápidas
+   ============================ */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === "Enter" && startBtn.style.display !== 'none'){
+    startBtn.click();
+  }
+  if(e.key === "r" || e.key === "R"){
+    // recomeçar
+    if(resultWrap.style.display !== 'none') resetQuiz();
+  }
+});
+
+/* ============================
+   Polimento final: se quiser, auto-start quando colar (descomente)
+   ============================ */
+// startQuiz();
+
+</script>
 </body>
 </html>
