@@ -5,70 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle"></title>
 <style>
-/* Reset e base */
+/* RESET E BASE */
 * {margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
 body {background:#0a0a0a;color:#fff;overflow-x:hidden;}
 a {color:#ff79c6;text-decoration:none;}
 a:hover {text-decoration:underline;transition:0.3s;}
 
-/* Header */
-header {display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
-header h1 {font-family:'Courier New',monospace;color:#ff79c6;text-shadow:0 0 5px #ff79c6;font-size:2em;}
-.nav {display:flex;gap:15px;}
-.nav a {padding:5px 10px;border-radius:5px;transition:0.3s;position:relative;}
+/* HEADER */
+header {display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(90deg,#1f1f1f,#2b2b2b);position:sticky;top:0;z-index:999;}
+header h1 {color:#ff79c6;text-shadow:0 0 5px #ff79c6;font-size:2.5em;font-family:'Courier New',monospace;}
+.nav {display:flex;gap:20px;}
+.nav a {padding:5px 12px;border-radius:6px;transition:0.3s;position:relative;}
 .nav a::after {content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#50fa7b;transition:0.3s;transform:translateX(-50%);}
 .nav a:hover::after {width:100%;}
 
-/* Bio */
-.bio {padding:40px 20px;text-align:center;line-height:1.6;animation:fadeIn 1.5s ease-in;}
-.bio h2 {color:#50fa7b; margin-bottom:20px;text-shadow:0 0 5px #50fa7b;}
-.bio p {max-width:800px;margin:0 auto;font-size:1.1em;}
+/* BIO */
+.bio {padding:50px 20px;text-align:center;line-height:1.6;animation:fadeIn 1.5s ease-in;}
+.bio h2 {color:#50fa7b; margin-bottom:25px;text-shadow:0 0 5px #50fa7b;}
+.bio p {max-width:850px;margin:0 auto;font-size:1.15em;}
 
-/* Amigos */
-.friends {display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:20px;animation:fadeIn 1.5s ease-in;}
-.friend {background:#1f1f1f;padding:20px 25px;border-radius:15px;transition:0.3s;cursor:pointer;box-shadow:0 0 5px #ff79c6;}
+/* AMIGOS */
+.friends {display:flex;flex-wrap:wrap;justify-content:center;gap:18px;padding:25px;animation:fadeIn 1.5s ease-in;}
+.friend {background:#1f1f1f;padding:22px 28px;border-radius:18px;transition:0.3s;cursor:pointer;box-shadow:0 0 5px #ff79c6;}
 .friend:hover {background:#ff79c6;color:#0a0a0a;transform:scale(1.05);box-shadow:0 0 15px #50fa7b;text-shadow:0 0 5px #0a0a0a;}
 
-/* Agenda */
-.agenda {padding:40px 20px;animation:fadeIn 1.5s ease-in;}
-.agenda h2 {color:#8be9fd;margin-bottom:20px;text-align:center;text-shadow:0 0 5px #8be9fd;}
+/* AGENDA */
+.agenda {padding:50px 20px;animation:fadeIn 1.5s ease-in;}
+.agenda h2 {color:#8be9fd;margin-bottom:25px;text-align:center;text-shadow:0 0 5px #8be9fd;}
 .agenda ul {list-style:none;}
-.agenda li {background:#2b2b2b;margin:12px 0;padding:15px 20px;border-radius:12px;transition:0.3s;box-shadow:0 0 5px #8be9fd;}
+.agenda li {background:#2b2b2b;margin:12px 0;padding:18px 22px;border-radius:14px;transition:0.3s;box-shadow:0 0 5px #8be9fd;}
 .agenda li:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;transform:scale(1.03);}
-.agenda .more {text-align:center;margin-top:10px;}
-.agenda button {padding:10px 20px;border:none;border-radius:8px;background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;}
+.agenda .more {text-align:center;margin-top:12px;}
+.agenda button {padding:10px 22px;border:none;border-radius:8px;background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;}
 .agenda button:hover {background:#50fa7b;box-shadow:0 0 10px #50fa7b;}
 
-/* Colaboração */
-.collab {padding:40px 20px;text-align:center;animation:fadeIn 1.5s ease-in;}
-.collab h2 {color:#ffb86c;margin-bottom:20px;text-shadow:0 0 5px #ffb86c;}
-.collab form {display:flex;flex-direction:column;gap:15px;max-width:450px;margin:0 auto;}
-.collab input, .collab textarea, .collab button {padding:12px;border-radius:8px;border:none;font-size:1em;}
+/* COLABORAÇÃO */
+.collab {padding:50px 20px;text-align:center;animation:fadeIn 1.5s ease-in;}
+.collab h2 {color:#ffb86c;margin-bottom:25px;text-shadow:0 0 5px #ffb86c;}
+.collab form {display:flex;flex-direction:column;gap:18px;max-width:500px;margin:0 auto;}
+.collab input, .collab textarea, .collab button {padding:14px;border-radius:10px;border:none;font-size:1.05em;}
 .collab input, .collab textarea {background:#1f1f1f;color:#fff;}
 .collab input:focus, .collab textarea:focus {outline:none;box-shadow:0 0 5px #50fa7b;}
 .collab button {background:#ff79c6;color:#0a0a0a;font-weight:bold;cursor:pointer;transition:0.3s;box-shadow:0 0 5px #ff79c6;}
 .collab button:hover {background:#50fa7b;color:#0a0a0a;box-shadow:0 0 15px #50fa7b;}
 
-/* Playlist */
-#playlistContainer {display:flex;flex-direction:column;align-items:center;padding:20px;animation:fadeIn 1.5s ease-in;}
-#playlistContainer iframe {width:350px;height:200px;border:none;border-radius:15px;margin-bottom:10px;}
+/* PLAYLIST */
+#playlistContainer {display:flex;flex-direction:column;align-items:center;padding:25px;animation:fadeIn 1.5s ease-in;}
+#playlistContainer iframe {width:360px;height:210px;border:none;border-radius:16px;margin-bottom:12px;}
 
-/* Footer */
-footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
+/* FOOTER */
+footer {text-align:center;padding:25px;background:#1f1f1f;color:#6272a4;}
 
-/* Animações */
+/* ANIMAÇÕES */
 @keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
-@keyframes titleTyping {
-  0% {content: "";}
-  100% {content: "Yamazaki • Vocaloid Universe";}
-}
+@keyframes typeWriter {from {width:0;} to{width:100%;}}
 
-/* Responsive */
+/* RESPONSIVO */
 @media(max-width:768px){
   .friends{flex-direction:column;align-items:center;}
   .nav{flex-direction:column;}
-  .bio p{padding:0 10px;}
-  #playlistContainer iframe{width:300px;height:170px;}
+  .bio p{padding:0 15px;}
+  #playlistContainer iframe{width:320px;height:180px;}
 }
 </style>
 </head>
@@ -120,15 +117,51 @@ footer {text-align:center;padding:20px;background:#1f1f1f;color:#6272a4;}
 <li>18/12/2025 • 20h • Live no YouTube</li>
 <li>21/12/2025 • 17h • Live no YouTube</li>
 <li>23/12/2025 • 18h • Live no YouTube</li>
-<li>26/12/2025 • 20h • Live no YouTube</li>
-<li>28/12/2025 • 19h • Live no YouTube</li>
-<li>31/12/2025 • 21h • Live no YouTube</li>
 </ul>
 </section>
 
 <section class="collab" id="collab">
-<h2>Quero colaborar!</h2>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank">
-<input type="text" name="entry.2005620554" placeholder="Seu nome" required>
-<input type="email" name="entry.1045781291" placeholder="Seu e-mail" required>
-<textarea name="entry.839337160" placeholder="Interesse na colaboração" required></textarea>
+<h2>Colaboração</h2>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=header" target="_blank">
+<input type="text" name="name" placeholder="Seu nome" required>
+<input type="email" name="email" placeholder="Seu e-mail" required>
+<textarea name="interest" placeholder="Interesse em colaborar" rows="4" required></textarea>
+<button type="submit">Enviar</button>
+</form>
+</section>
+
+<section id="playlistContainer">
+<h2>Playlist e Música</h2>
+<iframe src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Coloque aqui a playlist do Spotify -->
+</section>
+
+<footer>
+<p>Siga-me: <a href="https://www.instagram.com/Yamazaki21/" target="_blank">Instagram</a> | <a href="https://www.youtube.com/@YAMAZAKImiku" target="_blank">YouTube</a></p>
+<p>© 2025 Yamazaki</p>
+</footer>
+
+<script>
+// Aba do navegador animada letra por letra
+const titleText = "Yamazaki - Canal Oficial";
+let i = 0;
+function typeTitle() {
+  if(i < titleText.length){
+    document.title += titleText.charAt(i);
+    i++;
+    setTimeout(typeTitle,100);
+  }
+}
+typeTitle();
+
+// Mostrar/Esconder cronograma completo
+const btn = document.getElementById('showFull');
+const full = document.getElementById('fullAgenda');
+btn.addEventListener('click', () => {
+  if(full.style.display==='none'){ full.style.display='block'; btn.innerText='Esconder Cronograma'; }
+  else{ full.style.display='none'; btn.innerText='Ver Cronograma Completo'; }
+});
+</script>
+
+</body>
+</html>
