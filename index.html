@@ -3,397 +3,540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - Hub de Conteúdo, Games e Vocaloid</title>
+<title>Hub do Yamazaki | Vocaloid, Games & Lives</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 <style>
 /* ========================================================================= */
-/* --- 1. VARIÁVEIS & RESET (Tema: Ciano Neon) --- */
+/* --- 1. VARIÁVEIS, RESET & TEMA "VIDRO NEON" --- */
 /* ========================================================================= */
 :root {
-    --main-color: #00bcd4; /* Ciano Vibrante/Neon */
-    --bg-dark: #0e0e0e;
-    --card-bg: #1a1a1a;
-    --text-light: #fff;
-    --highlight-box: #222;
+    --main-color: #00bcd4; /* Ciano Neon */
+    --miku-green: #39C5BB; /* Verde/Ciano da Miku para a referência */
+    
+    --bg-dark-glass: rgba(0, 0, 0, 0.25);
+    --card-bg-glass: rgba(26, 26, 26, 0.7); 
+    --border-glass: rgba(255, 255, 255, 0.1); 
+    
+    --text-light: #f0f0f0;
+    --text-dark: #111;
     --spotify-green: #1DB954; 
+    
+    /* Fontes */
+    --font-main: 'Inter', 'Arial', sans-serif;
+    --font-tech: 'Share Tech Mono', monospace; 
 }
 
 * { 
     margin:0; 
     padding:0; 
     box-sizing:border-box; 
-    /* Smooth scroll para navegação */
     scroll-behavior: smooth;
 }
 body { 
-    font-family:'Arial',sans-serif; 
-    background:var(--bg-dark); 
-    color:var(--text-light); 
-    line-height:1.6; 
-    box-shadow: inset 0 0 100px rgba(0, 188, 212, 0.05);
+    font-family: var(--font-main); 
+    background: linear-gradient(135deg, #1a1a1a 0%, #0e0e0e 100%);
+    color: var(--text-light); 
+    line-height:1.7; 
+    overflow-x: hidden; 
 }
 
-/* LINKS GERAIS */
-a { 
-    color:var(--main-color); 
-    text-decoration:none; 
-    transition:0.3s; 
-}
-a:hover { 
-    text-decoration:underline; 
-    filter: brightness(1.2); 
+/* EFEITO DE VIDRO FOSCO (Glassmorphism) */
+.glass-effect {
+    background: var(--card-bg-glass);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* ========================================================================= */
-/* --- 2. HEADER & NAVEGAÇÃO --- */
-/* ========================================================================= */
-header {
-  background:var(--card-bg);
-  padding:20px;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.7); 
+/* EFEITO DE SCANLINE (Cyberpunk/Monitor Antigo) */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px
+    );
+    background-size: 100% 3px; 
+    opacity: 0.3;
+    pointer-events: none; 
+    z-index: 9999;
 }
-header h1 { 
-    font-size:2.2rem; 
-    display:inline-block; 
-    color: var(--main-color); 
-    text-shadow: 0 0 8px rgba(0, 188, 212, 0.7); /* GLOW */
+
+
+/* ========================================================================= */
+/* --- 2. LAYOUT DO HUB (PAINEL LATERAL + CONTEÚDO) --- */
+/* ========================================================================= */
+.hub-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
 }
-header .flag { 
-    display:inline-block; 
-    margin-left:10px; 
-    animation:sway 2s infinite alternate; 
+
+/* PAINEL LATERAL (Sidebar) */
+.sidebar {
+    width: 320px; 
+    height: 100vh; 
+    position: sticky; 
+    top: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--border-glass);
+    background: rgba(14, 14, 14, 0.8); 
+    z-index: 1000; 
+}
+.sidebar-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900; 
+    color: var(--main-color);
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+    margin-bottom: 10px;
+}
+.sidebar-header .flag {
+    display: inline-block;
+    animation: sway 2s infinite alternate;
 }
 @keyframes sway { 0%{transform:rotate(-10deg);} 100%{transform:rotate(10deg);} }
 
-nav { display:flex; justify-content:center; gap:15px; margin-top:10px; flex-wrap:wrap; }
-nav a { 
-    text-decoration:none; 
-    color:var(--text-light); 
-    padding:8px 18px; 
-    background:var(--highlight-box); 
-    border-radius:20px; 
-    transition:0.3s; 
-    font-weight: bold;
-}
-nav a:hover { 
-    background:var(--main-color); 
-    color:var(--bg-dark); 
-    transform: scale(1.05);
-}
-
-/* ========================================================================= */
-/* --- 3. CONTEÚDO PRINCIPAL & TÍTULOS --- */
-/* ========================================================================= */
-main { 
-    max-width:1000px; 
-    margin:20px auto; 
-    padding:0 15px; 
-}
-section { margin-bottom:50px; }
-section h2 { 
-    margin-bottom:20px; 
-    border-bottom:2px solid var(--main-color); 
-    display:inline-block; 
-    padding-bottom:8px; 
-    font-size: 1.8rem;
+.sidebar-header p {
+    font-size: 0.95rem;
     color: var(--text-light);
-    transition:0.3s; 
-}
-.detail-box { 
-    background:var(--highlight-box); 
-    padding:15px; 
-    margin-top:20px; 
-    border-radius:8px; 
-    font-size:0.95rem; 
-    border-left: 5px solid var(--main-color); 
-    box-shadow: 0 0 5px rgba(0, 188, 212, 0.2);
+    opacity: 0.8;
 }
 
-/* ========================================================================= */
-/* --- 4. SEÇÃO AMIGOS (Glow Cards) --- */
-/* ========================================================================= */
-.friends { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px; }
-.friend {
-  background:var(--card-bg);
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.6);
-  transition:all 0.4s ease; 
-  border: 1px solid rgba(0, 188, 212, 0.2); 
-}
-
-.friend:hover { 
-    transform: translateY(-8px) scale(1.02); 
-    box-shadow: 
-        0 0 15px rgba(0, 188, 212, 1), /* GLOW FORTE */
-        0 8px 25px rgba(0,0,0,1); 
-    border: 1px solid var(--main-color); 
-}
-.friend h3 { margin-bottom:10px; color:var(--main-color); }
-
-/* ========================================================================= */
-/* --- 5. SEÇÃO AGENDA (Cartões Bonitos) --- */
-/* ========================================================================= */
-.schedule-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 12px;
+/* Navegação do Hub */
+.hub-nav {
     list-style: none;
+    margin: 40px 0;
 }
-.schedule-item {
-    background: var(--highlight-box); 
-    padding: 15px 20px;
+.hub-nav li {
+    margin-bottom: 10px;
+}
+.hub-nav a {
+    display: block;
+    padding: 10px 15px;
     border-radius: 8px;
-    border-left: 6px solid var(--main-color); 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
-.schedule-item:hover {
-    transform: translateX(5px); 
-    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5); 
-}
-.schedule-item .time {
-    color: var(--main-color); 
-}
-.schedule-item .icon {
-    font-size: 1.8rem;
-    color: var(--main-color);
-}
-
-
-/* ========================================================================= */
-/* --- 6. EMBEDS (Live e Playlist) --- */
-/* ========================================================================= */
-iframe { 
-    width:100%; 
-    border:none; 
-    border-radius:10px; 
-    margin-bottom:15px; 
-}
-/* Live do YouTube (Sombra Ciano) */
-#live iframe {
-    height: 480px;
-    box-shadow: 0 0 20px rgba(0, 188, 212, 0.6); 
-    border: 2px solid var(--main-color);
-}
-/* Playlist Spotify (Sombra Verde) */
-.playlist-container iframe { 
-    height: 400px;
-    box-shadow: 0 0 20px rgba(29, 185, 84, 0.6); 
-    border: 2px solid var(--spotify-green);
-}
-
-/* ========================================================================= */
-/* --- 7. SEÇÃO COLABORAÇÃO (Novo Botão) --- */
-/* ========================================================================= */
-.contact-form {
-  background:var(--card-bg);
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(0,0,0,0.8);
-  text-align: center; /* Centraliza o texto e o botão */
-}
-.collab-button {
-    display: inline-block;
-    width: 90%; /* Ocupa a maior parte do espaço */
-    max-width: 500px;
-    padding: 15px 30px;
-    margin-top: 25px;
-    border-radius: 10px;
-    background: var(--main-color); 
-    color: var(--bg-dark); 
-    cursor: pointer; 
-    transition: all 0.3s ease; 
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    border: none;
-    text-align: center;
+.hub-nav a:hover {
+    background: var(--main-color);
+    color: var(--text-dark);
+    transform: translateX(5px);
     box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
 }
 
-.collab-button:hover { 
-    background: #00a3bb; 
-    box-shadow: 0 0 20px rgba(0, 188, 212, 1); /* GLOW MAIS FORTE */
-    transform: translateY(-3px);
+/* RODAPÉ DO PAINEL (Onde o Easter Egg mora) */
+.sidebar-footer {
+    font-size: 0.8rem;
+    opacity: 0.7; 
+    display: flex; /* Alinha o texto e o alho-poró */
+    align-items: center;
+    justify-content: space-between; /* Um de cada lado */
+    padding-top: 20px;
+    border-top: 1px solid var(--border-glass); /* Separador */
+}
+
+/* ### NOVO ### - O EASTER EGG (Alho-Poró Minimalista) */
+.miku-leek {
+    position: relative;
+    width: 10px; /* Largura do talo */
+    height: 30px; /* Altura do talo */
+    background: linear-gradient(to top, #e0f0e0, #ffffff);
+    border-radius: 0 0 3px 3px;
+    transform: rotate(15deg); /* Leve inclinação */
+    margin-right: 10px; /* Espaçamento */
+}
+.miku-leek::before,
+.miku-leek::after {
+    content: "";
+    position: absolute;
+    bottom: 95%; /* Acima do talo */
+    left: 50%;
+    width: 8px; /* Largura da folha */
+    height: 25px; /* Altura da folha */
+    background: linear-gradient(to top, var(--miku-green), #50E3C2); /* Cor da Miku */
+    border-radius: 10px 10px 0 0;
+    transform-origin: bottom center;
+}
+.miku-leek::before {
+    transform: translateX(-50%) rotate(-25deg);
+}
+.miku-leek::after {
+    transform: translateX(-50%) rotate(25deg);
+    bottom: 90%; /* Um pouco mais baixo */
+    height: 22px;
+    background: linear-gradient(to top, var(--miku-green), #45D1B5);
+}
+/* ### FIM DO NOVO CSS ### */
+
+
+/* ÁREA DE CONTEÚDO (Principal) */
+.main-content {
+    flex: 1; 
+    padding: 40px;
+    overflow-y: auto; 
+}
+section {
+    margin-bottom: 60px;
+    animation: fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--main-color);
+    display: inline-block;
+}
+
+/* ========================================================================= */
+/* --- 3. SEÇÕES DE CONTEÚDO (Live, Playlist, Paixões) --- */
+/* ========================================================================= */
+
+iframe {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid var(--border-glass);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* LIVE EM DESTAQUE (COM PULSO NEON) */
+#live iframe {
+    height: 500px; 
+    border: 2px solid var(--main-color);
+    animation: pulseGlow 2.5s infinite alternate;
+}
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    }
+    to {
+        box-shadow: 0 0 35px rgba(0, 188, 212, 1);
+    }
+}
+
+#playlist iframe {
+    height: 400px;
+    border: 2px solid var(--spotify-green);
+    transition: box-shadow 0.3s ease;
+}
+#playlist iframe:hover {
+    box-shadow: 0 0 25px rgba(29, 185, 84, 0.8); 
+}
+
+/* Paixões & Amigos (Cards) */
+.detail-box {
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.friend-card {
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.friend-card:nth-child(1) { animation-delay: 0.1s; }
+.friend-card:nth-child(2) { animation-delay: 0.2s; }
+.friend-card:nth-child(3) { animation-delay: 0.3s; }
+.friend-card:nth-child(4) { animation-delay: 0.4s; }
+.friend-card:nth-child(5) { animation-delay: 0.5s; }
+.friend-card:nth-child(6) { animation-delay: 0.6s; }
+.friend-card:nth-child(7) { animation-delay: 0.7s; }
+
+.friend-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.8);
+    border: 1px solid var(--main-color);
+}
+.friend-card h3 {
+    color: var(--main-color);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: var(--font-tech); 
+    text-transform: uppercase;
+}
+
+/* Agenda */
+.schedule-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+.schedule-item {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--main-color);
+    transition: transform 0.3s ease;
+}
+.schedule-item:hover {
+    transform: translateX(5px);
+}
+.schedule-item .time {
+    font-weight: 700;
+    color: var(--main-color);
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+}
+.schedule-item .icon { font-size: 1.5rem; }
+
+/* Colaboração (Botão Chamativo) */
+.collab-box {
+    text-align: center;
+    padding: 40px;
+}
+.collab-box p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+.collab-button {
+    display: inline-block;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 10px;
+    background: var(--main-color);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    font-weight: 900;
     text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.7);
 }
-
+.collab-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 188, 212, 1);
+    filter: brightness(1.1);
+}
 
 /* ========================================================================= */
-/* --- 8. RESPONSIVIDADE --- */
+/* --- 4. RESPONSIVIDADE (Mobile) --- */
 /* ========================================================================= */
-@media(max-width:768px){
-  .friends { grid-template-columns: 1fr; } 
-  .schedule-list { grid-template-columns: 1fr; } 
-  #live iframe { height: 300px; }
-  .playlist-container iframe { height: 250px; }
-  .collab-button { font-size: 1rem; padding: 12px 20px; }
+@media (max-width: 1024px) {
+    .hub-container {
+        flex-direction: column; 
+    }
+    .sidebar {
+        width: 100%;
+        height: auto; 
+        position: static; 
+        border-right: none;
+        border-bottom: 1px solid var(--border-glass);
+    }
+    .hub-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    .hub-nav li { margin-bottom: 0; }
+    .hub-nav a { padding: 8px 12px; }
+    
+    .main-content {
+        padding: 25px;
+    }
+    #live iframe { height: 300px; }
+    #playlist iframe { height: 300px; }
 }
 
-@media(max-width:600px){
-  header h1 { font-size:1.8rem; }
-  nav a { padding:6px 12px; font-size:0.9rem; }
+@media (max-width: 480px) {
+    .main-content { padding: 15px; }
+    section h2 { font-size: 1.5rem; }
+    .collab-button { font-size: 1rem; width: 100%; }
+    .schedule-list { grid-template-columns: 1fr; }
+    .friend-card h3 { font-size: 1.2rem; }
 }
+
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Yamazaki <span class="flag">🇯🇵</span></h1>
-  <nav>
-    <a href="#about">Sobre</a>
-    <a href="#friends">Amigos</a>
-    <a href="#schedule">Agenda</a>
-    <a href="#playlist">Playlist</a>
-    <a href="#live">Live</a>
-    <a href="#collab">Colaboração</a>
-  </nav>
-</header>
+<div class="hub-container">
 
-<main>
-<section id="about">
-<h2>Sobre Yamazaki: Games & Vocaloid</h2>
-<p>Olá! Meu nome é Mateus e tenho 19 anos. Eu sou um viciado em **Vocaloid**, **Animes** e **Games**. Adotei "Yamazaki" como meu nick porque achei o significado ("colina do campo") lindo e me conecta com a cultura japonesa que tanto amo.</p>
-<p>Aqui você encontra um hub com minhas playlists e lives, focado em conteúdo divertido e cheio de referências do universo Vocaloid e da cultura pop japonesa.</p>
-<div class="detail-box">
-<p>Objetivo: Criar um espaço onde minhas paixões e a comunidade se encontram. Você vai encontrar muita música eletrônica, jogos variados e, claro, Vocaloid!</p>
-</div>
-</section>
+    <aside class="sidebar">
+        <div>
+            <header class="sidebar-header">
+                <h1>Yamazaki <span class="flag">🇯🇵</span></h1>
+                <p>
+                    Olá! Meu nome é Mateus, 19 anos. Um apaixonado por cultura japonesa, games e, acima de tudo, **Vocaloid**.
+                </p>
+            </header>
+            
+            <nav>
+                <ul class="hub-nav">
+                    <li><a href="#live">🔴 Live Atual</a></li>
+                    <li><a href="#playlist">🎧 Playlist (Spotify)</a></li>
+                    <li><a href="#passions">🔥 Minhas Paixões</a></li>
+                    <li><a href="#friends">👥 Amigos</a></li>
+                    <li><a href="#schedule">🗓️ Agenda</a></li>
+                    <li><a href="#collab">🤝 Colaboração</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <footer class="sidebar-footer">
+            <p>Hub de Conteúdo v3.1</p>
+            <div class="miku-leek" title="Hatsune Miku Reference"></div>
+        </footer>
+        </aside>
 
-<section id="friends">
-<h2>Meus Amigos</h2>
-<div class="friends">
-<div class="friend">
-<h3>Epic</h3>
-<p>O mais ruim no Fortnite, adoro trollar ele e ver o tilt, mesmo sabendo que sou eu que perco feio.</p>
-<div class="detail-box">
-<p>Detalhe: Rende boas risadas e memes internos. Sempre tem zoeira garantida nas partidas.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Clover</h3>
-<p>Super aleatório, sempre solta frases de efeito engraçadas.</p>
-<div class="detail-box">
-<p>Detalhe: Piadas inesperadas que animam qualquer conversa e deixam o chat ativo.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Consta</h3>
-<p>Gente boa demais, tranquilo e confiável.</p>
-<div class="detail-box">
-<p>Detalhe: Sempre disponível, paciente e ótimo para conversas longas e apoio moral.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Front</h3>
-<p>Conversei pouco, mas parece super da hora.</p>
-<div class="detail-box">
-<p>Detalhe: Simples, direto e agradável de lidar.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Jesus de Patinete</h3>
-<p>Trabalha comigo, aleatório e divertido.</p>
-<div class="detail-box">
-<p>Detalhe: Sempre tem piadas inesperadas ou situações engraçadas no trabalho.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Pedro49Gamer</h3>
-<p>Gamer de verdade, com playlists incríveis no Spotify.</p>
-<div class="detail-box">
-<p>Detalhe: Participamos de matches de música, ele sempre indica faixas top de qualidade.</p>
-</div>
-</div>
-
-<div class="friend">
-<h3>Jujuba</h3>
-<p>Mora em Chique Chique, Bahia. Pessoa divertida e confiável.</p>
-<div class="detail-box">
-<p>Detalhe: Gosto de brincar com ela sobre sua cidade, sempre rende risadas. Super parceira!</p>
-</div>
-</div>
-</div>
-</section>
-
-<section id="schedule">
-<h2>Agenda de Lives (3 meses)</h2>
-<ul class="schedule-list">
-    <li class="schedule-item">
-        <span class="date">01/11</span>
-        <span class="time">18h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">05/11</span>
-        <span class="time">20h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">10/11</span>
-        <span class="time">19h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">15/11</span>
-        <span class="time">18h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">20/11</span>
-        <span class="time">21h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">25/11</span>
-        <span class="time">20h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">30/11</span>
-        <span class="time">19h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">05/12</span>
-        <span class="time">18h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">10/12</span>
-        <span class="time">20h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">15/12</span>
-        <span class="time">19h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">20/12</span>
-        <span class="time">18h00</span>
-        <span class="icon">💻</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">25/12</span>
-        <span class="time">21h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">30/12</span>
-        <span class="time">20h00</span>
-        <span class="icon">💻</span>
-    </li>
+    <main class="main-content">
     
+        <section id="live">
+            <h2>Live Atual</h2>
+            <iframe width="100%" 
+                src="https://www.youtube.com/embed/5kexM0d12jY?autoplay=1&mute=1" 
+                allowfullscreen>
+            </iframe>
+        </section>
+
+        <section id="playlist">
+            <h2>Minha Playlist (Spotify)</h2>
+            <iframe 
+                src="http://googleusercontent.com/spotify.com/2" 
+                width="100%" 
+                frameborder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+            <p style="text-align: center; margin-top: 15px;">
+                <a href="https://spotify.link/9zcuue6zLXb" target="_blank">Abrir Playlist no Spotify</a>
+            </p>
+        </section>
+
+        <section id="passions">
+            <h2>Minhas Paixões</h2>
+            <p>Eu adotei "Yamazaki" como meu nick porque achei o significado ("colina do campo") lindo e me conecta com a cultura que amo. Meu foco é sempre em conteúdo divertido e cheio de referências do universo Vocaloid e da cultura pop japonesa.</p>
+            <div class="detail-box glass-effect">
+                <p><strong>Objetivo:</strong> Criar um espaço onde minhas paixões e a comunidade se encontram. Você vai encontrar muita música eletrônica, jogos variados e, claro, Vocaloid!</p>
+            </div>
+        </section>
+
+        <section id="friends">
+            <h2>Meus Amigos</h2>
+            <div class="friends-grid">
+                
+                <div class="friend-card glass-effect">
+                    <h3>Epic</h3>
+                    <p>O mais ruim no Fortnite, adoro trollar ele e ver o tilt.</p>
+                </div>
+
+                <div class="friend-card glass-effect">
+                    <h3>Clover</h3>
+                    <p>Super aleatório, sempre solta frases de efeito engraçadas.</p>
+                </div>
+
+                <div class="friend-card glass-effect">
+                    <h3>Consta</h3>
+                    <p>Gente boa demais, tranquilo e confiável. Ótimo para apoio moral.</p>
+                </div>
+
+                <div class="friend-card glass-effect">
+                    <h3>Front</h3>
+                    <p>Conversei pouco, mas parece super da hora. Simples e direto.</p>
+                </div>
+
+                <div class="friend-card glass-effect">
+                    <h3>Jesus de Patinete</h3>
+                    <p>Trabalha comigo. Aleatório, divertido e cheio de piadas.</p>
+                </div>
+
+                <div class="friend-card glass-effect">
+                    <h3>Pedro49Gamer</h3>
+                    <p>Gamer de verdade, com playlists incríveis no Spotify.</p>
+                </div>
+                
+                <div class="friend-card glass-effect">
+                    <h3>Jujuba</h3>
+                    <p>Mora em Chique Chique, Bahia. Super divertida e parceira!</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="schedule">
+            <h2>Agenda de Lives</h2>
+            <ul class="schedule-list">
+                <li class="schedule-item glass-effect">
+                    <span class="date">01/11</span>
+                    <span class="time">18h00</span>
+                    <span class="icon">💻</span>
+                </li>
+                <li class="schedule-item glass-effect">
+                    <span class="date">05/11</span>
+                    <span class="time">20h00</span>
+                    <span class="icon">🎮</span>
+                </li>
+                <li class="schedule-item glass-effect">
+                    <span class="date">10/11</span>
+                    <span class="time">19h00</span>
+                    <span class="icon">💻</span>
+                </li>
+                <li class="schedule-item glass-effect">
+                    <span class="date">15/11</span>
+                    <span class="time">18h00</span>
+                    <span class="icon">🎮</span>
+                </li>
+                <li class="schedule-item glass-effect">
+                    <span class="date">20/11</span>
+                    <span class="time">21h00</span>
+                    <span class="icon">💻</span>
+                </li>
+                <li class="schedule-item glass-effect">
+                    <span class="date">25/11</span>
+                    <span class="time">20h00</span>
+                    <span class="icon">🎮</span>
+                </li>
+                </ul>
+        </section>
+
+        <section id="collab">
+            <h2>Colaboração</h2>
+            <div class="collab-box glass-effect">
+                <p>
+                    Quer fazer uma parceria, uma collab, ou participar de uma live junto? 
+                    Este formulário é essencial para meu controle. Clique abaixo para enviar sua proposta!
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank" class="collab-button">
+                    Preencher Formulário
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
