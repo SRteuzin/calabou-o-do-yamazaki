@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yamazaki - Página Oficial e Hub de Conteúdo</title>
+<title>Yamazaki - Hub de Conteúdo, Games e Vocaloid</title>
 <style>
 /* ========================================================================= */
-/* --- 1. VARIÁVEIS & RESET (Para facilitar a mudança de tema) --- */
+/* --- 1. VARIÁVEIS & RESET (Tema: Ciano Neon) --- */
 /* ========================================================================= */
 :root {
-    /* Ciano Vibrante/Neon - Cor de destaque principal (Mude aqui para trocar o tema!) */
-    --main-color: #00bcd4; 
+    --main-color: #00bcd4; /* Ciano Vibrante/Neon */
     --bg-dark: #0e0e0e;
     --card-bg: #1a1a1a;
     --text-light: #fff;
@@ -22,13 +21,14 @@
     margin:0; 
     padding:0; 
     box-sizing:border-box; 
+    /* Smooth scroll para navegação */
+    scroll-behavior: smooth;
 }
 body { 
     font-family:'Arial',sans-serif; 
     background:var(--bg-dark); 
     color:var(--text-light); 
     line-height:1.6; 
-    /* Adiciona um efeito de sombra sutil na borda do corpo */
     box-shadow: inset 0 0 100px rgba(0, 188, 212, 0.05);
 }
 
@@ -59,7 +59,7 @@ header h1 {
     font-size:2.2rem; 
     display:inline-block; 
     color: var(--main-color); 
-    text-shadow: 0 0 5px rgba(0, 188, 212, 0.7); /* Glow no título */
+    text-shadow: 0 0 8px rgba(0, 188, 212, 0.7); /* GLOW */
 }
 header .flag { 
     display:inline-block; 
@@ -74,7 +74,7 @@ nav a {
     color:var(--text-light); 
     padding:8px 18px; 
     background:var(--highlight-box); 
-    border-radius:20px; /* Borda arredondada para visual moderno */
+    border-radius:20px; 
     transition:0.3s; 
     font-weight: bold;
 }
@@ -102,19 +102,12 @@ section h2 {
     color: var(--text-light);
     transition:0.3s; 
 }
-section h2:hover { 
-    color:var(--main-color); 
-    text-shadow: 0 0 8px rgba(0, 188, 212, 0.7); 
-    cursor:default; /* Mantive o cursor padrão para o título principal */
-}
-
-/* Caixa de Detalhe (About) */
 .detail-box { 
     background:var(--highlight-box); 
     padding:15px; 
     margin-top:20px; 
     border-radius:8px; 
-    font-size:0.9rem; 
+    font-size:0.95rem; 
     border-left: 5px solid var(--main-color); 
     box-shadow: 0 0 5px rgba(0, 188, 212, 0.2);
 }
@@ -129,16 +122,15 @@ section h2:hover {
   border-radius:12px;
   box-shadow:0 2px 8px rgba(0,0,0,0.6);
   transition:all 0.4s ease; 
-  border: 1px solid rgba(0, 188, 212, 0.2); /* Borda sutil */
+  border: 1px solid rgba(0, 188, 212, 0.2); 
 }
 
-/* EFEITO GLOW/VISUAL COLORIDO - O coração do seu pedido */
 .friend:hover { 
     transform: translateY(-8px) scale(1.02); 
     box-shadow: 
         0 0 15px rgba(0, 188, 212, 1), /* GLOW FORTE */
         0 8px 25px rgba(0,0,0,1); 
-    border: 1px solid var(--main-color); /* Borda mais visível no hover */
+    border: 1px solid var(--main-color); 
 }
 .friend h3 { margin-bottom:10px; color:var(--main-color); }
 
@@ -147,7 +139,7 @@ section h2:hover {
 /* ========================================================================= */
 .schedule-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 ou 3 colunas em telas maiores */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 12px;
     list-style: none;
 }
@@ -166,16 +158,8 @@ section h2:hover {
     transform: translateX(5px); 
     box-shadow: 0 0 10px rgba(0, 188, 212, 0.5); 
 }
-.schedule-item span {
-    font-size: 1.1rem;
-    font-weight: bold;
-}
 .schedule-item .time {
     color: var(--main-color); 
-}
-.schedule-item .date {
-    font-size: 0.9rem;
-    opacity: 0.8;
 }
 .schedule-item .icon {
     font-size: 1.8rem;
@@ -191,7 +175,6 @@ iframe {
     border:none; 
     border-radius:10px; 
     margin-bottom:15px; 
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 /* Live do YouTube (Sombra Ciano) */
 #live iframe {
@@ -207,56 +190,51 @@ iframe {
 }
 
 /* ========================================================================= */
-/* --- 7. FORMULÁRIO DE COLABORAÇÃO --- */
+/* --- 7. SEÇÃO COLABORAÇÃO (Novo Botão) --- */
 /* ========================================================================= */
 .contact-form {
   background:var(--card-bg);
   padding:30px;
   border-radius:15px;
   box-shadow:0 0 15px rgba(0,0,0,0.8);
+  text-align: center; /* Centraliza o texto e o botão */
 }
-.contact-form label { display:block; margin-bottom:5px; margin-top:15px; font-weight: bold; }
-.contact-form input, .contact-form textarea {
-  width:100%;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:8px;
-  border:1px solid #555;
-  background:var(--bg-dark);
-  color:var(--text-light);
-  transition: border-color 0.3s;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-    border-color: var(--main-color);
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
-}
-.contact-form button { 
-    width:100%;
-    padding:15px;
-    margin-top:20px;
-    border-radius:8px;
-    background:var(--main-color); 
-    color:var(--bg-dark); 
-    cursor:pointer; 
-    transition:background 0.3s, box-shadow 0.3s; 
+.collab-button {
+    display: inline-block;
+    width: 90%; /* Ocupa a maior parte do espaço */
+    max-width: 500px;
+    padding: 15px 30px;
+    margin-top: 25px;
+    border-radius: 10px;
+    background: var(--main-color); 
+    color: var(--bg-dark); 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
     border: none;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
 }
-.contact-form button:hover { 
-    background:#00a3bb; 
-    box-shadow: 0 0 15px rgba(0, 188, 212, 1); 
+
+.collab-button:hover { 
+    background: #00a3bb; 
+    box-shadow: 0 0 20px rgba(0, 188, 212, 1); /* GLOW MAIS FORTE */
+    transform: translateY(-3px);
+    text-decoration: none;
 }
+
 
 /* ========================================================================= */
 /* --- 8. RESPONSIVIDADE --- */
 /* ========================================================================= */
 @media(max-width:768px){
-  .friends { grid-template-columns: 1fr; } /* Uma coluna no celular */
-  .schedule-list { grid-template-columns: 1fr; } /* Uma coluna no celular */
+  .friends { grid-template-columns: 1fr; } 
+  .schedule-list { grid-template-columns: 1fr; } 
   #live iframe { height: 300px; }
   .playlist-container iframe { height: 250px; }
+  .collab-button { font-size: 1rem; padding: 12px 20px; }
 }
 
 @media(max-width:600px){
@@ -281,11 +259,11 @@ iframe {
 
 <main>
 <section id="about">
-<h2>Sobre Yamazaki</h2>
-<p>Olá! Meu nome é Mateus e tenho 19 anos. Sou apaixonado por cultura japonesa, animes, Vocaloid e games. Eu adotei "Yamazaki" como meu nick porque achei o significado ("colina do campo") lindo e me conecta com a cultura que amo.</p>
-<p>Faço lives no YouTube e compartilho minhas playlists. O foco é sempre em conteúdo divertido e cheio de referências, buscando inovação sem perder a simplicidade visual.</p>
+<h2>Sobre Yamazaki: Games & Vocaloid</h2>
+<p>Olá! Meu nome é Mateus e tenho 19 anos. Eu sou um viciado em **Vocaloid**, **Animes** e **Games**. Adotei "Yamazaki" como meu nick porque achei o significado ("colina do campo") lindo e me conecta com a cultura japonesa que tanto amo.</p>
+<p>Aqui você encontra um hub com minhas playlists e lives, focado em conteúdo divertido e cheio de referências do universo Vocaloid e da cultura pop japonesa.</p>
 <div class="detail-box">
-<p>Objetivo: Criar um espaço onde entretenimento e conhecimento se encontram. Quem visita minha página vai encontrar música, games e cultura pop japonesa. Minha missão é compartilhar as paixões que me movem!</p>
+<p>Objetivo: Criar um espaço onde minhas paixões e a comunidade se encontram. Você vai encontrar muita música eletrônica, jogos variados e, claro, Vocaloid!</p>
 </div>
 </section>
 
@@ -341,7 +319,7 @@ iframe {
 </div>
 
 <div class="friend">
-<h3>Juju</h3>
+<h3>Jujuba</h3>
 <p>Mora em Chique Chique, Bahia. Pessoa divertida e confiável.</p>
 <div class="detail-box">
 <p>Detalhe: Gosto de brincar com ela sobre sua cidade, sempre rende risadas. Super parceira!</p>
@@ -418,66 +396,4 @@ iframe {
         <span class="time">20h00</span>
         <span class="icon">💻</span>
     </li>
-    <li class="schedule-item">
-        <span class="date">04/01</span>
-        <span class="time">19h00</span>
-        <span class="icon">🎮</span>
-    </li>
-    <li class="schedule-item">
-        <span class="date">10/01</span>
-        <span class="time">18h00</span>
-        <span class="icon">💻</span>
-    </li>
-</ul>
-<p style="margin-top: 20px;">Para ver a agenda completa e atualizada, <a href="#">clique aqui</a>.</p>
-</section>
-
-<section id="playlist">
-<h2>Minha Playlist (Spotify)</h2>
-<div class="playlist-container">
-<iframe 
-    src="https://open.spotify.com/embed/playlist/582XpQ8Wd8e2DkY77T7wG7?utm_source=generator" 
-    width="100%" 
-    height="400" 
-    frameborder="0" 
-    allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-</iframe>
-<p style="text-align: center; margin-top: 15px;">
-    🎧 Curta o som! <a href="https://spotify.link/seRNFrwzLXb" target="_blank">Abrir Playlist no Spotify</a>
-</p>
-</div>
-</section>
-
-<section id="live">
-<h2>Minha Live Atual</h2>
-<iframe width="100%" height="480" 
-    src="https://www.youtube.com/embed/5kexM0d12jY?autoplay=1&mute=1" 
-    allowfullscreen>
-</iframe>
-<p style="text-align: center; margin-top: 15px;">
-    Assista agora! O vídeo começa mudo para sua comodidade.
-</p>
-</section>
-
-<section id="collab">
-<h2>Colaboração</h2>
-<div class="contact-form">
-<p style="margin-bottom: 20px;">Interessado em fazer parceria ou colaborar em algum projeto? Preencha o formulário abaixo e entraremos em contato!</p>
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/formResponse" method="post" target="_blank">
-<label for="name">Seu Nome / Nick</label>
-<input type="text" id="name" name="entry.2005620554" required>
-<label for="email">Seu E-mail</label>
-<input type="email" id="email" name="entry.1045781291" required>
-<label for="message">Descreva seu Interesse (Ideia de Collab, Parceria, etc.)</label>
-<textarea id="message" name="entry.839337160" rows="6" required></textarea>
-<button type="submit">Enviar Proposta de Colaboração</button>
-</form>
-</div>
-</section>
-
-</main>
-</body>
-  </html>
-  
+    
