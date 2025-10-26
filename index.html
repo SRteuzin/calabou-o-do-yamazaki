@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yamazaki - Página Oficial</title>
 <style>
-/* RESET E ESTILO BASE */
+/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Arial', sans-serif; background:#f0f0f0; color:#222; line-height:1.6; }
+body { font-family:'Arial',sans-serif; background:#0e0e0e; color:#fff; line-height:1.6; }
+a { color:#1a73e8; text-decoration:none; transition:0.3s; }
+a:hover { text-decoration:underline; }
 
 /* HEADER */
 header {
   background:#1a1a1a;
-  color:#fff;
   padding:20px;
   text-align:center;
   position:sticky;
@@ -23,56 +24,46 @@ header h1 { font-size:2rem; display:inline-block; }
 header .flag { display:inline-block; margin-left:10px; animation:sway 2s infinite alternate; }
 @keyframes sway { 0%{transform:rotate(-10deg);} 100%{transform:rotate(10deg);} }
 
-/* NAVEGAÇÃO */
+/* NAV */
 nav { display:flex; justify-content:center; gap:15px; margin-top:10px; flex-wrap:wrap; }
 nav a { text-decoration:none; color:#fff; padding:5px 15px; background:#333; border-radius:5px; transition:0.3s; }
 nav a:hover { background:#555; }
 
 /* MAIN */
 main { max-width:1000px; margin:20px auto; padding:0 15px; }
+
+/* SECTIONS */
 section { margin-bottom:40px; }
 section h2 { margin-bottom:15px; border-bottom:2px solid #333; display:inline-block; padding-bottom:5px; transition:0.3s; }
 section h2:hover { color:#1a73e8; cursor:pointer; }
 
+/* FRIENDS */
+.friends { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
+.friend {
+  background:#1a1a1a;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.5);
+  transition:0.3s;
+  position:relative;
+}
+.friend:hover { transform:scale(1.05); box-shadow:0 4px 10px rgba(0,0,0,0.8); }
+.friend h3 { margin-bottom:10px; color:#1a73e8; }
+.friend p { font-size:0.9rem; }
+.detail-box { background:#222; padding:10px; margin-top:10px; border-radius:5px; font-size:0.85rem; }
+
 /* IFRAME */
-iframe { width:100%; border:none; border-radius:10px; }
+iframe { width:100%; border:none; border-radius:10px; margin-bottom:15px; }
 
 /* PLAYLIST */
 .playlist-container iframe { height:200px; margin-bottom:20px; }
 
-/* AMIGOS */
-.friends { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
-.friend {
-  background:#fff;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.2);
-  transition:0.3s;
-  position:relative;
-}
-.friend:hover { transform:scale(1.05); box-shadow:0 4px 10px rgba(0,0,0,0.3); }
-.friend h3 { margin-bottom:10px; color:#333; }
-.friend p { font-size:0.9rem; }
-
-/* DICA DE HOVER NOS AMIGOS */
-.friend::after {
-  content:'Clique para saber mais!';
-  font-size:0.7rem;
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  color:#777;
-  opacity:0;
-  transition:opacity 0.3s;
-}
-.friend:hover::after { opacity:1; }
-
 /* FORMULÁRIO */
 .contact-form {
-  background:#fff;
+  background:#1a1a1a;
   padding:20px;
   border-radius:10px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+  box-shadow:0 2px 5px rgba(0,0,0,0.5);
 }
 .contact-form label { display:block; margin-bottom:5px; margin-top:10px; }
 .contact-form input, .contact-form textarea, .contact-form button {
@@ -80,34 +71,22 @@ iframe { width:100%; border:none; border-radius:10px; }
   padding:10px;
   margin-bottom:10px;
   border-radius:5px;
-  border:1px solid #ccc;
+  border:1px solid #555;
+  background:#0e0e0e;
+  color:#fff;
 }
-.contact-form button { background:#333; color:#fff; cursor:pointer; transition:0.3s; }
-.contact-form button:hover { background:#555; }
+.contact-form button { background:#1a73e8; color:#fff; cursor:pointer; transition:0.3s; }
+.contact-form button:hover { background:#155ab6; }
 
 /* AUDIO DE FUNDO */
 audio { display:none; }
-
-/* LINKS */
-a { color:#1a73e8; text-decoration:none; transition:0.3s; }
-a:hover { text-decoration:underline; }
-
-/* LISTA */
-ul { list-style:circle inside; }
-li { margin-bottom:8px; }
 
 /* RESPONSIVO */
 @media(max-width:600px){
   header h1 { font-size:1.5rem; }
   nav a { padding:5px 10px; font-size:0.9rem; }
+  iframe { height:200px; }
 }
-
-/* BOTÕES SECUNDÁRIOS */
-.button { display:inline-block; padding:8px 12px; background:#333; color:#fff; border-radius:5px; transition:0.3s; text-decoration:none; }
-.button:hover { background:#555; }
-
-/* SEÇÕES DETALHADAS */
-.detail-box { background:#eaeaea; padding:10px; margin-top:10px; border-radius:5px; font-size:0.9rem; }
 </style>
 </head>
 <body>
@@ -125,131 +104,129 @@ li { margin-bottom:8px; }
 </header>
 
 <main>
-
-<!-- SOBRE -->
 <section id="about">
-  <h2>Sobre Yamazaki</h2>
-  <p>Olá! Meu nome é Yamazaki, jovem de 19 anos, apaixonado por cultura japonesa, música, Vocaloid, animes e games. Meu nome significa "colina do campo" em japonês, o que achei super bonito e comecei a usar como meu nick.</p>
-  <p>Faço lives no YouTube e compartilho minhas playlists com a comunidade. Adoro criar conteúdo detalhado, cheio de referências e com pequenas surpresas para quem visita meu canal.</p>
-  <div class="detail-box">
-    <p>Objetivo: Criar um espaço divertido e informativo, unindo entretenimento e conhecimento. Sempre busco inovação, mas mantendo simplicidade e conforto visual.</p>
-  </div>
-</section>
-
-<!-- AMIGOS -->
-<section id="friends">
-<h2>Meus Amigos</h2>
-<div class="friends">
-  <div class="friend">
-    <h3>Epic</h3>
-    <p>O mais ruim no Fortnite. Adoro trollar ele e ver o tilt, mesmo sabendo que sou eu que perco feio.</p>
-    <div class="detail-box">
-      <p>Detalhe: Sempre rende risadas e boas partidas, com zoeira garantida e memes internos entre nós.</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Clover</h3>
-    <p>Super aleatório e engraçado. Suas frases de efeito sempre me fazem rir.</p>
-    <div class="detail-box">
-      <p>Detalhe: Possui piadas inesperadas que animam qualquer conversa. Nunca se sabe o que ele vai soltar!</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Consta</h3>
-    <p>Gente boa demais, tranquilo e confiável.</p>
-    <div class="detail-box">
-      <p>Detalhe: Sempre disponível e paciente, é o amigo ideal para longas conversas e apoio moral.</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Front</h3>
-    <p>Conversei pouco, mas parece super da hora.</p>
-    <div class="detail-box">
-      <p>Detalhe: Simples, direto e agradável de lidar.</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Jesus de Patinete</h3>
-    <p>Trabalha comigo, aleatório e divertido.</p>
-    <div class="detail-box">
-      <p>Detalhe: Sempre tem uma piada inesperada ou uma situação engraçada no trabalho.</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Pedro49Gamer</h3>
-    <p>Um gamer de verdade com playlists incríveis no Spotify.</p>
-    <div class="detail-box">
-      <p>Detalhe: Participamos de matches de música e ele sempre indica faixas top de qualidade.</p>
-    </div>
-  </div>
-  <div class="friend">
-    <h3>Juju</h3>
-    <p>Mora em Chique Chique, Bahia. Pessoa divertida e confiável.</p>
-    <div class="detail-box">
-      <p>Detalhe: Gosto de brincar com ela sobre sua cidade, sempre rendem risadas. Super parceira!</p>
-    </div>
-  </div>
+<h2>Sobre Yamazaki</h2>
+<p>Meu nome é Yamazaki, tenho 19 anos, sou apaixonado por cultura japonesa, animes, Vocaloid e games. Meu nome significa "colina do campo" em japonês, o que achei lindo e comecei a usar como meu nick.</p>
+<p>Faço lives no YouTube e compartilho minhas playlists, com foco em conteúdo divertido, detalhado e cheio de referências. Busco inovação mantendo a simplicidade visual.</p>
+<div class="detail-box">
+<p>Objetivo: Criar um espaço onde entretenimento e conhecimento se encontram. Quem visita minha página vai encontrar música, games e cultura pop japonesa.</p>
 </div>
 </section>
 
-<!-- AGENDA -->
+<section id="friends">
+<h2>Meus Amigos</h2>
+<div class="friends">
+<div class="friend">
+<h3>Epic</h3>
+<p>O mais ruim no Fortnite, adoro trollar ele e ver o tilt, mesmo sabendo que sou eu que perco feio.</p>
+<div class="detail-box">
+<p>Detalhe: Rende boas risadas e memes internos. Sempre tem zoeira garantida nas partidas.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Clover</h3>
+<p>Super aleatório, sempre solta frases de efeito engraçadas.</p>
+<div class="detail-box">
+<p>Detalhe: Piadas inesperadas que animam qualquer conversa e deixam o chat ativo.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Consta</h3>
+<p>Gente boa demais, tranquilo e confiável.</p>
+<div class="detail-box">
+<p>Detalhe: Sempre disponível, paciente e ótimo para conversas longas e apoio moral.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Front</h3>
+<p>Conversei pouco, mas parece super da hora.</p>
+<div class="detail-box">
+<p>Detalhe: Simples, direto e agradável de lidar.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Jesus de Patinete</h3>
+<p>Trabalha comigo, aleatório e divertido.</p>
+<div class="detail-box">
+<p>Detalhe: Sempre tem piadas inesperadas ou situações engraçadas no trabalho.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Pedro49Gamer</h3>
+<p>Gamer de verdade, com playlists incríveis no Spotify.</p>
+<div class="detail-box">
+<p>Detalhe: Participamos de matches de música, ele sempre indica faixas top de qualidade.</p>
+</div>
+</div>
+
+<div class="friend">
+<h3>Juju</h3>
+<p>Mora em Chique Chique, Bahia. Pessoa divertida e confiável.</p>
+<div class="detail-box">
+<p>Detalhe: Gosto de brincar com ela sobre sua cidade, sempre rende risadas. Super parceira!</p>
+</div>
+</div>
+</div>
+</section>
+
 <section id="schedule">
 <h2>Agenda de Lives (3 meses)</h2>
 <ul>
-  <li>01/11 - 18h00</li>
-  <li>05/11 - 20h00</li>
-  <li>10/11 - 19h00</li>
-  <li>15/11 - 18h00</li>
-  <li>20/11 - 21h00</li>
-  <li>25/11 - 20h00</li>
-  <li>30/11 - 19h00</li>
-  <li>05/12 - 18h00</li>
-  <li>10/12 - 20h00</li>
-  <li>15/12 - 19h00</li>
-  <li>20/12 - 18h00</li>
-  <li>25/12 - 21h00</li>
-  <li>30/12 - 20h00</li>
-  <li>04/01 - 19h00</li>
-  <li>10/01 - 18h00</li>
+<li>01/11 - 18h00</li>
+<li>05/11 - 20h00</li>
+<li>10/11 - 19h00</li>
+<li>15/11 - 18h00</li>
+<li>20/11 - 21h00</li>
+<li>25/11 - 20h00</li>
+<li>30/11 - 19h00</li>
+<li>05/12 - 18h00</li>
+<li>10/12 - 20h00</li>
+<li>15/12 - 19h00</li>
+<li>20/12 - 18h00</li>
+<li>25/12 - 21h00</li>
+<li>30/12 - 20h00</li>
+<li>04/01 - 19h00</li>
+<li>10/01 - 18h00</li>
 </ul>
 <p>Para ver a agenda completa, <a href="#">clique aqui</a>.</p>
 </section>
 
-<!-- PLAYLIST -->
 <section id="playlist">
 <h2>Minha Playlist</h2>
 <div class="playlist-container">
-<iframe src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE&autoplay=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE&autoplay=0" allowfullscreen></iframe>
 </div>
 </section>
 
-<!-- LIVE -->
 <section id="live">
 <h2>Minha Live Atual</h2>
 <iframe width="100%" height="480" src="https://www.youtube.com/live/5kexM0d12jY?autoplay=0" allowfullscreen></iframe>
 </section>
 
-<!-- COLABORAÇÃO -->
 <section id="collab">
 <h2>Colaboração</h2>
 <div class="contact-form">
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank">
-<label>Nome:</label>
-<input type="text" name="entry.123456" required>
-<label>E-mail:</label>
-<input type="email" name="entry.123457" required>
-<label>Interesse:</label>
-<textarea name="entry.123458" required></textarea>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/formResponse" method="post" target="_blank">
+<label for="name">Nome</label>
+<input type="text" id="name" name="entry.2005620554" required>
+<label for="email">E-mail</label>
+<input type="email" id="email" name="entry.1045781291" required>
+<label for="message">Interesse</label>
+<textarea id="message" name="entry.839337160" rows="5" required></textarea>
 <button type="submit">Enviar</button>
 </form>
 </div>
 </section>
 
-<!-- MÚSICA DE FUNDO -->
 <audio autoplay loop>
-<source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="audio/mpeg">
+<source src="https://www.youtube.com/embed/videoseries?list=RDDDjcqu9uvUE&autoplay=1" type="audio/mpeg">
 </audio>
 
 </main>
 </body>
-</html>
+  </html>
