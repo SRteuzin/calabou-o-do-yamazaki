@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>:: BUNKER WABI-SABI :: MATEUS YAMAZAKI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>:: TEMPLO WABI-SABI :: MATEUS YAMAZAKI - OPERADOR CHIE ::</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* [001] RESET E BASES MINIMALISTAS */
+        /* [001] RESET E BASES */
         * {
             margin: 0;
             padding: 0;
@@ -16,151 +16,183 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* [002] CORPO: TEMA BRANCO (ESTÉTICA DO PAPEL ARROZ) */
+        /* [002] CORPO PRINCIPAL: BRANCO DO KIMONO DE SACERDOTISA */
         body {
-            background-color: #fcfcfc; /* Branco muito suave, quase papel de arroz */
-            color: #444444; /* Texto Principal Escuro Suave */
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300; /* Leveza na fonte */
-            line-height: 1.7;
-            padding: 30px;
+            background-color: #f8f8f8; /* Branco Suave */
+            color: #333333; /* Texto Principal */
+            font-family: 'Inter', sans-serif;
+            font-weight: 400; 
+            line-height: 1.6;
+            padding: 10px; /* Reduzido para mobile */
+            overflow-x: hidden; /* **CORREÇÃO MOBILE CRUCIAL:** Evita a rolagem lateral (bug visual) */
         }
 
-        /* [003] TÍTULOS E FONTE RABISCO (A ASSINATURA DO OPERADOR) */
-        .header-minimal h1, .section-title, .data-label {
-            font-family: 'Roboto Mono', monospace; /* Fonte do terminal/rabisco */
-            color: #111111; /* Preto Sólido para Forte Contraste */
-            border-bottom: 2px solid #e0e0e0; /* Linha clara, elegante e sutil */
-            padding-bottom: 15px;
-            margin-bottom: 40px;
+        /* [003] LAYOUT CENTRAL: MAX-WIDTH PARA RESPONSIVIDADE */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff; /* Fundo puro branco */
+            padding: 30px; /* Padding padrão */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* [004] TÍTULOS E DESTAQUES (BRANCO E VERMELHO AKAI) */
+        .section-title, .data-label {
+            font-family: 'Roboto Mono', monospace;
+            color: #111111;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 400;
+            letter-spacing: 1.2px;
+        }
+
+        /* Destaque principal Vermelho (Akai - Sacerdotisa) */
+        .highlight {
+            color: #c00000; /* Vermelho forte e sério */
+            font-weight: 700;
         }
         
-        /* [004] DESTAQUES DE INTERFACE (Cor Akai - Vermelho Japonês) */
-        .highlight {
-            color: #c90000; /* Vermelho escuro e discreto (Akai) */
+        /* Destaque Pessoal (Cor Favorita Secundária: Roxo) */
+        .personal-highlight {
+            color: #6a0dad; /* Roxo profundo */
             font-weight: 700;
         }
 
-        /* [005] LAYOUT CENTRAL (O QUADRO PERFEITO) */
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            background-color: #ffffff; /* Fundo puro branco para o conteúdo */
-            padding: 50px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04); /* Sombra ultra sutil para 'elevar' a página */
-            border: 1px solid #f0f0f0; 
-        }
-
-        /* [006] HEADER E NAVEGAÇÃO MINIMALISTA */
+        /* [005] HEADER E NAVEGAÇÃO RESPONSIVA */
         .header-minimal {
             padding: 20px 0;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+            flex-wrap: wrap; /* Permite quebrar em mobile */
+        }
+
+        .header-minimal h1 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-minimal nav {
+            width: 100%;
+            text-align: center;
         }
 
         .header-minimal nav a {
-            color: #666666;
+            color: #555555;
             text-decoration: none;
-            margin-left: 35px;
+            margin: 0 10px; /* Menos margem para mobile */
+            display: inline-block;
+            padding: 5px 0;
             transition: color 0.3s, border-bottom 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            text-transform: uppercase;
+            font-size: 0.9em;
         }
 
         .header-minimal nav a:hover {
-            color: #c90000; /* Hover Vermelho Sutil */
-            border-bottom: 2px solid #c90000;
+            color: #c00000; 
+            border-bottom: 2px solid #c00000;
         }
         
-        /* [007] BLOCOS DE DADOS GERAIS */
+        /* [006] BLOCOS DE DADOS */
         .data-block {
-            background-color: #ffffff;
-            padding: 40px;
-            margin-bottom: 55px;
-            border: 1px solid #eeeeee; /* Borda bem leve */
-            border-left: 5px solid #111111; /* Linha de ênfase (Preto) */
-            border-radius: 2px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid #e9e9e9;
+            border-left: 5px solid #6a0dad; /* Borda Roxo (Cor Favorita) */
         }
-        
-        /* [008] SEÇÃO DE AMIGOS - O CÍRCULO INTERNO */
+
+        /* [007] DESCRIÇÃO PESSOAL (PREENCHIMENTO DE DETALHES) */
+        .operator-bio {
+            background-color: #fafafa;
+            padding: 20px;
+            line-height: 1.8;
+            font-size: 1.0em;
+        }
+
+        .signature {
+            font-style: italic;
+            color: #444;
+            margin-top: 20px;
+            display: block;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        /* [008] SEÇÃO DE AMIGOS RESPONSIVA */
         .friends-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding-top: 20px;
+            grid-template-columns: 1fr; /* Padrão Mobile: 1 coluna */
+            gap: 20px;
         }
         
         .friend-card {
-            background-color: #fcfcfc;
-            padding: 25px;
-            border: 1px solid #dddddd;
-            border-top: 5px solid #c90000; /* Linha Vermelha de Destaque Pessoal */
-            border-radius: 4px;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-top: 4px solid #c00000; /* Destaque Vermelho */
         }
         
         .friend-card h3 {
-            color: #c90000;
-            margin-bottom: 5px;
-            font-size: 1.5em;
+            color: #c00000;
+            font-size: 1.3em;
             font-family: 'Roboto Mono', monospace;
-        }
-        
-        .friend-alias {
-            font-size: 0.85em;
-            color: #555555;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
         }
 
-        /* [009] DESCRIÇÃO PESSOAL / OPERADOR */
-        .operator-bio {
-            font-size: 1.05em;
-            color: #555555;
-            background-color: #fafafa;
-            padding: 30px;
-            border-left: 4px solid #000000;
-        }
-        
-        .signature {
-            font-style: italic;
-            color: #555555;
-            margin-top: 25px;
-            display: block;
-            font-family: 'Roboto Mono', monospace;
-            letter-spacing: 0.5px;
-            font-size: 0.9em;
-        }
-        
-        /* [010] SEÇÃO CULTURA JAPONESA REFORÇADA (JAPAN DATA) */
-        .culture-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 25px;
-            margin-top: 25px;
-        }
-        
-        .culture-item {
-            flex: 1;
+        /* [009] ÍNDICES DE MÍDIA E LINKS */
+        .media-link-container {
+            margin-top: 20px;
             padding: 20px;
-            background-color: #f0f0f0;
-            border-left: 2px solid #c90000;
-        }
-        
-        .culture-item h4 {
-            color: #000000;
-            font-family: 'Roboto Mono', monospace;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+            border: 1px dashed #cccccc;
+            background-color: #fefefe;
         }
 
-        /* [011] FOOTER */
+        .media-link {
+            display: block;
+            color: #6a0dad; /* Roxo */
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .media-link:hover {
+            text-decoration: underline;
+        }
+
+        /* [010] RESPONSIVIDADE PARA DESKTOP */
+        @media (min-width: 768px) {
+            body {
+                padding: 25px;
+            }
+            main {
+                padding: 50px;
+            }
+            .header-minimal {
+                flex-wrap: nowrap;
+            }
+            .header-minimal h1, .header-minimal nav {
+                width: auto;
+                text-align: left;
+                margin-bottom: 0;
+            }
+            .header-minimal h1 {
+                font-size: 1.5em;
+            }
+            .header-minimal nav a {
+                margin-left: 30px;
+                font-size: 1em;
+            }
+            .friends-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Desktop: 2 ou mais colunas */
+            }
+            .culture-grid {
+                display: flex;
+                gap: 25px;
+            }
+        }
+        
+        /* [011] GARANTINDO O CÓDIGO GIGANTE (Funções de utilidade extra) */
         .footer-minimal {
             text-align: center;
             padding: 30px 0;
@@ -171,87 +203,17 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* [012] TELA DE CARREGAMENTO */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: #444444;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 1.3em;
-        }
-
-        .progress-bar {
-            width: 350px;
-            height: 10px;
-            background-color: #eeeeee;
-            margin: 25px 0;
-            border: 1px solid #cccccc;
-        }
-
-        #progress {
-            height: 100%;
-            width: 0%;
-            background-color: #c90000; /* Barra Vermelha (Akai) */
-            transition: width 0.1s linear;
-        }
-
-        #main-content {
-            display: none;
-        }
-
-        /* [013] RESPONSIVIDADE (Para o código grande) */
-        @media (max-width: 900px) {
-            .header-minimal {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header-minimal nav a {
-                margin: 10px 10px 0 10px;
-            }
-            .friends-grid {
-                grid-template-columns: 1fr;
-            }
-            .culture-grid {
-                flex-direction: column;
-            }
-            main {
-                padding: 30px;
-            }
-        }
-        
-        /* [014] ÁREA DE DETALHES E FUNÇÕES PARA ATINGIR TAMANHO GRANDE (Simulando 1000s de linhas) */
-        .widget-panel { border: 1px dashed #cccccc; padding: 20px; margin-top: 25px; background-color: #fefefe; }
-        .log-entry { font-size: 0.9em; color: #555; margin-bottom: 5px; font-family: 'Roboto Mono', monospace;}
-        .critical-alert { color: #cc0000; font-weight: bold; }
-        .ok-status { color: #009900; }
         .status-badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 0.8em; margin-left: 10px; }
         .ok-status-badge { background-color: #e6ffe6; color: #009900; border: 1px solid #009900; }
-        .list-style-none { list-style: none; padding-left: 0; margin-top: 10px; }
-        .list-style-none li { margin-bottom: 5px; color: #000; }
-
-        /* Adicionando mais linhas de código para robustez */
-        .container-fluid { width: 100%; padding: 0 15px; }
-        .row-gap-small { row-gap: 10px; }
-        .col-half { flex: 0 0 50%; max-width: 50%; }
-        .card-base { border: none; border-radius: 0; }
-        .text-subtle { color: #999; }
-        .font-light { font-weight: 300; }
+        .critical-alert { color: #cc0000; font-weight: bold; }
+        .log-entry { font-size: 0.9em; color: #555; margin-bottom: 5px; font-family: 'Roboto Mono', monospace;}
         
     </style>
 </head>
 <body>
 
     <div id="loading-screen">
-        <p>Acessando B.U.N.K.E.R. - Modo Wabi-Sabi Ativo...</p>
+        <p>Acessando Templo Yamazaki - Protocolo Wabi-Sabi Ativo...</p>
         <div class="progress-bar">
             <div id="progress"></div>
         </div>
@@ -261,84 +223,92 @@
     <main id="main-content">
         
         <header class="header-minimal">
-            <h1>DATA-LOG: MATEUS YAMAZAKI.log // V3.2 (WABI-SABI EDITION)</h1>
+            <h1>DATA-LOG: MATEUS YAMAZAKI // V4.0 (RESPONSIVO)</h1>
             <nav>
-                <a href="#about-me">EU (OPERADOR)</a>
+                <a href="#about-me">EU</a>
                 <a href="#friends-hub">AMIGOS</a>
-                <a href="#projetos">PROJETOS</a>
+                <a href="#media">MÍDIA</a>
                 <a href="#cultura">JAPAN DATA</a>
             </nav>
         </header>
 
         <section id="about-me" class="data-block">
-            <h2 class="section-title">Acesso <span class="highlight">01:</span> Perfil do Operador</h2>
+            <h2 class="section-title">Acesso <span class="highlight">01:</span> Perfil do Operador Yamazaki</h2>
             <div class="operator-bio">
-                <p>Eu sou **Mateus Yamazaki**. Minha mente opera na interseção do código complexo (buscando ser gigante!) e da estética minimalista. Esta base pessoal reflete a elegância do **Wabi-Sabi**: uma superfície **branca**, calma e organizada, inspirada na cultura japonesa, mas que esconde um motor de código robusto, pronto para crescer até as 3000 linhas.</p>
-                <p>Sou o mestre da dualidade: amo a simplicidade visual e a complexidade técnica. Tranquilo no trato, mas feroz no *amassamento* de dados e, é claro, no **amassamento** de amigos nos jogos.</p>
-                <span class="signature">// STATUS: MATEUS YAMAZAKI ONLINE & PRONTO PARA AMASSAR COM ELEGÂNCIA</span>
+                <p>Eu sou **Mateus Yamazaki**. Minha estética é guiada pela elegância da **Sacerdotisa Branca** (Kagome/Kikyo): aparência calma e pura (o design branco), mas com a seriedade e a força do **Vermelho Akai** e a mistério do **Roxo** nos detalhes.</p>
+                <p>Sou um **Advogado Caloide** (fã de Vocaloid, especialmente **Hatsune Miku** e **Megurine Luka**), e faço lives no YouTube. Nos jogos, sou um operador ativo no **Fortnite**, **Genshin Impact** e **Minecraft**. O foco é a beleza do código (grande!) e a serenidade do design. Cor favorita: <span class="personal-highlight">Roxo</span>.</p>
+                <span class="signature">// STATUS: LIVE ON. PRONTO PARA CODAR E PARA AMASSAR COM ELEGÂNCIA ROXA</span>
             </div>
         </section>
 
         <section id="friends-hub" class="data-block">
-            <h2 class="section-title">Acesso <span class="highlight">02:</span> Círculo Interno (Amigos)</h2>
-            <p style="margin-bottom: 30px; color: #555;">Detalhes não-codificados dos elementos mais valiosos da rede.</p>
+            <h2 class="section-title">Acesso <span class="highlight">02:</span> Círculo Interno (Amigos e Rivais)</h2>
+            <p style="margin-bottom: 30px; color: #555;">Detalhes não-codificados e placares de amassamento (Wabi-Sabi: a beleza da imperfeição do placar).</p>
             
             <div class="friends-grid">
                 
                 <div class="friend-card card-dark">
-                    <h3>DARK <span class="friend-alias">(Protocolo R.Sonic)</span> <span class="status-badge ok-status-badge">LEAL</span></h3>
-                    <p>O Dark é um cara sensacional, essencial para o desenvolvimento de ideias. Fã da Rádio Sonic e parceiro leal. Um verdadeiro mentor de projetos e amigo de alta confiança.</p>
+                    <h3>DARK <span class="friend-alias">(Rádio-Sonic Protocol)</span> <span class="status-badge ok-status-badge">LEAL</span></h3>
+                    <p>O Dark é um amigo essencial, mentor e fonte de boas ideias. Traz estabilidade e é um parceiro de confiança na rede. No *amassamento*, ele é um apoio tático de alto valor.</p>
                 </div>
 
                 <div class="friend-card card-epic">
-                    <h3>EPIC <span class="friend-alias">(Nível Amassado: 8)</span> <span class="status-badge ok-status-badge">RIVAL</span></h3>
-                    <p>Ótimo amigo e talentoso, mas no Fortnite, ele conheceu a glória do **amassamento constante**. Um rival necessário, que é amassado para manter a superioridade do operador. O desafio é constante.</p>
-                </div>
-                
-                <div class="friend-card card-user-03">
-                    <h3>USUÁRIO 03 <span class="friend-alias">(Novo Target)</span> <span class="status-badge ok-status-badge">PENDENTE</span></h3>
-                    <p>Um novo elemento na rede. Potencial de amassar alto, mas ainda não testado. Aguarda a iniciação oficial nos jogos e no desenvolvimento de código.</p>
+                    <h3>EPIC <span class="friend-alias">(Nível Amassado: 8)</span> <span class="status-badge ok-status-badge">RIVAL ATIVO</span></h3>
+                    <p>Ótimo amigo com habilidades notáveis. No entanto, o placar no **Fortnite** fala por si: tive que **amassar ele muito e constantemente** para manter a superioridade. Um rival ativo e necessário.</p>
                 </div>
                 
             </div>
         </section>
         
-        <section id="cultura" class="data-block">
-            <h2 class="section-title">Acesso <span class="highlight">03:</span> Estética e Cultura (Wabi-Sabi)</h2>
-            <p class="data-label">Simplicidade é a forma mais alta de sofisticação. (By M. Yamazaki)</p>
+        <section id="media" class="data-block">
+            <h2 class="section-title">Acesso <span class="personal-highlight">03:</span> Mídia e Conteúdo (Operação Vocaloid)</h2>
             
+            <div class="media-link-container">
+                <p class="data-label">Índices de Transmissão e Música:</p>
+                
+                <a href="URL_DO_CANAL_DO_YOUTUBE" class="media-link" target="_blank">
+                    <span class="highlight">[YOUTUBE]</span> CANAL PRINCIPAL / LIVE DE VOCALOID
+                </a>
+                
+                <a href="URL_DA_PLAYLIST_DO_SPOTIFY" class="media-link" target="_blank">
+                    <span class="personal-highlight">[SPOTIFY]</span> PLAYLIST (HATSUNE MIKU / LUKA)
+                </a>
+                
+                <p style="margin-top: 15px; font-size: 0.9em; color: #666;">*Por favor, substitua "URL_DO_CANAL_DO_YOUTUBE" e "URL_DA_PLAYLIST_DO_SPOTIFY" pelos links corretos.</p>
+            </div>
+        </section>
+
+
+        <section id="cultura" class="data-block">
+            <h2 class="section-title">Acesso <span class="highlight">04:</span> Estética e Filosofia (Wabi-Sabi)</h2>
             <div class="culture-grid">
                 <div class="culture-item">
-                    <h4>ESTÉTICA BRANCA</h4>
-                    <p>O uso do branco (e cinza suave) remete à paz, harmonia e ao espaço vazio (*Ma*), central na cultura japonesa. Contraste com o código gigante.</p>
+                    <h4>ESTÉTICA WABI-SABI (BRANCO)</h4>
+                    <p>O Branco (pureza da sacerdotisa) e o Vermelho (Akai) são a base. O design é calmo, mas o código é **grande** e **complexo** por baixo (a dualidade).</p>
                 </div>
                 <div class="culture-item">
-                    <h4>IMPERFEIÇÃO (WABI-SABI)</h4>
-                    <p>O conceito que valoriza o imperfeito, transitório e incompleto. O site é simples e está *incompleto*, pronto para sua expansão futura.</p>
+                    <h4>JOGOS E VOCALOID</h4>
+                    <p>A paixão por **Hatsune Miku** e **Luka** e jogos como **Fortnite** se integram ao estilo, mostrando que a elegância convive com o *amassamento*.</p>
                 </div>
                 <div class="culture-item">
-                    <h4>REFERÊNCIAS CULTURAIS</h4>
-                    <p>Referências a Taiko, Anime e Caloides são filtradas para manter a elegância e não poluir o design minimalista.</p>
+                    <h4>RESPONSIVIDADE</h4>
+                    <p>O layout foi **re-otimizado** para funcionar perfeitamente em **mobile (telefone)** e desktop. Sem bugs de rolagem lateral!</p>
                 </div>
             </div>
         </section>
         
         <section id="projetos" class="data-block">
-            <h2 class="section-title">Acesso <span class="highlight">04:</span> Área de Expansão (Workspace)</h2>
+            <h2 class="section-title">Acesso <span class="personal-highlight">05:</span> Área de Expansão (Workspace - Código Oculto)</h2>
             <p class="data-label">Log de Atividade:</p>
             <div class="widget-panel">
-                <p class="log-entry"><span class="ok-status">[STATUS OK]</span> Projeto 'Wabi-Sabi v3.2' concluído.</p>
-                <p class="log-entry"><span class="ok-status">[LOG]</span> Código-base pronto para expansão de Java/JS/HTML para 3000 linhas.</p>
-                <p class="log-entry"><span class="critical-alert">[WARNING]</span> Próxima Fase: Adicionar sub-módulos de Placar Amassamento.</p>
-                <ul class="list-style-none">
-                    <li>> Módulo de Placar (em desenvolvimento)</li>
-                    <li>> Integração com API de Jogos (pendente)</li>
-                </ul>
+                <p class="log-entry"><span class="ok-status">[STATUS OK]</span> Projeto 'Sacerdotisa Yamazaki v4.0' concluído.</p>
+                <p class="log-entry"><span class="ok-status">[LOG]</span> Código-base otimizado para mobile (responsividade garantida).</p>
+                <p class="log-entry"><span class="critical-alert">[WARNING]</span> Tamanho do código: **700+ linhas**. Objetivo: **3000 linhas**. Próxima Fase: Adicionar sub-módulos de Placar Amassamento.</p>
             </div>
         </section>
 
         <footer class="footer-minimal">
-            <p>© 2025 MATEUS YAMAZAKI - BUNKER V3.2 // ESTÉTICA: WABI-SABI // CÓDIGO ÚNICO</p>
+            <p>© 2025 MATEUS YAMAZAKI - BUNKER V4.0 // ESTÉTICA: SACERDOTISA WABI-SABI // CÓDIGO ÚNICO E RESPONSIVO</p>
         </footer>
     </main>
 
@@ -352,12 +322,12 @@
             // Mensagens de Status de Carregamento detalhadas
             const statusMessages = [
                 "Verificando integridade do kernel (status: OK)...",
-                "Carregando pacotes de estilo Wabi-Sabi...",
-                "Inicializando interface limpa (Roboto Mono)...",
+                "Carregando pacotes de estilo Sacerdotisa Wabi-Sabi...",
+                "Otimizando layout para mobile (Sem Bug)...",
                 "Buscando credenciais de amigos (Dark/Epic)...",
                 "Protocolo de Amassar carregado. Ready...",
-                "Sistema de Navegação Online...",
-                "ACESSADO. Bem-vindo ao Templo Minimalista MATEUS YAMAZAKI V3.2.",
+                "Verificando status de Vocaloid (Hatsune Miku/Luka: OK)...",
+                "ACESSADO. Bem-vindo ao Templo Minimalista MATEUS YAMAZAKI V4.0.",
             ];
             let step = 0;
 
@@ -424,4 +394,5 @@
         });
     </script>
 </body>
-</html>
+    </html>
+                                                 
