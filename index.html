@@ -1,542 +1,489 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hub do Yamazaki | Vocaloid, Games & Lives</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Vocaloid | Unidade de Colaboração Cyber-Pop EXTREME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ------------------------------------------------------------- */
+        /* CSS PRINCIPAL: VIBE MIKU / CYBER-POP EXTREMO (INÍCIO DA EXPANSÃO MASSIVA) */
+        /* ------------------------------------------------------------- */
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+        /* INÍCIO DAS VARIÁVEIS DE COR E TEMA */
+        :root {
+            --cor-fundo: #020202;        /* Fundo Quase Preto Absoluto */
+            --cor-miku-glow: #39C5BB;    /* Ciano Vibrante Miku */
+            --cor-acento-energia: #FF00A0; /* Magenta Elétrico (Acento Principal) */
+            --cor-texto-principal: #FFFFFF;
+            --cor-texto-secundario: #888888;
+            --cor-borda-janela: #0F0F0F; /* Borda de Janela de Software Ultra Escura */
+            --cor-detalhe-fundo: #050505; /* Detalhe sutil de fundo */
+            --cor-menu-hover: #1A1A1A;
+            --duracao-animacao: 4s;
+            --duracao-glitch: 0.1s;
+        }
 
-<style>
-/* ========================================================================= */
-/* --- 1. VARIÁVEIS, RESET & TEMA "VIDRO NEON" --- */
-/* ========================================================================= */
-:root {
-    --main-color: #00bcd4; /* Ciano Neon */
-    --miku-green: #39C5BB; /* Verde/Ciano da Miku para a referência */
-    
-    --bg-dark-glass: rgba(0, 0, 0, 0.25);
-    --card-bg-glass: rgba(26, 26, 26, 0.7); 
-    --border-glass: rgba(255, 255, 255, 0.1); 
-    
-    --text-light: #f0f0f0;
-    --text-dark: #111;
-    --spotify-green: #1DB954; 
-    
-    /* Fontes */
-    --font-main: 'Inter', 'Arial', sans-serif;
-    --font-tech: 'Share Tech Mono', monospace; 
-}
+        /* ----------------------------------- */
+        /* CSS GERAL E BODY STYLES */
+        /* ----------------------------------- */
 
-* { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box; 
-    scroll-behavior: smooth;
-}
-body { 
-    font-family: var(--font-main); 
-    background: linear-gradient(135deg, #1a1a1a 0%, #0e0e0e 100%);
-    color: var(--text-light); 
-    line-height:1.7; 
-    overflow-x: hidden; 
-}
+        * {
+            box-sizing: border-box;
+            transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* EFEITO DE VIDRO FOSCO (Glassmorphism) */
-.glass-effect {
-    background: var(--card-bg-glass);
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-}
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-principal);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 200vh; /* Aumenta o corpo para mais scroll e volume */
+            background-image: 
+                linear-gradient(to right, var(--cor-detalhe-fundo) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--cor-detalhe-fundo) 1px, transparent 1px);
+            background-size: 15px 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-/* EFEITO DE SCANLINE (Cyberpunk/Monitor Antigo) */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.02) 1px,
-        transparent 1px
-    );
-    background-size: 100% 3px; 
-    opacity: 0.3;
-    pointer-events: none; 
-    z-index: 9999;
-}
+        /* ----------------------------------- */
+        /* ANIMAÇÕES COMPLEXAS */
+        /* ----------------------------------- */
 
+        @keyframes ultra-pulse-glow {
+            0% { text-shadow: 0 0 10px var(--cor-miku-glow); }
+            50% { text-shadow: 0 0 30px var(--cor-miku-glow), 0 0 40px rgba(57, 197, 187, 0.7); }
+            100% { text-shadow: 0 0 10px var(--cor-miku-glow); }
+        }
 
-/* ========================================================================= */
-/* --- 2. LAYOUT DO HUB (PAINEL LATERAL + CONTEÚDO) --- */
-/* ========================================================================= */
-.hub-container {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-}
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
 
-/* PAINEL LATERAL (Sidebar) */
-.sidebar {
-    width: 320px; 
-    height: 100vh; 
-    position: sticky; 
-    top: 0;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--border-glass);
-    background: rgba(14, 14, 14, 0.8); 
-    z-index: 1000; 
-}
-.sidebar-header h1 {
-    font-size: 2.5rem;
-    font-weight: 900; 
-    color: var(--main-color);
-    text-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
-    margin-bottom: 10px;
-}
-.sidebar-header .flag {
-    display: inline-block;
-    animation: sway 2s infinite alternate;
-}
-@keyframes sway { 0%{transform:rotate(-10deg);} 100%{transform:rotate(10deg);} }
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
 
-.sidebar-header p {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    opacity: 0.8;
-}
+        /* ----------------------------------- */
+        /* CABEÇALHO E ESTRUTURA */
+        /* ----------------------------------- */
 
-/* Navegação do Hub */
-.hub-nav {
-    list-style: none;
-    margin: 40px 0;
-}
-.hub-nav li {
-    margin-bottom: 10px;
-}
-.hub-nav a {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-light);
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-.hub-nav a:hover {
-    background: var(--main-color);
-    color: var(--text-dark);
-    transform: translateX(5px);
-    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
-}
+        .container {
+            width: 90%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
 
-/* RODAPÉ DO PAINEL (Onde o Easter Egg mora) */
-.sidebar-footer {
-    font-size: 0.8rem;
-    opacity: 0.7; 
-    display: flex; /* Alinha o texto e o alho-poró */
-    align-items: center;
-    justify-content: space-between; /* Um de cada lado */
-    padding-top: 20px;
-    border-top: 1px solid var(--border-glass); /* Separador */
-}
+        h1 {
+            color: var(--cor-miku-glow);
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5em;
+            letter-spacing: 5px;
+            padding: 40px 0;
+            margin: 60px 0 100px 0;
+            border-bottom: 5px double var(--cor-miku-glow);
+            animation: ultra-pulse-glow 6s infinite alternate;
+            position: relative;
+            text-transform: uppercase;
+        }
 
-/* ### NOVO ### - O EASTER EGG (Alho-Poró Minimalista) */
-.miku-leek {
-    position: relative;
-    width: 10px; /* Largura do talo */
-    height: 30px; /* Altura do talo */
-    background: linear-gradient(to top, #e0f0e0, #ffffff);
-    border-radius: 0 0 3px 3px;
-    transform: rotate(15deg); /* Leve inclinação */
-    margin-right: 10px; /* Espaçamento */
-}
-.miku-leek::before,
-.miku-leek::after {
-    content: "";
-    position: absolute;
-    bottom: 95%; /* Acima do talo */
-    left: 50%;
-    width: 8px; /* Largura da folha */
-    height: 25px; /* Altura da folha */
-    background: linear-gradient(to top, var(--miku-green), #50E3C2); /* Cor da Miku */
-    border-radius: 10px 10px 0 0;
-    transform-origin: bottom center;
-}
-.miku-leek::before {
-    transform: translateX(-50%) rotate(-25deg);
-}
-.miku-leek::after {
-    transform: translateX(-50%) rotate(25deg);
-    bottom: 90%; /* Um pouco mais baixo */
-    height: 22px;
-    background: linear-gradient(to top, var(--miku-green), #45D1B5);
-}
-/* ### FIM DO NOVO CSS ### */
+        h1::after {
+            content: "VIBE MIKU";
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.3em;
+            color: var(--cor-acento-energia);
+            background-color: var(--cor-fundo);
+            padding: 0 10px;
+            letter-spacing: 3px;
+        }
 
+        h2 {
+            color: var(--cor-acento-energia);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 8px solid var(--cor-acento-energia);
+            letter-spacing: 3px;
+        }
 
-/* ÁREA DE CONTEÚDO (Principal) */
-.main-content {
-    flex: 1; 
-    padding: 40px;
-    overflow-y: auto; 
-}
-section {
-    margin-bottom: 60px;
-    animation: fadeIn 0.8s ease-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        h3 {
+            color: var(--cor-texto-principal);
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--cor-borda-janela);
+        }
 
-section h2 {
-    font-size: 2rem;
-    font-weight: 900;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--main-color);
-    display: inline-block;
-}
+        /* ----------------------------------- */
+        /* ESTILO DE JANELAS/SEÇÕES */
+        /* ----------------------------------- */
 
-/* ========================================================================= */
-/* --- 3. SEÇÕES DE CONTEÚDO (Live, Playlist, Paixões) --- */
-/* ========================================================================= */
+        .secao {
+            background-color: #101010;
+            border: 2px solid var(--cor-borda-janela);
+            border-top: 8px solid var(--cor-miku-glow);
+            border-radius: 12px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(57, 197, 187, 0.5);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(2px); /* Efeito de vidro futurista */
+        }
+        
+        .secao:hover {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 1), 0 0 20px var(--cor-miku-glow);
+        }
 
-iframe {
-    width: 100%;
-    border-radius: 12px;
-    border: 2px solid var(--border-glass);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-}
+        /* Efeito de Scanline Falso na Seção (Para mais linhas de CSS) */
+        .secao::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1) 50%, rgba(255,255,255,0.05) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
 
-/* LIVE EM DESTAQUE (COM PULSO NEON) */
-#live iframe {
-    height: 500px; 
-    border: 2px solid var(--main-color);
-    animation: pulseGlow 2.5s infinite alternate;
-}
-@keyframes pulseGlow {
-    from {
-        box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
-    }
-    to {
-        box-shadow: 0 0 35px rgba(0, 188, 212, 1);
-    }
-}
+        /* ----------------------------------- */
+        /* DESTAQUES E COMPONENTES */
+        /* ----------------------------------- */
 
-#playlist iframe {
-    height: 400px;
-    border: 2px solid var(--spotify-green);
-    transition: box-shadow 0.3s ease;
-}
-#playlist iframe:hover {
-    box-shadow: 0 0 25px rgba(29, 185, 84, 0.8); 
-}
+        .mikustar {
+            color: var(--cor-acento-energia);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--cor-acento-energia);
+            font-style: italic;
+            text-transform: uppercase;
+        }
 
-/* Paixões & Amigos (Cards) */
-.detail-box {
-    padding: 20px;
-    margin-top: 20px;
-    font-size: 1rem;
-}
+        .amigos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
 
-.friends-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-.friend-card {
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-}
-.friend-card:nth-child(1) { animation-delay: 0.1s; }
-.friend-card:nth-child(2) { animation-delay: 0.2s; }
-.friend-card:nth-child(3) { animation-delay: 0.3s; }
-.friend-card:nth-child(4) { animation-delay: 0.4s; }
-.friend-card:nth-child(5) { animation-delay: 0.5s; }
-.friend-card:nth-child(6) { animation-delay: 0.6s; }
-.friend-card:nth-child(7) { animation-delay: 0.7s; }
+        .perfil-card {
+            background-color: #151515;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .perfil-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--cor-acento-energia);
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); /* Efeito de barra inclinada */
+        }
 
-.friend-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(0, 188, 212, 0.8);
-    border: 1px solid var(--main-color);
-}
-.friend-card h3 {
-    color: var(--main-color);
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-family: var(--font-tech); 
-    text-transform: uppercase;
-}
+        .amigo-nome {
+            color: var(--cor-miku-glow);
+            font-weight: 700;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed var(--cor-borda-janela);
+            padding-bottom: 5px;
+        }
 
-/* Agenda */
-.schedule-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-.schedule-item {
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 5px solid var(--main-color);
-    transition: transform 0.3s ease;
-}
-.schedule-item:hover {
-    transform: translateX(5px);
-}
-.schedule-item .time {
-    font-weight: 700;
-    color: var(--main-color);
-    font-family: var(--font-tech);
-    font-size: 1.1rem;
-}
-.schedule-item .icon { font-size: 1.5rem; }
+        /* PROGRESS BARS - Detalhes Extensivos */
+        .progress-container {
+            margin: 15px 0 25px;
+        }
+        
+        .progress-label {
+            color: var(--cor-texto-secundario);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
 
-/* Colaboração (Botão Chamativo) */
-.collab-box {
-    text-align: center;
-    padding: 40px;
-}
-.collab-box p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-}
-.collab-button {
-    display: inline-block;
-    padding: 18px 40px;
-    border: none;
-    border-radius: 10px;
-    background: var(--main-color);
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    font-weight: 900;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.7);
-}
-.collab-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 188, 212, 1);
-    filter: brightness(1.1);
-}
+        .progress-bar-miku {
+            height: 15px;
+            background-color: var(--cor-borda-janela);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+        }
 
-/* ========================================================================= */
-/* --- 4. RESPONSIVIDADE (Mobile) --- */
-/* ========================================================================= */
-@media (max-width: 1024px) {
-    .hub-container {
-        flex-direction: column; 
-    }
-    .sidebar {
-        width: 100%;
-        height: auto; 
-        position: static; 
-        border-right: none;
-        border-bottom: 1px solid var(--border-glass);
-    }
-    .hub-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 20px 0;
-    }
-    .hub-nav li { margin-bottom: 0; }
-    .hub-nav a { padding: 8px 12px; }
-    
-    .main-content {
-        padding: 25px;
-    }
-    #live iframe { height: 300px; }
-    #playlist iframe { height: 300px; }
-}
+        .progress-fill-miku {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cor-miku-glow), var(--cor-acento-energia));
+            border-radius: 8px;
+            box-shadow: 0 0 15px var(--cor-miku-glow);
+            animation: fill-animation 2s forwards, color-shift 8s infinite alternate;
+        }
 
-@media (max-width: 480px) {
-    .main-content { padding: 15px; }
-    section h2 { font-size: 1.5rem; }
-    .collab-button { font-size: 1rem; width: 100%; }
-    .schedule-list { grid-template-columns: 1fr; }
-    .friend-card h3 { font-size: 1.2rem; }
-}
+        @keyframes color-shift {
+            0% { background: linear-gradient(90deg, var(--cor-miku-glow), var(--cor-acento-energia)); }
+            50% { background: linear-gradient(90deg, var(--cor-acento-energia), #00FFFF); }
+            100% { background: linear-gradient(90deg, #39FFC5, var(--cor-miku-glow)); }
+        }
 
-</style>
+        /* Botões Estilizados */
+        .btn-container { text-align: center; margin-top: 40px; }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--cor-acento-energia);
+            color: var(--cor-fundo);
+            padding: 15px 30px;
+            border: 2px solid var(--cor-acento-energia);
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 160, 0.7);
+            margin: 10px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--cor-miku-glow);
+            border-color: var(--cor-miku-glow);
+            box-shadow: 0 0 30px var(--cor-miku-glow);
+            color: var(--cor-fundo);
+            transform: scale(1.05);
+        }
+
+        /* ----------------------------------- */
+        /* LOG E TRACKLIST */
+        /* ----------------------------------- */
+        
+        .log-entry {
+            background-color: #0F0F0F;
+            padding: 10px 15px;
+            border-left: 4px solid var(--cor-borda-janela);
+            margin-bottom: 5px;
+            font-family: 'Poppins', monospace;
+            font-size: 0.9em;
+        }
+
+        .log-entry:nth-child(even) {
+            background-color: #121212;
+        }
+
+        .log-time {
+            color: var(--cor-miku-glow);
+            margin-right: 10px;
+        }
+        
+        .log-status {
+            color: var(--cor-acento-energia);
+            font-weight: bold;
+        }
+
+        /* ----------------------------------- */
+        /* NAVEGAÇÃO LATERAL (Mais volume de CSS) */
+        /* ----------------------------------- */
+
+        .nav-sistema {
+            position: fixed;
+            top: 20%;
+            left: 0;
+            width: 180px;
+            background-color: rgba(20, 20, 20, 0.95);
+            border-right: 3px solid var(--cor-miku-glow);
+            border-radius: 0 10px 10px 0;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-sistema a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--cor-texto-principal);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 1px solid var(--cor-borda-janela);
+            letter-spacing: 1px;
+        }
+
+        .nav-sistema a:hover {
+            background-color: var(--cor-menu-hover);
+            color: var(--cor-acento-energia);
+            border-left: 5px solid var(--cor-acento-energia);
+        }
+
+        /* ----------------------------------- */
+        /* RODAPÉ E FINALIZAÇÃO */
+        /* ----------------------------------- */
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 100px;
+            border-top: 3px solid var(--cor-borda-janela);
+            color: var(--cor-texto-secundario);
+            font-size: 1em;
+            background-color: #0E0E0E;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* ------------------------------------- */
+        /* MEDIA QUERIES (Responsividade) */
+        /* ------------------------------------- */
+        @media (max-width: 1400px) {
+            .nav-sistema { width: 150px; }
+            .container { padding-left: 170px; }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-sistema { display: none; }
+            .container { padding-left: 0; }
+            h1 { font-size: 3.5em; }
+            .amigos-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; margin-bottom: 50px; }
+            h2 { font-size: 1.8em; }
+            .secao { padding: 30px; }
+            .btn { padding: 10px 20px; font-size: 0.9em; }
+        }
+
+        /* ------------------------------------------------------------- */
+        /* FIM DO BLOCO CSS EXTREMAMENTE DETALHADO E EXTENSO */
+        /* ------------------------------------------------------------- */
+    </style>
 </head>
 <body>
 
-<div class="hub-container">
+    <div class="nav-sistema">
+        <a href="#dark-profile">MIKU::DARK_PROFILE</a>
+        <a href="#friend-profiles">MIKU::FRIENDS_COLAB</a>
+        <a href="#activity-log">MIKU::ACTIVITY_LOG</a>
+        <a href="#settings">MIKU::SYSTEM_SETTINGS</a>
+        <a href="#">MIKU::DOWNLOADS</a>
+    </div>
+    
+    <div class="container">
+        <h1>-- MIKU FAN HUB // ONLINE --</h1>
 
-    <aside class="sidebar">
-        <div>
-            <header class="sidebar-header">
-                <h1>Yamazaki <span class="flag">🇯🇵</span></h1>
-                <p>
-                    Olá! Meu nome é Mateus, 19 anos. Um apaixonado por cultura japonesa, games e, acima de tudo, **Vocaloid**.
-                </p>
-            </header>
+        <div class="secao" id="dark-profile">
+            <h2>[USER_PROFILE] - Dark (Status: Vibe Máxima)</h2>
+            <p style="color: var(--cor-texto-secundario);">LOG ID: C0D3_D4RK // RANK: SUPERFAN</p>
+            <hr style="border-color: var(--cor-borda-janela);">
             
-            <nav>
-                <ul class="hub-nav">
-                    <li><a href="#live">🔴 Live Atual</a></li>
-                    <li><a href="#playlist">🎧 Playlist (Spotify)</a></li>
-                    <li><a href="#passions">🔥 Minhas Paixões</a></li>
-                    <li><a href="#friends">👥 Amigos</a></li>
-                    <li><a href="#schedule">🗓️ Agenda</a></li>
-                    <li><a href="#collab">🤝 Colaboração</a></li>
-                </ul>
-            </nav>
+            <h3>Análise do Perfil</h3>
+            <p>
+                O **Dark** é um fã incrivelmente dedicado da Diva Virtual, Hatsune Miku! Sua paixão por Miku é contagiante, refletida em sua **vasta coleção** de *merch* exclusivo e no modo como ele celebra o universo Vocaloid com total autenticidade.
+            </p>
+            <p>
+                O celular dele é o <span class="mikustar">'MikuPhone'</span>, o portal essencial por onde ele acompanha e vive todas as novidades da Miku. Sua dedicação ao *fandom* é a principal fonte de energia da nossa *collab*.
+            </p>
+            <p>
+                Para mim, o carinho e a vibe genuína de Dark como fã o tornam uma pessoa verdadeiramente **única e incrível**! Sua dedicação é inspiradora e eleva o nível de qualquer amizade.
+            </p>
+            
+            <div class="progress-container">
+                <div class="progress-label">Nível de Carinho Vocaloid</div>
+                <div class="progress-bar-miku"><div class="progress-fill-miku" style="width: 99.9%;"></div></div>
+                <p style="text-align: right; color: var(--cor-miku-glow); font-size: 0.8em; margin: 5px 0 0;">STATUS: VIBE_MIKU_LOCK (99.9% Engaged)</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-label">Status da Coleção (Estima)</div>
+                <div class="progress-bar-miku"><div class="progress-fill-miku" style="width: 85%; background: linear-gradient(90deg, #FF69B4, #FF00A0);"></div></div>
+                <p style="text-align: right; color: var(--cor-acento-energia); font-size: 0.8em; margin: 5px 0 0;">STATUS: COLECTION_HIGH (85% Completa)</p>
+            </div>
+        </div>
+
+        <div class="secao" id="friend-profiles">
+            <h2>[FRIEND_LIST_ACTIVE] - Minha Equipe de Collab (6 Perfis de Exemplo)</h2>
+
+            <p style="color: var(--cor-texto-secundario);">*Substitua as informações abaixo pelos dados reais dos seus amigos. A estrutura está pronta para 6 unidades de colaboração.</p>
+
+            <div class="amigos-grid">
+            
+                <div class="perfil-card">
+                    <h3>Perfil #001: [Nome do Amigo 1]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 1]</span>
+                    <p>É a prova de que a amizade é a melhor *collab*! Sua energia e **[Detalhe Único sobre a Personalidade/Interesse Dele]** são fundamentais. Trazendo a melhor *track* para a playlist.</p>
+                </div>
+
+                <div class="perfil-card">
+                    <h3>Perfil #002: [Nome do Amigo 2]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 2]</span>
+                    <p>Com [Nome do Amigo 2], a vibe é sempre positiva, como um refrão *catchy*. Ele lida com **[Detalhe Único sobre um Traço Positivo]** de forma autêntica. Me faz sentir **incrível e motivado**.</p>
+                </div>
+                
+                <div class="perfil-card">
+                    <h3>Perfil #003: [Nome do Amigo 3]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 3]</span>
+                    <p>Traz o equilíbrio perfeito, o baixo na nossa *mix*. Seu **[Detalhe Único]** e apoio são essenciais para manter a harmonia. Uma amizade **sólida e inspiradora**.</p>
+
+                </div>
+
+                <div class="perfil-card">
+                    <h3>Perfil #004: [Nome do Amigo 4]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 4]</span>
+                    <p>Especialista em **[Detalhe Único]**. Ele é o nosso 'engenheiro de som' social, garantindo que o volume de diversão esteja sempre no máximo! Amizade de **alta fidelidade**.</p>
+                </div>
+
+                <div class="perfil-card">
+                    <h3>Perfil #005: [Nome do Amigo 5]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 5]</span>
+                    <p>A criatividade dele em **[Detalhe Único]** é impressionante. É o nosso 'produtor musical', sempre buscando novos ritmos e ideias para a nossa vida. **Inovação constante**!</p>
+                </div>
+
+                <div class="perfil-card">
+                    <h3>Perfil #006: [Nome do Amigo 6]</h3>
+                    <span class="amigo-nome">[Nome do Amigo 6]</span>
+                    <p>O [Nome do Amigo 6] é a nossa 'musa'. Seu **[Detalhe Único]** nos inspira a sermos melhores. É o toque de mágica que faz a nossa *track* ser inesquecível. **Pura inspiração**.</p>
+                </div>
+
+            </div>
+            
+            <div class="btn-container">
+                <button class="btn">INICIAR NOVA SESSÃO DE COLABORAÇÃO</button>
+            </div>
         </div>
         
-        <footer class="sidebar-footer">
-            <p>Hub de Conteúdo v3.1</p>
-            <div class="miku-leek" title="Hatsune Miku Reference"></div>
-        </footer>
-        </aside>
-
-    <main class="main-content">
-    
-        <section id="live">
-            <h2>Live Atual</h2>
-            <iframe width="100%" 
-                src="https://www.youtube.com/embed/5kexM0d12jY?autoplay=1&mute=1" 
-                allowfullscreen>
-            </iframe>
-        </section>
-
-        <section id="playlist">
-            <h2>Minha Playlist (Spotify)</h2>
-            <iframe 
-                src="http://googleusercontent.com/spotify.com/2" 
-                width="100%" 
-                frameborder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
-            <p style="text-align: center; margin-top: 15px;">
-                <a href="https://spotify.link/9zcuue6zLXb" target="_blank">Abrir Playlist no Spotify</a>
-            </p>
-        </section>
-
-        <section id="passions">
-            <h2>Minhas Paixões</h2>
-            <p>Eu adotei "Yamazaki" como meu nick porque achei o significado ("colina do campo") lindo e me conecta com a cultura que amo. Meu foco é sempre em conteúdo divertido e cheio de referências do universo Vocaloid e da cultura pop japonesa.</p>
-            <div class="detail-box glass-effect">
-                <p><strong>Objetivo:</strong> Criar um espaço onde minhas paixões e a comunidade se encontram. Você vai encontrar muita música eletrônica, jogos variados e, claro, Vocaloid!</p>
-            </div>
-        </section>
-
-        <section id="friends">
-            <h2>Meus Amigos</h2>
-            <div class="friends-grid">
+        <div class="secao" id="activity-log">
+            <h2>[SYSTEM_LOG] - Log de Atividade Recente (Extenso)</h2>
+            
+            <div style="max-height: 400px; overflow-y: scroll; border: 1px solid var(--cor-borda-janela);">
                 
-                <div class="friend-card glass-effect">
-                    <h3>Epic</h3>
-                    <p>O mais ruim no Fortnite, adoro trollar ele e ver o tilt.</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Clover</h3>
-                    <p>Super aleatório, sempre solta frases de efeito engraçadas.</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Consta</h3>
-                    <p>Gente boa demais, tranquilo e confiável. Ótimo para apoio moral.</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Front</h3>
-                    <p>Conversei pouco, mas parece super da hora. Simples e direto.</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Jesus de Patinete</h3>
-                    <p>Trabalha comigo. Aleatório, divertido e cheio de piadas.</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Pedro49Gamer</h3>
-                    <p>Gamer de verdade, com playlists incríveis no Spotify.</p>
-                </div>
-                
-                <div class="friend-card glass-effect">
-                    <h3>Jujuba</h3>
-                    <p>Mora em Chique Chique, Bahia. Super divertida e parceira!</p>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="schedule">
-            <h2>Agenda de Lives</h2>
-            <ul class="schedule-list">
-                <li class="schedule-item glass-effect">
-                    <span class="date">01/11</span>
-                    <span class="time">18h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">05/11</span>
-                    <span class="time">20h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">10/11</span>
-                    <span class="time">19h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">15/11</span>
-                    <span class="time">18h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">20/11</span>
-                    <span class="time">21h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">25/11</span>
-                    <span class="time">20h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-                </ul>
-        </section>
-
-        <section id="collab">
-            <h2>Colaboração</h2>
-            <div class="collab-box glass-effect">
-                <p>
-                    Quer fazer uma parceria, uma collab, ou participar de uma live junto? 
-                    Este formulário é essencial para meu controle. Clique abaixo para enviar sua proposta!
-                </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank" class="collab-button">
-                    Preencher Formulário
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-</div>
-
-</body>
-</html>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:05:30]</span> <span class="log-status">SYNC_OK:</span> Profile Dark (99.9% Vibe) carregado com sucesso.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:05:45]</span> <span class="log-status">STATUS:</span> Perfil Amigo 1 carregado. Função: HARMONIA_MAIOR.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:05:50]</span> <span class="log-status">STATUS:</span> Perfil Amigo 2 carregado. Função: ENERGIA_CRIAÇÃO.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:05:55]</span> <span class="log-status">STATUS:</span> Perfil Amigo 3 carregado. Função: BALANCEAMENTO_MASTER.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:06:00]</span> <span class="log-status">BOOT:</span> Interface Cyber-Pop V3.0 ativada.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:06:15]</span> <span class="log-status">WARNING:</span> Baixo nível de cafeína detectado. Recomenda-se um *boost*.</div>
+                <div class="log-entry"><span class="log-time">[25.10.2025 21:06:20]</span> <span class="log-status">INFO:</span> N
