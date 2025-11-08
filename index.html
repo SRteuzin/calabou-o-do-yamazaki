@@ -3,431 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hub do Yamazaki | Vocaloid Clássico & Games</title>
+<title>Template Yamazaki - ALL ABOUT ME</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ========================================================================= */
-/* --- 1. VARIÁVEIS, RESET & TEMA "MIKU CLÁSSICA" --- */
+/* --- 1. VARIÁVEIS & TEMA "INSTAGRAM STORIES COPY" --- */
 /* ========================================================================= */
 :root {
-    /* Miku: Verde-Água (Cor Principal/Neon) */
-    --main-color: #39C5BB; 
-    /* Castanha de Caju: Bege/Bronze (Cor de Contraste) */
-    --accent-color: #DDC3A5; 
-    /* Roxo Escuro (Sua Cor Favorita) como toque para o fundo */
-    --bg-dark: #081D3E; 
+    /* COR DE FUNDO PRINCIPAL (Preto/Roxo Escuro) */
+    --bg-dark: #121215; 
+    /* COR DA GRADE (Cinzento Suave) */
+    --grid-color: rgba(255, 255, 255, 0.1); 
+    /* COR DE DESTAQUE (Amarelo/Bege da Castanha) - Como as caixas da foto */
+    --highlight-box: #FFE082; 
+    /* COR DO NEON (Miku) */
+    --neon-miku: #39C5BB; 
     
-    --card-bg-glass: rgba(255, 255, 255, 0.05); /* Fundo sutil */
-    --border-glass: rgba(255, 255, 255, 0.15); /* Borda clara */
-    
-    --text-light: #f0f0f0;
     --text-dark: #111;
-    --spotify-green: #1DB954; 
+    --text-light: #f0f0f0;
     
-    --font-main: 'Inter', 'Arial', sans-serif;
-    --font-tech: 'Share Tech Mono', monospace; 
+    --font-heading: 'Roboto Mono', monospace; /* Fonte forte para os títulos */
+    --font-body: 'Inter', sans-serif; /* Fonte legível para o conteúdo */
 }
 
 * { 
     margin:0; 
     padding:0; 
     box-sizing:border-box; 
-    scroll-behavior: smooth;
 }
 body { 
-    font-family: var(--font-main); 
-    /* Fundo com gradiente suave em Azul Escuro, refletindo as cores Miku/Teto */
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #051025 100%);
+    font-family: var(--font-body); 
+    background-color: var(--bg-dark); 
     color: var(--text-light); 
-    line-height:1.7; 
-    overflow-x: hidden; 
-}
-
-/* Efeito de Vidro mais claro e sutil */
-.glass-effect {
-    background: var(--card-bg-glass);
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* ========================================================================= */
-/* --- 2. LAYOUT DO HUB --- */
-/* ========================================================================= */
-.hub-container {
+    line-height:1.5; 
     display: flex;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    overflow-y: auto; /* Permite scroll se o conteúdo for muito longo */
+    
+    /* FUNDO QUADRICULADO (A característica principal da imagem!) */
+    background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
-/* PAINEL LATERAL (Sidebar) */
-.sidebar {
-    width: 320px; 
-    height: 100vh; 
-    position: sticky; 
-    top: 0;
+/* CONTAINER IMITANDO O FORMATO DE UM STORIES/CELULAR */
+.template-container {
+    width: 100%;
+    max-width: 450px; /* Limita a largura como um Stories */
     padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--border-glass);
-    background: rgba(8, 8, 8, 0.85); 
-    z-index: 1000; 
+    background: rgba(18, 18, 21, 0.85); /* Fundo semi-transparente para ver a grade */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: 20px 0;
 }
-.sidebar-header h1 {
+
+/* TÍTULO PRINCIPAL (IDÊNTICO À FOTO) */
+h1 {
+    font-family: var(--font-heading);
     font-size: 2.5rem;
-    font-weight: 900; 
-    color: var(--main-color);
-    text-shadow: 0 0 10px var(--main-color);
+    text-align: center;
+    color: var(--highlight-box); /* COR DAS CAIXAS */
+    border: 3px solid var(--neon-miku); /* Borda Neon Miku */
+    padding: 10px 0;
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px var(--neon-miku);
+}
+
+/* ========================================================================= */
+/* --- 2. CAIXAS DE CONTEÚDO (O CORAÇÃO DO LAYOUT) --- */
+/* ========================================================================= */
+.category-box {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: var(--highlight-box); /* Fundo Amarelo/Bege */
+    color: var(--text-dark); /* Texto Escuro */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.category-box h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--text-dark);
+    padding-bottom: 5px;
     margin-bottom: 10px;
 }
-.sidebar-header p {
-    color: var(--accent-color); 
-    font-size: 0.95rem;
-    opacity: 0.9;
-}
 
-/* Navegação */
-.hub-nav a {
-    color: var(--accent-color); 
-    transition: all 0.3s ease;
+/* Estilo para Itens Chave */
+.item-list {
+    list-style: none;
+    padding-left: 0;
 }
-.hub-nav a:hover {
-    background: var(--main-color);
-    color: var(--bg-dark); 
-    box-shadow: 0 0 8px var(--main-color);
-}
-
-/* Rodapé com Alho-Poró */
-.sidebar-footer {
-    opacity: 0.8;
-    align-items: flex-end; 
-}
-
-/* O EASTER EGG (Alho-Poró Minimalista) */
-.miku-leek {
-    position: relative; width: 10px; height: 30px; background: #fff; border-radius: 0 0 3px 3px; transform: rotate(15deg); margin-right: 10px; 
-}
-.miku-leek::before, .miku-leek::after {
-    content: ""; position: absolute; bottom: 95%; left: 50%; width: 8px; height: 25px; background: var(--main-color); border-radius: 10px 10px 0 0; transform-origin: bottom center;
-}
-.miku-leek::before { transform: translateX(-50%) rotate(-25deg); }
-.miku-leek::after { transform: translateX(-50%) rotate(25deg); bottom: 90%; height: 22px; }
-
-
-/* CONTEÚDO PRINCIPAL */
-.main-content {
-    flex-grow: 1; 
-    padding: 40px; 
-}
-section {
-    margin-bottom: 50px;
-}
-section h2 {
-    font-size: 2rem;
-    font-weight: 900;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--accent-color); 
-    display: inline-block;
-}
-
-/* ========================================================================= */
-/* --- 3. ESTILOS DE CONTEÚDO --- */
-/* ========================================================================= */
-
-/* LIVE EM DESTAQUE (COM PULSO MIKU) */
-#live iframe {
-    width: 100%;
-    height: 500px; 
-    border: 2px solid var(--main-color);
-    border-radius: 12px;
-    animation: pulseGlow 2.5s infinite alternate;
-}
-@keyframes pulseGlow {
-    from { box-shadow: 0 0 15px var(--main-color), 0 0 5px var(--accent-color); }
-    to { box-shadow: 0 0 35px var(--main-color), 0 0 10px var(--accent-color); }
-}
-
-/* PLAYLIST (Spotify) */
-#playlist iframe {
-    width: 100%;
-    height: 352px;
-    border-radius: 12px;
-}
-
-/* PAIXÕES */
-.passions-quote {
-    font-family: var(--font-tech);
-    font-size: 1.1rem;
-    color: var(--accent-color);
-    border-left: 3px solid var(--accent-color);
-    padding-left: 15px;
-    margin-top: 20px;
-}
-
-/* AMIGOS */
-.friends-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-.friend-card {
-    padding: 20px;
-    text-align: center; 
-    transition: all 0.3s ease;
-}
-.friend-card h3 {
-    color: var(--main-color); 
-    font-family: var(--font-tech); 
-    font-size: 1.35rem;
-    text-transform: uppercase;
+.item-list li {
+    font-family: var(--font-body);
+    font-size: 1rem;
     margin-bottom: 5px;
 }
-/* Estilo para a lista de amigos sem descrição */
-.friend-card p {
-    font-size: 0.95rem;
-    opacity: 0.7;
-    margin-top: 10px;
-}
-.friend-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px var(--main-color); 
-    border: 1px solid var(--main-color);
-}
-
-
-/* AGENDA */
-.schedule-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-}
-.schedule-item {
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 5px solid var(--main-color); 
-    transition: transform 0.3s ease;
-}
-.schedule-item .time {
+.item-list strong {
+    color: var(--action-red, #C0392B); /* Cor Vermelha para Destaque (Ação) */
     font-weight: 700;
-    color: var(--accent-color); 
-    font-family: var(--font-tech);
-    font-size: 1.1rem;
 }
 
-/* COLABORAÇÃO */
-.collab-box {
-    padding: 30px;
-    text-align: center;
+/* Estilo para a Lista de Amigos */
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
-.collab-button {
-    display: inline-block;
-    padding: 12px 25px;
-    margin-top: 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    background: var(--main-color);
-    color: var(--bg-dark);
-    font-weight: 900;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px var(--main-color);
-}
-.collab-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 30px var(--main-color);
-    filter: brightness(1.1);
-}
-
-/* ========================================================================= */
-/* --- 4. RESPONSIVIDADE (Mobile) --- */
-/* ========================================================================= */
-@media (max-width: 1024px) {
-    .hub-container { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-glass); }
-    .hub-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
-    .hub-nav a { padding: 8px 12px; }
-    .main-content { padding: 25px; }
-    #live iframe { height: 300px; }
-    #playlist iframe { height: 300px; }
+.friends-list span {
+    background-color: var(--text-dark); 
+    color: var(--highlight-box); 
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: var(--font-heading);
 }
 
 </style>
 </head>
 <body>
 
-<div class="hub-container">
+<div class="template-container">
 
-    <aside class="sidebar">
-        <div>
-            <header class="sidebar-header">
-                <h1>Yamazaki <span class="flag">🇯🇵</span></h1>
-                <p>
-                    Matheus Yamazaki, 19 anos. Fã de Miku, Teto e Adrenalina na Guerra!
-                </p>
-            </header>
-            
-            <nav>
-                <ul class="hub-nav">
-                    <li><a href="#live" class="glass-effect">🔴 Live Atual</a></li>
-                    <li><a href="#playlist" class="glass-effect">🎧 Playlist</a></li>
-                    <li><a href="#passions" class="glass-effect">🔥 Minhas Paixões</a></li>
-                    <li><a href="#friends" class="glass-effect">👥 A Turma</a></li>
-                    <li><a href="#schedule" class="glass-effect">🗓️ Agenda</a></li>
-                    <li><a href="#collab" class="glass-effect">🤝 Colaboração</a></li>
-                </ul>
-            </nav>
+    <h1>ALL ABOUT ME !!!</h1>
+
+    <div class="category-box">
+        <h2>ABOUT ME.</h2>
+        <ul class="item-list">
+            <li>Name: <strong>Matheus Yamazaki</strong></li>
+            <li>Birthday: <strong>21/12</strong> (Sagitário)</li>
+            <li>Age: <strong>19</strong></li>
+            <li>Pronouns: <strong>Ele/Dele</strong></li>
+            <li>Ethnicity: <strong>Japonês</strong> (por alma!)</li>
+        </ul>
+    </div>
+
+    <div class="category-box">
+        <h2>MY FAVORITES.</h2>
+        <ul class="item-list">
+            <li>Artists: <strong>Hatsune Miku & Kasaneteto</strong></li>
+            <li>Colors: <strong>Roxo, Verde-Água, Vermelho</strong></li>
+            <li>Song: <strong>POTETO CHIP</strong> (Roma)</li>
+            <li>Food: <strong>Yakisoba / Comida Japonesa</strong></li>
+            <li>Style: <strong>Gola/Gravata & Alho-Poró</strong></li>
+        </ul>
+    </div>
+
+    <div class="category-box">
+        <h2>MY HUBS.</h2>
+        <ul class="item-list">
+            <li>Cultura Nipônica</li>
+            <li>Cosplay & Design</li>
+            <li>Ouvir Música / Assistir Anime</li>
+            <li><strong>"Ser Eu" (Autenticidade)</strong></li>
+        </ul>
+    </div>
+
+    <div class="category-box">
+        <h2>GAMING & FRIENDS.</h2>
+        <ul class="item-list" style="margin-bottom: 10px;">
+            <li>Main Games: <strong>Fortnite, War Zone, Roblox</strong></li>
+            <li>Quote: <strong>Jogo por Amizade e pela Adrenalina da Guerra!</strong></li>
+        </ul>
+        <p style="font-weight: 700; margin-bottom: 5px;">TIME HUB:</p>
+        <div class="friends-list">
+            <span>CONSTÀ</span>
+            <span>CLOVER</span>
+            <span>FRONT</span>
+            <span>JUJUBA</span>
+            <span>DARK_002</span>
+            <span>EPIC</span>
         </div>
-        
-        <footer class="sidebar-footer">
-            <p>Hub de Conteúdo v5.0 // Miku Clássica</p>
-            <div class="miku-leek" title="O Alho-Poró Miku"></div>
-        </footer>
-
-    </aside>
-
-    <main class="main-content">
+    </div>
     
-        <section id="live">
-            <h2>🔴 Live Atual</h2>
-            <iframe width="100%" 
-                src="https://www.youtube.com/embed/5kexM0d12jY?autoplay=1&mute=1" 
-                allowfullscreen>
-            </iframe>
-        </section>
-
-        <section id="playlist">
-            <h2>🎧 Minha Música Favorita</h2>
-            <div class="passions-quote">
-                **POTETO CHIP** - Roma
-            </div>
-            
-            <h2 style="margin-top: 40px;">Playlist Completa (Spotify)</h2>
-            <iframe 
-                src="http://googleusercontent.com/spotify.com/2" 
-                width="100%" 
-                frameborder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
-            <p style="text-align: center; margin-top: 15px;">
-                <a href="https://spotify.link/9zcuue6zLXb" target="_blank" style="color: var(--accent-color);">Abrir Playlist no Spotify</a>
-            </p>
-        </section>
-
-        <section id="passions">
-            <h2>🔥 Minhas Paixões</h2>
-            <p>Eu adotei "Yamazaki" como meu nick ("colina do campo"). Minha paixão é a Hatsune Miku, principalmente sua **Gola, Gravata e a Voz**, e a vibe punk da **Kasaneteto**. Jogo por diversão e pela adrenalina! Minhas cores: Roxo, Verde-Água e Vermelho.</p>
-            
-            <h3 style="margin-top: 30px; margin-bottom: 10px; color: var(--main-color);">Minhas Referências & Hubs:</h3>
-            <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 15px; font-family: var(--font-tech);">
-                <li class="glass-effect" style="padding: 8px 15px;">Cultura Nipônica</li>
-                <li class="glass-effect" style="padding: 8px 15px;">Cosplay & Design</li>
-                <li class="glass-effect" style="padding: 8px 15px;">Ouvir Música</li>
-                <li class="glass-effect" style="padding: 8px 15px;">Assistir Anime</li>
-                <li class="glass-effect" style="padding: 8px 15px;">"Ser Eu" (Autenticidade)</li>
-            </ul>
-        </section>
-
-        <section id="friends">
-            <h2>👥 A Turma</h2>
-            <p style="margin-bottom: 20px; opacity: 0.8;">Os nomes que definem a amizade e a diversão nas lives.</p>
-            <div class="friends-grid">
-                
-                <div class="friend-card glass-effect">
-                    <h3>Consta</h3>
-                    <p style="opacity: 0.5;">A Portuguesa</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Clover</h3>
-                    <p style="opacity: 0.5;">O Sigma</p>
-                </div>
-                
-                <div class="friend-card glass-effect">
-                    <h3>Front</h3>
-                    <p style="opacity: 0.5;">O Super da Hora</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>Jujuba</h3>
-                    <p style="opacity: 0.5;">A Parceira da Bahia</p>
-                </div>
-
-                <div class="friend-card glass-effect">
-                    <h3>dark_002</h3>
-                    <p style="opacity: 0.5;">O Artista da Miku</p>
-                </div>
-                
-                <div class="friend-card glass-effect">
-                    <h3>Epic</h3>
-                    <p style="opacity: 0.5;">O Inevitável</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="schedule">
-            <h2>🗓️ Agenda de Lives</h2>
-            <ul class="schedule-list">
-                <li class="schedule-item glass-effect">
-                    <span class="date">01/11</span>
-                    <span class="time">18h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">05/11</span>
-                    <span class="time">20h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">10/11</span>
-                    <span class="time">19h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">15/11</span>
-                    <span class="time">18h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">20/11</span>
-                    <span class="time">21h00</span>
-                    <span class="icon">💻</span>
-                </li>
-                <li class="schedule-item glass-effect">
-                    <span class="date">25/11</span>
-                    <span class="time">20h00</span>
-                    <span class="icon">🎮</span>
-                </li>
-            </ul>
-        </section>
-
-        <section id="collab">
-            <h2>🤝 Colaboração</h2>
-            <div class="collab-box glass-effect">
-                <p>
-                    Quer fazer uma parceria, uma collab, ou participar de uma live junto? 
-                    Envie sua proposta!
-                </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcC3QjFBYdErFKd999CPXaYgIeZMW30rSpqU_PE7o23CET_Q/viewform?usp=sf_link" target="_blank" class="collab-button">
-                    Preencher Formulário
-                </a>
-            </div>
-        </section>
-
-    </main>
+    <p style="text-align: center; font-family: var(--font-heading); color: var(--neon-miku); text-shadow: 0 0 5px var(--neon-miku); margin-top: 20px;">
+        Vocaloid U.T.A.U. Protocol 🟢💜
+    </p>
 
 </div>
 
 </body>
-    </html>
-                        
+</html>
